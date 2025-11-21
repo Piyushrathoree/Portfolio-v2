@@ -1,7 +1,6 @@
 "use client";
 import { useLanyard } from "../hooks/useLanyard";
 
-
 const DiscordStatus = () => {
   const DISCORD_ID = "1187126125722353768";
   const data = useLanyard(DISCORD_ID);
@@ -15,7 +14,7 @@ const DiscordStatus = () => {
 
   // Determine Status Color
   const statusColorMap = {
-    online: "bg-green-500",
+    online: "bg-green-400",
     idle: "bg-yellow-500",
     dnd: "bg-red-500",
     offline: "bg-gray-500",
@@ -25,9 +24,18 @@ const DiscordStatus = () => {
     statusColorMap[data.discord_status as keyof typeof statusColorMap] ||
     "bg-gray-500";
 
+  if (data.discord_status === "online") {
+    return (
+      <div className="absolute bottom-1 left-17 flex h-4 w-4 items-center justify-center">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+      </div>
+    );
+  }
+
   return (
     <span
-      className={`absolute bottom-0 left-18  w-5 h-5 rounded-full border-2 border-white ${statusColor}`}
+      className={`absolute bottom-1 left-17  w-4 h-4 rounded-full border-2 border-white ${statusColor}`}
     ></span>
   );
 };
