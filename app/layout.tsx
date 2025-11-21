@@ -32,16 +32,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans bg-background text-foreground `} >
-        <ThemeProvider
+      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `} >
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
           
-        >
+        > */}
           {children}
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

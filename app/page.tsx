@@ -3,6 +3,7 @@ import { Card } from "@/components/Card";
 
 import Graph from "@/components/Graph";
 import Tech from "@/components/Tech";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Home() {
   const techStack = [
@@ -15,9 +16,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen py-2 bg-neutral-100">
+    <div className="flex flex-col justify-center items-center min-h-screen py-2 ">
       <Graph />
-
+      <ThemeToggle />
       <div className="flex gap-3">
         <Avatar />
 
@@ -46,6 +47,7 @@ export default function Home() {
           githubLink="#"
           imageSrc="/image.png"
           techStack={techStack}
+          siteLink="#"
         />
         <Card
           title="Project 2"

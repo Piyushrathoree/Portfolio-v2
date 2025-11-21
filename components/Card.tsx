@@ -23,7 +23,7 @@ export function Card(props: CardProps) {
 
       <div className="relative">
         <HeroVideoDialog
-          className="block dark:hidden"
+          className="block "
           animationStyle="from-center"
           videoSrc={`${props.videoSrc || ""}`}
           thumbnailSrc={`${props.imageSrc}`}
@@ -64,17 +64,33 @@ export function Card(props: CardProps) {
           {props.githubLink && (
             <Icons
               name="Code"
-              path="/icons/github.svg"
+              path="/icons/githubdark.svg"
               link={props.githubLink}
-              className="border-none"
+              className="border-none dark:hidden"
+            />
+          )}
+          {props.githubLink && (
+            <Icons
+              name="Code"
+              path="/icons/githublight.svg"
+              link={props.githubLink}
+              className="border-none hidden dark:block"
             />
           )}
           {props.siteLink && (
             <Icons
               name="Visit Site"
-              path="/icons/web.svg"
+              path="/icons/webdark.svg"
               link={props.siteLink}
-              className="border-none"
+              className="border-none dark:hidden"
+            />
+          )}
+          {props.siteLink && (
+            <Icons
+              name="Visit Site"
+              path="/icons/weblight.svg"
+              link={props.siteLink}
+              className="border-none hidden dark:block"
             />
           )}
         </div>
