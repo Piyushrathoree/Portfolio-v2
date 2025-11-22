@@ -30,7 +30,7 @@ const GithubGraph = () => {
   const [closedPRIds, setClosedPRIds] = useState<Set<number>>(new Set());
   const [mounted, setMounted] = useState(false);
 
-  const initialCount = 2;
+  const initialCount = 3;
 
   useEffect(() => {
     setMounted(true);
@@ -110,8 +110,11 @@ const GithubGraph = () => {
     <div>
       <div className="absolute right-6 w-212 h-px bg-(--pattern-fg) opacity-90 dark:opacity-15"></div>
 
-      <h1 className="text-neutral-900 dark:text-neutral-50 font-custom font-bold  text-3xl tracking-tight ">
-        <span className="link--elara">Proof Of Work</span>
+      <h1 className="text-neutral-900 dark:text-neutral-50/70  font-bold  text-4xl tracking-tight flex flex-col gap-1">
+        <span className="font-mono text-sm font-normal">Featured</span>{" "}
+        <span className="font-serif border-b border-black dark:border-white/40 w-fit border-dashed ">
+          Proof Of Work
+        </span>
       </h1>
       <div className="absolute right-6 w-212 h-px bg-(--pattern-fg) my-[0.4] opacity-90 dark:opacity-15"></div>
       <p
@@ -125,7 +128,7 @@ const GithubGraph = () => {
       </p>
 
       {/* Graph Component */}
-      <div className="w-270  pr-80">
+      <div className="w-240  pr-65">
         <div className="flex w-full justify-center">
           {mounted && (
             <>
@@ -169,11 +172,11 @@ const GithubGraph = () => {
       {showPRSection && (
         <div className="mt-4">
           <div className="mb-1 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-neutral-900 dark:text-neutral-50 font-custom font-bold text-2xl tracking-tight">
-              <span className="link--elara">Pull Requests</span>
+            <h2 className="text-neutral-900 dark:text-neutral-50  font-semibold text-2xl tracking-tight">
+              <span className="font-serif">Pull Requests</span>
             </h2>
             <div className="flex items-center gap-2">
-              <div className="flex gap-1 bg-black/5 dark:bg-white/5 rounded-lg p-1 border border-neutral-300/30 dark:border-neutral-700/30 ">
+              <div className="flex gap-1 bg-black/5 dark:bg-white/5 p-1 border border-dashed border-neutral-700/30 dark:border-neutral-300/30 ">
                 <button
                   onClick={() => setFilterType("merged")}
                   className={`px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 ${
@@ -207,7 +210,7 @@ const GithubGraph = () => {
               </div>
             </div>
           </div>
-          <p className="text-xs text-neutral-600 dark:text-neutral-400 font-custom2 mb-4">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 -mt-2 mb-4 ">
             {filterType === "merged"
               ? "Merged contributions to open source"
               : filterType === "open"
@@ -265,9 +268,9 @@ const GithubGraph = () => {
                   <button
                     onClick={() => setShowAll(!showAll)}
                     className="px-4 py-2 text-sm font-custom2 font-medium text-neutral-900 dark:text-neutral-50 
-                  bg-neutral-100 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-700/80
-                  border border-neutral-300/50 dark:border-neutral-700/50 rounded-lg
-                  transition-all duration-300 hover:shadow-md"
+                  bg-neutral-100 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-700/3  0
+                  border border-neutral-700/50 dark:border-neutral-300/50 border-dashed
+                  transition-all duration-300"
                   >
                     {showAll
                       ? "↑ Collapse"
@@ -279,7 +282,7 @@ const GithubGraph = () => {
               )}
             </div>
           ) : (
-            <div className="text-secondary font-custom2 text-sm mt-4">
+            <div className="text-secondary  text-sm mt-4">
               No pull requests found
             </div>
           )}

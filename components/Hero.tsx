@@ -2,6 +2,7 @@ import React from "react";
 import Tech from "./Tech";
 import Avatar from "./Avatar";
 import { RippleButton } from "./ui/ripple-button";
+import Socials from "./Socials";
 
 
 const Hero = () => {
@@ -47,21 +48,21 @@ const Hero = () => {
               </span>
             </span>
             Enthusiastic about{" "}
-            <span className="font-semibold text-black/50">
+            <span className="font-semibold text-black/50 dark:text-neutral-100">
               Artificial Intelligence
             </span>{" "}
             and{" "}
-            <span className="font-semibold text-black/50">
+            <span className="font-semibold text-black/50 dark:text-neutral-100">
               Open Source Contribution
             </span>
             .
           </div>
         </div>
       </div>
-      <div className="lg:w-138 flex gap-10 ml-[166px] font-sans">
+      <div className="lg:w-138 flex gap-5 ml-[166px] font-sans">
         <RippleButton
           rippleColor="#fafafa"
-          className="rounded-none dark:border-white/60 border-neutral-700 border-dashed  dark:hover:bg-neutral-900 hover:bg-neutral-100/70 duration-300 py-1 px-2 text-black/70 dark:text-white/70 "
+          className="rounded-none dark:border-white/60 border-neutral-700 border-dashed  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-transparent duration-300 py-1 px-2 text-black/70 dark:text-white/70 "
         >
           {" "}
           <div className="flex items-center gap-1">
@@ -71,10 +72,10 @@ const Hero = () => {
               fill="currentColor"
               viewBox="0 0 846.66 846.66"
               style={{
-          shapeRendering: "geometricPrecision",
-          textRendering: "geometricPrecision",
-          fillRule: "evenodd",
-          clipRule: "evenodd",
+                shapeRendering: "geometricPrecision",
+                textRendering: "geometricPrecision",
+                fillRule: "evenodd",
+                clipRule: "evenodd",
               }}
               version="1.1"
               xmlSpace="preserve"
@@ -83,20 +84,20 @@ const Hero = () => {
             >
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
-          {" "}
-          <defs>
-            {" "}
-            <style type="text/css">{`.fil0 {}`}</style>{" "}
-          </defs>{" "}
-          <g id="Layer_x0020_1">
-            {" "}
-            <path
-              className="fil0"
+                {" "}
+                <defs>
+                  {" "}
+                  <style type="text/css">{`.fil0 {}`}</style>{" "}
+                </defs>{" "}
+                <g id="Layer_x0020_1">
+                  {" "}
+                  <path
+                    className="fil0"
                     d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"
                   ></path>{" "}
                 </g>{" "}
@@ -106,7 +107,7 @@ const Hero = () => {
         </RippleButton>
         <RippleButton
           rippleColor="#fafafa"
-          className="rounded-none dark:border-white/60 border-neutral-700 border-dashed  dark:hover:bg-neutral-900 hover:bg-neutral-100/70 duration-300 py-1 px-2 text-black/70 dark:text-white/70 "
+          className="rounded-none dark:border-white/60 border-neutral-700 border-dashed  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-transparent duration-300 py-1 px-2 text-black/70 dark:text-white/70 "
         >
           {" "}
           <span className="flex gap-1 items-center">
@@ -137,7 +138,8 @@ const Hero = () => {
           </span>
         </RippleButton>
       </div>
-      <div className="absolute bottom-0 h-1 w-80  border-b border-dashed pb-10 dark:border-white/70 border-black/60  right-70  top-58"></div>
+      <Socials/>
+      <div className="absolute bottom-0 h-1 w-80  border-b border-dashed pb-10 dark:border-white/70 border-black/60  right-70  top-70"></div>
     </div>
   );
 };

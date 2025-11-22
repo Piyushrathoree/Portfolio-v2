@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./Card";
-import { Link, SendHorizonalIcon, SquareArrowOutDownRightIcon, SquareArrowOutUpRightIcon, SquareArrowUpRightIcon } from "lucide-react";
+import { SquareArrowOutUpRightIcon } from "lucide-react";
 
 const Projects = () => {
   const techStack = [
@@ -16,10 +16,10 @@ const Projects = () => {
   ];
 
   return (
-    <div className="mt-10 mb-20 relative">
-      <div className="flex flex-col gap-1">
-        <p className="text-md font-mono">Featured</p>
-        <h2 className="text-4xl font-black font-serif tracking-wider border-b border-black dark:border-white/40 w-fit border-dashed">
+    <div className="mt-10 mb-30 relative">
+      <div className="flex flex-col gap-1 text-neutral-900 dark:text-neutral-50/70">
+        <p className="text-sm font-mono ">Featured</p>
+        <h2 className="text-4xl font-black font-serif  border-b border-black dark:border-white/40 w-fit border-dashed">
           Projects
         </h2>
       </div>
@@ -49,7 +49,7 @@ const Projects = () => {
         {" "}
         Checkout Projects <SquareArrowOutUpRightIcon size={20} />
       </a>
-      <div className="absolute -bottom-20 h-1 w-80  border-b border-dashed pb-10 dark:border-white/70 border-black/60  right-70  "></div>
+      <div className="absolute -bottom-13 h-1 w-80  border-b border-dashed pb-10 dark:border-white/70 border-black/60  right-70  "></div>
     </div>
   );
 };
