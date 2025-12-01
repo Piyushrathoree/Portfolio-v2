@@ -1,33 +1,20 @@
-import { Card } from '@/components/Card';
-import JsIcon from '@/icons/JsIcon';
-import Mongo from '@/icons/Mongo';
-import Nextjs from '@/icons/Nextjs';
-import NodeIcon from '@/icons/NodeIcon';
-import OceanIcon from '@/icons/OceanIcon';
-import Prisma from '@/icons/Prisma';
-import ReactIcon from '@/icons/ReactIcon';
-import TailwindIcon from '@/icons/TailwindIcon';
-import Ts from '@/icons/Ts';
-import VercelIcon from '@/icons/VercelIcon';
-import React from 'react'
+import { Card } from "@/components/Card";
+import Bun from "@/icons/Bun";
+import Fastapi from "@/icons/Fastapi";
+import JsIcon from "@/icons/JsIcon";
+import Mongo from "@/icons/Mongo";
+import Nextjs from "@/icons/Nextjs";
+import NodeIcon from "@/icons/NodeIcon";
+import OceanIcon from "@/icons/OceanIcon";
+import Prisma from "@/icons/Prisma";
+import Py from "@/icons/Py";
+import ReactIcon from "@/icons/ReactIcon";
+import RedisIcon from "@/icons/RedisIcon";
+import TailwindIcon from "@/icons/TailwindIcon";
+import Ts from "@/icons/Ts";
+import VercelIcon from "@/icons/VercelIcon";
+import React from "react";
 
-
-//project 1
-  const zenithStack = [
-    { name: "Node.js", children: <NodeIcon /> },
-    { name: "Typescript", children: <Ts /> },
-    {
-      name: "Next.js",
-      children: <Nextjs />,
-    },
-    {
-      name: "tailwindcss",
-      children: <TailwindIcon />
-    },
-    { name: "Digital Ocean", children: <OceanIcon /> },
-    { name: "Vercel", children: <VercelIcon /> },
-    { name: "Mongo DB", children: <Mongo /> }
-  ];
 const ProjectsData: {
   title: string;
   description: string;
@@ -39,15 +26,34 @@ const ProjectsData: {
 }[] = [
   {
     title: "Zenith",
-    description: "A distraction-free productivity tool designed for people who want to stay in flow.",
+    description:
+      "A distraction-free productivity tool designed for people who want to stay in flow.",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/Zenith",
     imageSrc: "/image.png",
-    techStack: zenithStack,
+    techStack: [
+      { name: "Node.js", children: <NodeIcon /> },
+      { name: "Typescript", children: <Ts /> },
+      {
+        name: "Next.js",
+        children: <Nextjs />,
+      },
+      {
+        name: "tailwindcss",
+        children: <TailwindIcon />,
+      },
+      { name: "Digital Ocean", children: <OceanIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "Mongo DB", children: <Mongo /> },
+      { name: "Bun", children: <Bun /> },
+      { name: "Redis", children: <RedisIcon /> },
+    ],
   },
+
   {
     title: "Welth",
-    description: "A personal application to track expenses, set budgets, and achieve manage financial goals.",
+    description:
+      "A personal application to track expenses, set budgets, and achieve manage financial goals.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/Welth",
     imageSrc: "/image.png",
@@ -60,14 +66,107 @@ const ProjectsData: {
       },
       {
         name: "tailwindcss",
-        children: <TailwindIcon />
+        children: <TailwindIcon />,
       },
       { name: "React", children: <ReactIcon /> },
       { name: "Vercel", children: <VercelIcon /> },
-      { name: "Prisma", children: <Prisma /> }
+      { name: "Prisma", children: <Prisma /> },
     ],
   },
-
+  {
+    title: "Meetup",
+    description:
+      "A real-time video calling application enabling seamless communication between users and record meetings for future reference.",
+    status: "Ready",
+    githubLink: "https://github.com/Piyushrathoree/meetup",
+    siteLink: "https://meet-up-three-pi.vercel.app/",
+    imageSrc: "/image.png",
+    techStack: [
+      { name: "Typescript", children: <Ts /> },
+      { name: "React", children: <ReactIcon /> },
+      { name: "Next.js", children: <Nextjs /> },
+      { name: "tailwindcss", children: <TailwindIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "Mongo DB", children: <Mongo /> },
+    ],
+  },
+  {
+    title: "Brainly",
+    description:
+      "The second Brain application to help people to remember things that they want in future",
+    status: "Ready",
+    githubLink: "https://github.com/Piyushrathoree/Brainly-client",
+    imageSrc: "/image.png",
+    siteLink: "https://app-brainly-peach.vercel.app",
+    techStack: [
+      { name: "Typescript", children: <Ts /> },
+      {
+        name: "tailwindcss",
+        children: <TailwindIcon />,
+      },
+      { name: "React", children: <ReactIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "Mongo DB", children: <Mongo /> },
+      { name: "Node.js", children: <NodeIcon /> },
+    ],
+  },
+  {
+    title: "Portfolio ",
+    description:
+      "My personal portfolio website to showcase my work and skills.",
+    status: "Ready",
+    githubLink: "https://github.com/Piyushrathoree/portfolio-v2",
+    imageSrc: "/image.png",
+    siteLink: "https://Piyushh.me/",
+    techStack: [
+      { name: "Typescript", children: <Ts /> },
+      {
+        name: "Next.js",
+        children: <Nextjs />,
+      },
+      {
+        name: "tailwindcss",
+        children: <TailwindIcon />,
+      },
+      { name: "React", children: <ReactIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "Bun", children: <Bun /> },
+    ],
+  },
+  {
+    title: "Video-tube",
+    description: "A video sharing Platform similar to youtube. (Backend)",
+    status: "Ready",
+    githubLink: "https://github.com/Piyushrathoree/videotube",
+    imageSrc: "/image.png",
+    techStack: [
+      { name: "Javascript", children: <JsIcon /> },
+      { name: "Node.js", children: <NodeIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "MongoDB", children: <Mongo /> },
+    ],
+  },
+  {
+    title: "(Coming Up Next)",
+    description: "It's a AI projects , In production phase. Will be live soon.",
+    status: "In Production",
+    githubLink: "https://github.com/Piyushrathoree/Welth",
+    imageSrc: "/image.png",
+    siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
+    techStack: [
+      { name: "Python", children: <Py /> },
+      {
+        name: "Next.js",
+        children: <Nextjs />,
+      },
+      {
+        name: "tailwindcss",
+        children: <TailwindIcon />,
+      },
+      { name: "FastAPI", children: <Fastapi /> },
+      { name: "Vercel", children: <VercelIcon /> },
+    ],
+  },
 ];
 const page = () => {
   return (
@@ -89,6 +188,7 @@ const page = () => {
                 title={project.title}
                 description={project.description}
                 status={project.status}
+                siteLink={project.siteLink}
                 githubLink={project.githubLink}
                 imageSrc={project.imageSrc}
                 techStack={project.techStack}
@@ -99,6 +199,6 @@ const page = () => {
       </div>
     </div>
   );
-}
+};
 
-export default page
+export default page;
