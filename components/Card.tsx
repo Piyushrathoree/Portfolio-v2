@@ -65,35 +65,23 @@ export function Card(props: CardProps) {
           ))}
         </div>
         <div className="flex gap-3">
-          {props.githubLink && (
-            <a
-              href={props.githubLink}
-              target="_blank"
-
-              className="text-sm mt-2 underline font-mono"
-            >
-              <Icons
-                name="GitHub"
-                className="dark:text-neutral-300 text-neutral-800"
-              >
-                <GithubIcon />
-              </Icons>
-            </a>
-          )}
           {props.siteLink && (
-            <a
-              href={props.siteLink}
-              target="_blank"
-
-              className="text-sm mt-2 underline font-mono"
+            <Icons
+              name="visit site"
+              link={props.siteLink}
+              className="dark:text-neutral-300 text-neutral-800"
             >
-              <Icons
-                name="visit site"
-                className="dark:text-neutral-300 text-neutral-800"
-              >
-                <WebIcon />
-              </Icons>
-            </a>
+              <WebIcon />
+            </Icons>
+          )}
+          {props.githubLink && (
+            <Icons
+              name="GitHub"
+              link={props.githubLink}
+              className="dark:text-neutral-300 text-neutral-800"
+            >
+              <GithubIcon />
+            </Icons>
           )}
         </div>
       </div>

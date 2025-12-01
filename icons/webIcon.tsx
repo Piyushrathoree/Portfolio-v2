@@ -4,11 +4,7 @@ interface webIconProps {
   className?: string;
 }
 const WebIcon = (props: webIconProps) => {
-  return (
-    <div>
-     <Globe className={props.className} />
-    </div>
-  );
+  return <Globe className={`h-6 w-6 ${props.className || ""}`} />;
 };
 
 export default WebIcon;

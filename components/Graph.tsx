@@ -107,7 +107,7 @@ const GithubGraph = () => {
   }, [filterType]);
 
   return (
-    <div className="-mt-10 ">
+    <div className="-mt-10 pl-6">
       <div className="absolute right-6 w-212 h-px  opacity-90 dark:opacity-15 "></div>
 
       <h1 className="text-neutral-900 dark:text-neutral-50/70  font-bold  text-4xl tracking-tight flex flex-col gap-1">
@@ -128,19 +128,17 @@ const GithubGraph = () => {
       </p>
 
       {/* Graph Component */}
-      <div className="w-240  pr-65">
+      <div className="w-240 scale-130 mb-10 mt-5">
         <div className="flex w-full justify-center">
           {mounted && (
             <>
               <GitHubCalendar
                 username="Piyushrathoree"
-                colorScheme={theme === "dark" ? "dark" : "light"}
+                colorScheme={theme === "dark" ? "light" : "light"}
                 blockSize={10}
                 blockMargin={3}
-                fontSize={12}
-                style={{
-                  color: theme === "dark" ? "#e5e5e5" : "#171717",
-                }}
+                fontSize={9}
+               
                 renderBlock={(block: any, activity: any) =>
                   cloneElement(block, {
                     "data-tooltip-id": "github-tooltip",
