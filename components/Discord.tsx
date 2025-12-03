@@ -5,11 +5,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import DiscordIcon from "@/icons/DiscordIcon";
 import { useState, useEffect } from "react";
 
 export const DiscordStatus = () => {
-  const DISCORD_ID = "1187126125722353768";
-  const data = useLanyard(DISCORD_ID);
+  const data = useLanyard("1187126125722353768");
   const [elapsed, setElapsed] = useState<string>("");
 
   // Check if User is in VS Code
@@ -80,7 +80,7 @@ export const DiscordStatus = () => {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="absolute bottom-1 left-28 flex h-4 w-4 items-center justify-center cursor-pointer">
+          <div className="absolute bottom-1 md:left-28 flex h-4 w-4 items-center justify-center cursor-pointer">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
           </div>
@@ -100,15 +100,11 @@ export const DiscordStatus = () => {
                 <br /> wanna talk?
               </p>
               <a
-                href={`https://discord.com/users/${DISCORD_ID}`}
+                href={`https://discord.com/users/1187126125722353768`}
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="/icons/discord.svg"
-                  className="w-5 h-5 opacity-80 hover:opacity-100 transition-opacity"
-                  alt="Discord"
-                />
+                <DiscordIcon />
               </a>
             </div>
           )}
@@ -121,9 +117,9 @@ export const DiscordStatus = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="bottom-4 left-16 flex items-center justify-center relative w-7 h-7 border border-neutral-500/40 dark:border-neutral-500 rounded-full ">
+        <div className="md:bottom-4 md:left-28 bottom-3 flex items-center justify-center relative w-4 h-4 border border-neutral-500/40 dark:border-neutral-500 rounded-full ">
           <span
-            className={`absolute w-4 h-4 rounded-full border-2 border-white ${statusColor} cursor-pointer`}
+            className={`absolute w-3 h-3 rounded-full border-2 border-white ${statusColor} cursor-pointer`}
           ></span>
         </div>
       </TooltipTrigger>

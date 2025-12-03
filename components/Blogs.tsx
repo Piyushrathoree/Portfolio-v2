@@ -1,6 +1,6 @@
-import { SquareArrowOutUpRightIcon } from 'lucide-react';
-import React from 'react'
-import { BlogCard } from './BlogCard';
+import { SquareArrowOutUpRightIcon } from "lucide-react";
+import React from "react";
+import { BlogCard } from "./BlogCard";
 
 const getBlogCards = [
   {
@@ -11,7 +11,7 @@ const getBlogCards = [
     title: "Microservices:Implementation in Node.js",
     imageSrc: "/blog2.png",
   },
-];  
+];
 const Blogs = () => {
   return (
     <div className="mt-20 mb-20 ">
@@ -20,13 +20,9 @@ const Blogs = () => {
         Blogs
       </h2>
 
-      <div className="flex items-center gap-10 mt-10">
+      <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 mt-10">
         {getBlogCards.map((card, idx) => (
-          <BlogCard
-            key={idx}
-            title={card.title}
-            imageSrc={card.imageSrc}
-          />
+          <BlogCard key={idx} title={card.title} imageSrc={card.imageSrc} />
         ))}
       </div>
       <a
@@ -42,6 +38,6 @@ const Blogs = () => {
       </span>
     </div>
   );
-}
+};
 
-export default Blogs
+export default Blogs;

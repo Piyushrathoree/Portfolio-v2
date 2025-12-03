@@ -34,20 +34,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans overflow-x-hidden max-w-screen`}
       >
         <Navbar />
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          
-        > */}
+       
 
         {children}
         <SpeedInsights />
-        {/* </ThemeProvider> */}
+      
       </body>
     </html>
   );

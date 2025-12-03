@@ -17,11 +17,14 @@ import GoIcon from "@/icons/GoIcon";
 
 const Skills = () => {
   return (
-    <div className="w-240 mb-30">
+    <div className="w-full max-w-full md:max-w-240 mb-20 md:mb-30">
       <div className="mb-10">
         <p className="font-mono text-sm">Featured</p>
-        <h1 className="font-serif  text-4xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed">My Skillset</h1></div>
-      <div className="border  border-black/20 dark:border-white/10 w-220 mx-auto p-4 relative h-40 flex flex-wrap gap-4 justify-center items-center">
+        <h1 className="font-serif  text-4xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed">
+          My Skillset
+        </h1>
+      </div>
+      <div className="border border-black/20 dark:border-white/10 w-full max-w-full sm:max-w-[90%] md:w-220 mx-auto p-4 relative min-h-[200px] sm:h-40 flex flex-wrap gap-3 sm:gap-4 justify-center items-center">
         <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
         <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
         <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
@@ -47,7 +50,6 @@ const Skills = () => {
           </Icons>
         ))}
       </div>
-      
     </div>
   );
 };

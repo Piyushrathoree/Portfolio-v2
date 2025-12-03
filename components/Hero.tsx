@@ -6,38 +6,48 @@ import Socials from "./Socials";
 
 const Hero = () => {
   return (
-    <div className="relative mb-15">
-      <div className="flex gap-3 justify-start ">
-        <div className=" mr-5 mb-10 mt-2 ">
+    <div className="relative mb-10 md:mb-15 w-full">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-3 justify-start items-center md:items-start">
+        <div className="mb-6 md:mr-5 md:mb-10 md:mt-2  ">
           <Avatar />
         </div>
 
-        <div>
-          <p className="text-[45px] leading-tight font-serif tracking-wider font-bold flex items-center gap-4 mt-3">
-            Hi , I'm Piyush{" "}
-            <span className="mx -3 "> — A Full Stack Developer!</span>
+        <div className="w-full overflow-hidden">
+          <p className="text-2xl sm:text-3xl md:text-[45px] leading-tight font-serif font-bold flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mt-3">
+            <span className="wrap-break-word">Hi, I'm Piyush</span>
+            <span className="text-xl sm:text-2xl md:text-[45px] wrap-break-word">
+              — A Full Stack Developer!
+            </span>
           </p>
 
-          <div className="font-sans text-neutral-400 text-lg tracking-wide mt-2">
-            <span className="flex items-center gap-2 ">
+          <div className="font-sans text-neutral-400 text-sm sm:text-base md:text-lg mt-4 max-w-full overflow-hidden">
+            <span className="flex flex-wrap items-center gap-2">
               I build interactive web apps using{" "}
-              <Tech logo="/icons/ts.svg" name="Typescript" className="w-27 " />
+              <Tech
+                logo="/icons/ts.svg"
+                name="Typescript"
+                className="w-20 sm:w-24 md:w-27"
+              />
               ,
               <Tech
                 logo="/icons/node.svg"
                 name="Node.js"
-                className=" w-22 "
+                className="w-18 sm:w-20 md:w-22"
               />{" "}
               ,
               <Tech
                 logo="/icons/nextjslight.svg"
                 name="Next.js"
-                className=" w-22 "
+                className="w-18 sm:w-20 md:w-22"
               />{" "}
               ,
             </span>
-            <span className="flex items-center gap-2 mt-1 mb-1">
-              <Tech logo="/icons/python.svg" name="Python" className=" w-22 " />
+            <span className="flex flex-wrap items-center gap-2 mt-2 mb-2">
+              <Tech
+                logo="/icons/python.svg"
+                name="Python"
+                className="w-18 sm:w-20 md:w-22"
+              />
               <span>
                 with the focus on{" "}
                 <span className="dark:text-white font-semibold text-neutral-500">
@@ -46,25 +56,30 @@ const Hero = () => {
                 side.
               </span>
             </span>
-            Enthusiastic about{" "}
-            <span className="font-semibold text-black/50 dark:text-neutral-100">
-              Artificial Intelligence
-            </span>{" "}
-            and{" "}
-            <span className="font-semibold text-black/50 dark:text-neutral-100">
-              Open Source Contribution
+            <span className="block">
+              Enthusiastic about{" "}
+              <span className="font-semibold text-black/50 dark:text-neutral-100">
+                Artificial Intelligence
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold text-black/50 dark:text-neutral-100">
+                Open Source Contribution
+              </span>
+              .
             </span>
-            .
           </div>
         </div>
       </div>
-      <div className="lg:w-138 flex gap-5 ml-48 font-sans">
+      <div className="w-full md:w-auto flex flex-col sm:flex-row gap-3 sm:gap-5 md:ml-48 mt-6 font-sans">
         <RippleButton
           rippleColor="#fafafa"
           className="rounded-none dark:border-white/60 border-neutral-700 border-dashed  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-transparent duration-300 py-1 px-2 text-black/70 dark:text-white/70 "
         >
           {" "}
-          <a className="flex items-center gap-1" href="https://drive.google.com/file/d/1HbPyx_dw6osV4-jZA0Xfm1Xkyu_4eq63/view?usp=sharing">
+          <a
+            className="flex items-center gap-1"
+            href="https://drive.google.com/file/d/1HbPyx_dw6osV4-jZA0Xfm1Xkyu_4eq63/view?usp=sharing"
+          >
             Resume/CV
             <svg
               className="size-5"
@@ -117,12 +132,8 @@ const Hero = () => {
               xmlns="http://www.w3.org/2000/svg"
               className="size-5 "
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap=""
-                stroke-linejoin=""
-              ></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier"></g>
               <g id="SVGRepo_iconCarrier">
                 {" "}
                 <path
