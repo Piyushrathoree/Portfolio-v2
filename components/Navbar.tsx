@@ -12,7 +12,6 @@ const Navbar = () => {
   const navItems = [
     { title: "Projects", href: "/projects" },
     { title: "Blog", href: "/blog" },
-    { title: "Contact", href: "/contact" },
   ];
 
   const [hovered, setHovered] = useState<number | null>(null);
@@ -36,11 +35,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <Container className="">
+    <Container>
       <motion.nav
         animate={{
-          boxShadow: scrolled ? "var(--shadow-input)" : "none",
-          width: isDesktop ? (scrolled ? "45%" : "100%") : "100%",
+          //   boxShadow: scrolled ? "var(--shadow-input)" : "none",
+          //   width: isDesktop ? (scrolled ? "45%" : "100%") : "100%",
 
           borderRadius: "rem",
         }}
@@ -48,8 +47,8 @@ const Navbar = () => {
           duration: 0.3,
           ease: "easeOut",
         }}
-        className="fixed left-1/2 -translate-x-1/2 top-0 z-50 flex w-[95%] md:w-full md:max-w-240 items-center justify-between 
-        px-3 sm:px-4 py-3 bg-neutral-50/50 backdrop-blur-sm dark:bg-neutral-950/70 font-black text-neutral-900 dark:text-neutral-50 transition-all duration-300 backdrop-filter border border-dashed border-neutral-200 dark:border-neutral-700/50"
+        className="fixed inset-x-0 top-0 z-50 flex w-full max-w-240 mx-auto items-center justify-between 
+        px-4 py-3 bg-neutral-50/50 backdrop-blur-sm dark:bg-neutral-950/70  font-black  text-neutral-900 dark:text-neutral-50 transition-all duration-300 backdrop-filter border  border-dashed border-neutral-200 dark:border-neutral-700/50 "
       >
         <Link
           href="/"
@@ -59,10 +58,10 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation links on the right */}
-        <div className="ml-auto flex flex-wrap items-center justify-end gap-2 sm:gap-4 md:gap-6">
+        <div className="ml-auto flex flex-wrap items-center justify-end gap-3 sm:gap-6">
           {navItems.map((item, idx) => (
             <Link
-              className="text-xs sm:text-sm relative px-2 sm:px-3 py-1.5 text-neutral-600 dark:text-neutral-300 font-medium transition-colors hover:text-neutral-900"
+              className="text-sm relative px-3 py-1.5 text-neutral-600 dark:text-neutral-300 font-medium transition-colors hover:text-neutral-900"
               href={item.href}
               key={idx}
               onMouseEnter={() => setHovered(idx)}

@@ -17,7 +17,7 @@ export interface CardProps {
 }
 export function Card(props: CardProps) {
   return (
-    <div className="border border-black/20 dark:border-white/20 flex flex-col items-start w-full max-w-md mx-auto p-4 relative min-h-[400px] sm:h-120">
+    <div className="border  border-black/20 dark:border-white/20 flex flex-col items-start max-w-md mx-auto p-4 relative h-120">
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
@@ -53,7 +53,7 @@ export function Card(props: CardProps) {
           {props.status}
         </div>
       </div>
-      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 w-full max-w-[400px] font-mono">
+      <p className="text-sm text-gray-600 dark:text-gray-300 w-[400px] font-mono">
         {props.description}
       </p>
       <div className="absolute bottom-3 flex flex-col ">
@@ -65,15 +65,6 @@ export function Card(props: CardProps) {
           ))}
         </div>
         <div className="flex gap-3">
-          {props.githubLink && (
-            <Icons
-              name="GitHub"
-              link={props.githubLink}
-              className="dark:text-neutral-300 text-neutral-800"
-            >
-              <GithubIcon />
-            </Icons>
-          )}
           {props.siteLink && (
             <Icons
               name="visit site"
@@ -81,6 +72,15 @@ export function Card(props: CardProps) {
               className="dark:text-neutral-300 text-neutral-800"
             >
               <WebIcon />
+            </Icons>
+          )}
+          {props.githubLink && (
+            <Icons
+              name="GitHub"
+              link={props.githubLink}
+              className="dark:text-neutral-300 text-neutral-800"
+            >
+              <GithubIcon />
             </Icons>
           )}
         </div>
