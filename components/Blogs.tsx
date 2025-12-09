@@ -20,7 +20,7 @@ const Blogs = () => {
         Blogs
       </h2>
 
-      <div className="flex flex-wrap items-center gap-10 mt-10 justify-center">
+      <div className="flex max-sm:flex-col items-center gap-10 mt-10 justify-center">
         {getBlogCards.map((card, idx) => (
           <BlogCard key={idx} title={card.title} imageSrc={card.imageSrc} />
         ))}
