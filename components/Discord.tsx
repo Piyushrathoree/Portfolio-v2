@@ -5,6 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import DiscordIcon from "@/icons/DiscordIcon";
 import { useState, useEffect } from "react";
 
 export const DiscordStatus = () => {
@@ -17,7 +18,7 @@ export const DiscordStatus = () => {
     (activity: any) => activity.name === "Visual Studio Code"
   );
 
-  // --- NEW: Timer Logic for VS Code ---
+
   useEffect(() => {
     if (!vsCodeActivity?.timestamps?.start) return;
 
@@ -41,7 +42,7 @@ export const DiscordStatus = () => {
 
     return () => clearInterval(interval);
   }, [vsCodeActivity]);
-  // ------------------------------------
+
 
   if (!data) return <div>Loading...</div>;
 
@@ -57,8 +58,7 @@ export const DiscordStatus = () => {
     statusColorMap[data.discord_status as keyof typeof statusColorMap] ||
     "bg-gray-500";
 
-  // --- NEW: Reusable VS Code Info Block ---
-  const VsCodeInfo = () => (
+    const VsCodeInfo = () => (
     <div className="flex flex-col min-w-[140px]">
       <div className="flex items-center gap-2 mb-1">
         <span className="text-blue-400 font-bold text-md">VS Code</span>
@@ -75,12 +75,11 @@ export const DiscordStatus = () => {
     </div>
   );
 
-  // 1. ONLINE STATE (Pulsing Dot)
   if (data.discord_status === "online") {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="absolute bottom-1 left-28 flex h-4 w-4 items-center justify-center cursor-pointer">
+          <div className="absolute bottom-1 sm:left-28 left-16 flex h-4 w-4 items-center justify-center cursor-pointer">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
           </div>
@@ -90,7 +89,6 @@ export const DiscordStatus = () => {
           sideOffset={10}
           className="bg-[#fafafa] dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 p-4"
         >
-          {/* IF CODING: Show VS Code Info. ELSE: Show your original 'Wanna Talk' */}
           {vsCodeActivity ? (
             <VsCodeInfo />
           ) : (
@@ -104,11 +102,7 @@ export const DiscordStatus = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="/icons/discord.svg"
-                  className="w-5 h-5 opacity-80 hover:opacity-100 transition-opacity"
-                  alt="Discord"
-                />
+               <DiscordIcon/>
               </a>
             </div>
           )}
@@ -117,13 +111,12 @@ export const DiscordStatus = () => {
     );
   }
 
-  // 2. OTHER STATES (Idle/DND/Offline)
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="bottom-4 left-16 flex items-center justify-center relative w-7 h-7 border border-neutral-500/40 dark:border-neutral-500 rounded-full ">
+        <div className="bottom-5 sm:left-16 ml-14 max-sm:mt-1 flex items-center justify-center relative w-5 h-5 border border-neutral-500/90 dark:border-neutral-500 rounded-full ">
           <span
-            className={`absolute w-4 h-4 rounded-full border-2 border-white ${statusColor} cursor-pointer`}
+            className={`absolute w-2 h-2 rounded-full border border-neutral-700 dark:border-neutral-200   ${statusColor} cursor-pointer`}
           ></span>
         </div>
       </TooltipTrigger>
@@ -132,7 +125,7 @@ export const DiscordStatus = () => {
         sideOffset={10}
         className="bg-white dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 p-3"
       >
-        {/* IF CODING: Show VS Code Info. ELSE: Show simple status */}
+        
         {vsCodeActivity ? (
           <VsCodeInfo />
         ) : (

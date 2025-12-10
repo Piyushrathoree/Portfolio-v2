@@ -8,12 +8,12 @@ const Avatar = (props: avatarProps) => {
   return (
     <div className="relative ">
       <div
-        className={`flex justify-center items-center rounded-full  h-40 w-40 relative overflow-hidden ${props.classname}`}
+        className={`flex justify-center items-center rounded-full  md:h-36 md:w-36 h-20 w-20 relative overflow-hidden ${props.classname}`}
       >
-        <img
+        <img  
           src="/assets/erwin.jpg"
           alt="Avatar"
-          className="-mb-5 absolute h-40 w-40 scale-120 object-cover   "
+          className="-mb-5 absolute md:h-36 md:w-36 h-20 w-20 scale-120 object-cover   "
         />
       </div>
       <DiscordStatus />
