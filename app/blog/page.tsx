@@ -13,7 +13,7 @@ export default async function BlogIndex() {
   const posts = await getAllBlogs();
 
   return (
-    <Container className="min-h-[89vh] px-4 pt-20 relative mx-auto sm:w-230">
+    <Container className="min-h-[89vh] px-4 pt-20 relative mx-auto sm:w-230 bg-transparent">
       {/* LEFT BORDER */}
 
       <div className=" mx-auto mt-10">

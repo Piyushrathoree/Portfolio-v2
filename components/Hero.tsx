@@ -10,15 +10,15 @@ const Hero = () => {
       <Avatar />
       <div className="">
         <div>
-          <p className="text-5xl  leading-tight font-serif tracking-wider font-bold flex flex-wrap items-start gap-2 md:gap-4 mt-3 sm:hidden">
-            Hi, I'm Piyush <br />
+          <p className=" font-serif text-5xl sm:text-7xl xl:text-8xl tracking-tight text-neutral-900 dark:text-neutral-50 leading-[0.9]  font-bold flex flex-wrap items-start gap-2 md:gap-4 mt-3 sm:hidden flex-col">
+            Hi, I'm Piyush 
             <span className="text-neutral-400 text-3xl">
               An Engineer & Full Stack dev
             </span>
           </p>
-          <p className="text-5xl leading-tight font-serif tracking-wider font-bold max-sm:hidden flex flex-wrap items-start gap-2 md:gap-4 mt-3 ">
-            Hi, I'm Piyush —
-            <span className="text-neutral-400"> A Full Stack developer. </span>
+          <p className="text-7xl leading-tighter  font-serif font-bold max-sm:hidden flex flex-wrap gap-5 mt-3 items-end">
+            Hi, I'm Piyush 
+            <span className="text-neutral-400 text-4xl mb-1">- A Full Stack developer </span>
           </p>
 
           <div className="font-sans text-neutral-400 sm:text-lg text-[14px] tracking-wide mt-2">
@@ -43,7 +43,7 @@ const Hero = () => {
               <Tech
                 logo="/icons/nextjslight.svg"
                 name="Next.js"
-                className=" w-22 max-sm:scale-85 rounded-sm"
+                className=" w-22 max-sm:scale-85 rounded-sm "
               />{" "}
               ,<br />
               <Tech

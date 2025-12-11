@@ -30,7 +30,7 @@ const ProjectsData: {
       "A distraction-free productivity tool designed for people who want to stay in flow.",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/Zenith",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/zenith-showcase.png",
     techStack: [
       { name: "Node.js", children: <NodeIcon /> },
       { name: "Typescript", children: <Ts /> },
@@ -52,7 +52,7 @@ const ProjectsData: {
       "A personal application to track expenses, set budgets, and achieve manage financial goals.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/Welth",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/welth-showcase.png",
     siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
     techStack: [
       { name: "Javascript", children: <JsIcon /> },
@@ -76,7 +76,7 @@ const ProjectsData: {
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/meetup",
     siteLink: "https://meet-up-three-pi.vercel.app/",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/meetup-showcase.png",
     techStack: [
       { name: "Typescript", children: <Ts /> },
       { name: "React", children: <ReactIcon /> },
@@ -92,7 +92,7 @@ const ProjectsData: {
       "The second Brain application to help people to remember things that they want in future",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/Brainly-client",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/brainly-showcase.png",
     siteLink: "https://app-brainly-peach.vercel.app",
     techStack: [
       { name: "Typescript", children: <Ts /> },
@@ -112,7 +112,7 @@ const ProjectsData: {
       "My personal portfolio website to showcase my work and skills.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/portfolio-v2",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/portfolio-showcase.png",
     siteLink: "https://Piyushh.me/",
     techStack: [
       { name: "Typescript", children: <Ts /> },
@@ -134,7 +134,7 @@ const ProjectsData: {
     description: "A video sharing Platform similar to youtube. (Backend)",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/videotube",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/videotube-showcase.png",
     techStack: [
       { name: "Javascript", children: <JsIcon /> },
       { name: "Node.js", children: <NodeIcon /> },
@@ -147,7 +147,7 @@ const ProjectsData: {
     description: "It's a AI projects , In production phase. Will be live soon.",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/Welth",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/ai-showcase.png",
     siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
     techStack: [
       { name: "Python", children: <Py /> },

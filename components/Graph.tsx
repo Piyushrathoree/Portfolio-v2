@@ -183,8 +183,8 @@ const GithubGraph = () => {
                   onClick={() => setFilterType("merged")}
                   className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
                     filterType === "merged"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-sm"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
+                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 "
                   }`}
                 >
                   Merged
@@ -193,7 +193,7 @@ const GithubGraph = () => {
                   onClick={() => setFilterType("open")}
                   className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
                     filterType === "open"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-sm"
+                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
                       : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
                   }`}
                 >
@@ -203,7 +203,7 @@ const GithubGraph = () => {
                   onClick={() => setFilterType("closed")}
                   className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
                     filterType === "closed"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-sm"
+                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
                       : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
                   }`}
                 >
@@ -269,7 +269,7 @@ const GithubGraph = () => {
                 <div className="flex justify-center mt-6">
                   <button
                     onClick={() => setShowAll(!showAll)}
-                    className="rounded-sm dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-2 px-4 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
+                    className="rounded-sm dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-1.5 px-2 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
                   >
                     {showAll
                       ? "↑ Collapse"

@@ -7,7 +7,7 @@ import { ContactOptions } from "@/components/ContactOptions";
 
 const ContactPage = () => {
   return (
-    <Container className="min-h-[89vh] pt-35 pb-20 px-4 sm:px-10 sm:w-230 ">
+    <Container className="min-h-[89vh] pt-35 pb-20 px-4 sm:px-10 sm:w-230 bg-transparent">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
         {/* Left Column: Header & Options */}
         <div className="flex flex-col gap-10 lg:sticky lg:top-10">

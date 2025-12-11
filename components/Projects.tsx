@@ -43,7 +43,7 @@ const ProjectsData: {
       "A distraction-free productivity tool designed for people who want to stay in flow.",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/Zenith",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/zenith-showcase.png",
     techStack: zenithStack,
   },
   {
@@ -52,7 +52,7 @@ const ProjectsData: {
       "A personal application to track expenses, set budgets, and achieve manage financial goals.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/Welth",
-    imageSrc: "/image.png",
+    imageSrc: "/projects/welth-showcase.png",
     siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
     techStack: [
       { name: "Javascript", children: <JsIcon /> },
@@ -98,13 +98,13 @@ const Projects = () => {
         })}
       </div>
       <a
-        className="flex gap-2 mt-10 items-center mx-auto text-md w-fit border rounded-sm  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-2 px-3 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
+        className="flex gap-2 mt-10 items-center mx-auto text-md w-fit border rounded-sm  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-1.5 px-2 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
         href="/projects"
       >
         {" "}
         Checkout Projects <SquareArrowOutUpRightIcon size={20} />
       </a>
-
+      
       <span className="flex items-center mt-20">
         <span className="h-px flex-1 bg-linear-to-r from-transparent to-neutral-400"></span>
         <span className="h-px flex-1 bg-linear-to-l from-transparent to-neutral-400"></span>
