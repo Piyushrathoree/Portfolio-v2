@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
