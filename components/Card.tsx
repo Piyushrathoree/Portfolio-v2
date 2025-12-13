@@ -23,7 +23,7 @@ export function Card(props: CardProps) {
       <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white/80 text-black/80" />
       <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white/80 text-black/80" />
 
-      <div className="relative">
+      <div className="relative ">
         <HeroVideoDialog
           className="block "
           animationStyle="from-center"

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Play, XIcon } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -86,17 +87,37 @@ export function HeroVideoDialog({
         className="group relative cursor-pointer border-0 bg-transparent p-0"
         // onClick={() => setIsVideoOpen(true)}
       >
-        {!loaded && (
-          <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse rounded-sm" />
-        )}
-        <img
+        <AnimatePresence>
+          {!loaded && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 z-10 bg-neutral-200 dark:bg-neutral-800 rounded-sm overflow-hidden h-56"
+            >
+              <motion.div
+                className="absolute inset-0 h-full w-full bg-linear-to-r from-black/5 via-white/20 to-transparent dark:via-white/5 -skew-x-12 blur-sm"
+                initial={{ x: "-100%" }}
+                animate={{ x: "100%" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1,
+                  ease: "linear",
+                }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Image
           src={thumbnailSrc}
           alt={thumbnailAlt}
           width={1920}
           height={1080}
-          onLoad={() => setLoaded(true)}
+          onLoad={() => {
+            // Artificial delay to show off the sexy animation
+            setTimeout(() => setLoaded(true), 2000);
+          }}
           className={cn(
-            "w-full shadow-lg transition-all duration-200 ease-out rounded-sm",
+            "w-full shadow-lg transition-all duration-200 ease-out rounded-sm h-56",
             loaded ? "opacity-100" : "opacity-0"
           )}
         />
