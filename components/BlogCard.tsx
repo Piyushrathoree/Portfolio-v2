@@ -16,7 +16,7 @@ export function BlogCard(props: BlogCardProps) {
       <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-neutral-300 text-black/60" />
       <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-neutral-300 text-black/60" />
       <div className="relative bg-blend-overlay ">
-        <img src={props.imageSrc} alt="" className="rounded-md" />
+        <img src={props.imageSrc} alt="" className="rounded-md opacity-80" />
       </div>
       <h2 className="text-xl cursor-pointer font-medium mt-4 mb-2  font-serif underline underline-offset-3 ">
         {props.title}
