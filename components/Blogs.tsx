@@ -5,12 +5,12 @@ import { BlogCard } from "./BlogCard";
 const getBlogCards = [
   {
     title: "What are Microservices?",
-    imageSrc: "/blog1.png",
+    imageSrc: "/assets/1.png",
     blogLink: "http://localhost:3000/blog/getting_started_with_microservices",
   },
   {
     title: "Microservices:Implementation in Node.js",
-    imageSrc: "/blog2.png",
+    imageSrc: "/assets/2.png",
     blogLink: "http://localhost:3000/blog/implementing_microservices",
   },
 ];

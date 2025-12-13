@@ -13,6 +13,7 @@ import RedisIcon from "@/icons/RedisIcon";
 import TailwindIcon from "@/icons/TailwindIcon";
 import Ts from "@/icons/Ts";
 import VercelIcon from "@/icons/VercelIcon";
+import Ws from "@/icons/Ws";
 import React from "react";
 
 const ProjectsData: {
@@ -120,22 +121,38 @@ const ProjectsData: {
     ],
   },
   {
+    title: "Subscription Manager",
+    description: "A video sharing Platform similar to youtube. (Backend)",
+    status: "Ready",
+    githubLink:
+      "https://github.com/Piyushrathoree/microservices-subscription-system",
+    imageSrc: "/projects/subscription-manager-showcase.png",
+    techStack: [
+      { name: "Javascript", children: <JsIcon /> },
+      { name: "Node.js", children: <NodeIcon /> },
+      { name: "Vercel", children: <VercelIcon /> },
+      { name: "MongoDB", children: <Mongo /> },
+    ],
+  },
+  {
     title: "Vexio",
     description: "An AI powered Collaborative web editor (In production)",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/vexio",
-    imageSrc: "/projects/ai-showcase.png",
+    imageSrc: "/projects/vexio-showcase.png",
     techStack: [
-      { name: "Python", children: <Py /> },
+      { name: "Typescript", children: <Ts /> },
       {
         name: "Next.js",
         children: <Nextjs />,
       },
       {
-        name: "tailwindcss",
-        children: <TailwindIcon />,
+        name: "Prisma",
+        children: <Prisma />,
       },
-      { name: "FastAPI", children: <Fastapi /> },
+      { name: "Bun", children: <Bun /> },
+      { name: "WebSocket", children: <Ws /> },
+      { name: "DigitalOcean", children: <OceanIcon/> },
       { name: "Vercel", children: <VercelIcon /> },
     ],
   },
