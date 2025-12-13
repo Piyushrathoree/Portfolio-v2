@@ -107,29 +107,6 @@ const ProjectsData: {
     ],
   },
   {
-    title: "Portfolio ",
-    description:
-      "My personal portfolio website to showcase my work and skills.",
-    status: "Ready",
-    githubLink: "https://github.com/Piyushrathoree/portfolio-v2",
-    imageSrc: "/projects/portfolio-showcase.png",
-    siteLink: "https://Piyushh.me/",
-    techStack: [
-      { name: "Typescript", children: <Ts /> },
-      {
-        name: "Next.js",
-        children: <Nextjs />,
-      },
-      {
-        name: "tailwindcss",
-        children: <TailwindIcon />,
-      },
-      { name: "React", children: <ReactIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "Bun", children: <Bun /> },
-    ],
-  },
-  {
     title: "Video-tube",
     description: "A video sharing Platform similar to youtube. (Backend)",
     status: "Ready",
@@ -143,12 +120,11 @@ const ProjectsData: {
     ],
   },
   {
-    title: "(Coming Up Next)",
-    description: "It's a AI projects , In production phase. Will be live soon.",
+    title: "Vexio",
+    description: "An AI powered Collaborative web editor (In production)",
     status: "In Production",
-    githubLink: "https://github.com/Piyushrathoree/Welth",
+    githubLink: "https://github.com/Piyushrathoree/vexio",
     imageSrc: "/projects/ai-showcase.png",
-    siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
     techStack: [
       { name: "Python", children: <Py /> },
       {
