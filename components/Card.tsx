@@ -65,7 +65,7 @@ export function Card(props: CardProps) {
           ))}
         </div>
         <div className="flex gap-3">
-          {props.siteLink && (
+          {/* {props.siteLink && (
             <Icons
               name="visit site"
               link={props.siteLink}
@@ -73,7 +73,7 @@ export function Card(props: CardProps) {
             >
               <WebIcon />
             </Icons>
-          )}
+          )} */}
           {props.githubLink && (
             <Icons
               name="GitHub"

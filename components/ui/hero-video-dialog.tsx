@@ -74,7 +74,7 @@ export function HeroVideoDialog({
   thumbnailAlt = "Video thumbnail",
   className,
 }: HeroVideoProps) {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  // const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
 
   return (
@@ -83,16 +83,16 @@ export function HeroVideoDialog({
         type="button"
         aria-label="Play video"
         className="group relative cursor-pointer border-0 bg-transparent p-0"
-        onClick={() => setIsVideoOpen(true)}
+        // onClick={() => setIsVideoOpen(true)}
       >
         <img
           src={thumbnailSrc}
           alt={thumbnailAlt}
           width={1920}
           height={1080} 
-          className="w-full   shadow-lg transition-all duration-200 ease-out"
+          className="w-full  shadow-lg transition-all duration-200 ease-out rounded-sm"
         />
-        <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-100">
+        {/* <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-100">
           <div className="bg-primary/10 flex size-28 items-center justify-center rounded-full backdrop-blur-md">
             <div
               className={`from-primary/30 to-primary relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
@@ -106,10 +106,10 @@ export function HeroVideoDialog({
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </button>
       <AnimatePresence>
-        {isVideoOpen && (
+        {/* {isVideoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -143,7 +143,7 @@ export function HeroVideoDialog({
               </div>
             </motion.div>
           </motion.div>
-        )}
+        )} */}
       </AnimatePresence>
     </div>
   );
