@@ -54,7 +54,7 @@ const Navbar = () => {
       >
         <Link
           href="/"
-          className=" flex items-center justify-center dark:bg-neutral-800/60  "
+          className=" flex items-center justify-center "
         >
           <HugeiconsIcon
             icon={Home12Icon}
