@@ -91,6 +91,7 @@ const Projects = () => {
               description={project.description}
               status={project.status}
               githubLink={project.githubLink}
+              siteLink={project.siteLink}
               imageSrc={project.imageSrc}
               techStack={project.techStack}
             />

@@ -7,7 +7,6 @@ import Nextjs from "@/icons/Nextjs";
 import NodeIcon from "@/icons/NodeIcon";
 import OceanIcon from "@/icons/OceanIcon";
 import Prisma from "@/icons/Prisma";
-import Py from "@/icons/Py";
 import ReactIcon from "@/icons/ReactIcon";
 import RedisIcon from "@/icons/RedisIcon";
 import TailwindIcon from "@/icons/TailwindIcon";
@@ -76,7 +75,7 @@ const ProjectsData: {
       "A real-time video calling application enabling seamless communication between users and record meetings for future reference.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/meetup",
-    siteLink: "https://meet-up-three-pi.vercel.app/",
+    // siteLink: "https://meet-up-three-pi.vercel.app/",
     imageSrc: "/projects/meetup-showcase.png",
     techStack: [
       { name: "Typescript", children: <Ts /> },
@@ -94,7 +93,7 @@ const ProjectsData: {
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/Brainly-client",
     imageSrc: "/projects/brainly-showcase.png",
-    siteLink: "https://app-brainly-peach.vercel.app",
+    // siteLink: "https://app-brainly-peach.vercel.app",
     techStack: [
       { name: "Typescript", children: <Ts /> },
       {
