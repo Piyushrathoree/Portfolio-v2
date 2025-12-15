@@ -5,7 +5,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import DiscordIcon from "@/icons/DiscordIcon";
+import { Cursor01Icon } from "@hugeicons/core-free-icons/index";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useState, useEffect } from "react";
 
 export const DiscordStatus = () => {
@@ -13,17 +14,20 @@ export const DiscordStatus = () => {
   const data = useLanyard(DISCORD_ID);
   const [elapsed, setElapsed] = useState<string>("");
 
-  // Check if User is in VS Code
-  const vsCodeActivity = data?.activities?.find(
-    (activity: any) => activity.name === "Visual Studio Code"
+  // 1. Find Activity
+  const activity = data?.activities?.find(
+    (act: any) =>
+      act.name === "Visual Studio Code" ||
+      act.name === "Cursor" ||
+      act.application_id === "1136262945037221958"
   );
 
-
+  // 2. Timer Logic
   useEffect(() => {
-    if (!vsCodeActivity?.timestamps?.start) return;
+    if (!activity?.timestamps?.start) return;
 
     const interval = setInterval(() => {
-      const start = vsCodeActivity.timestamps.start;
+      const start = activity.timestamps.start;
       const now = Date.now();
       const diff = now - start;
 
@@ -41,45 +45,65 @@ export const DiscordStatus = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [vsCodeActivity]);
+  }, [activity]);
 
+  if (!data) return null;
 
-  if (!data) return <div>Loading...</div>;
-
-  // Determine Status Color
+  // 3. Status Colors (For the Trigger Dot only)
   const statusColorMap = {
     online: "bg-green-400",
     idle: "bg-yellow-500",
     dnd: "bg-red-500",
     offline: "bg-gray-500",
   };
-
   const statusColor =
     statusColorMap[data.discord_status as keyof typeof statusColorMap] ||
     "bg-gray-500";
 
-    const VsCodeInfo = () => (
-    <div className="flex flex-col min-w-[140px]">
+  // 4. Cursor Info Block (Fixed: Added 'Forging in' text back)
+  const CursorInfo = () => (
+    <div className="flex flex-col min-w-[150px]">
       <div className="flex items-center gap-2 mb-1">
-        <span className="text-blue-400 font-bold text-md">VS Code</span>
-        <span className="text-[10px] text-neutral-500 font-mono ml-auto">
+        {/* Header Line */}
+        <span className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 font-semibold">
+          Forging in
+          {/* Icons */}
+          <img
+            src="/icons/cursor.png"
+            alt="Cursor"
+            className="w-3.5 h-3.5 opacity-90 "
+          />
+          
+          {/* 'Cursor' Text */}
+          <span className="text-black dark:text-white font-bold">Cursor</span>
+        </span>
+
+        {/* Timer */}
+        <span className="text-[10px] text-neutral-400 font-mono ml-auto pt-1">
           {elapsed}
         </span>
       </div>
-      <p className="text-xs font-medium truncate max-w-[180px]">
-        {vsCodeActivity?.details || "Coding..."}
+
+      {/* File Name */}
+      <p className="text-xs font-medium truncate max-w-[180px] text-neutral-700 dark:text-neutral-200 pt-1">
+        {activity?.details || "Coding..."}
       </p>
-      <p className="text-[10px] text-neutral-500 truncate max-w-[180px]">
-        {vsCodeActivity?.state || "Workspace"}
+
+      {/* Workspace */}
+      <p className="text-[10px] text-neutral-500 truncate max-w-[180px] pt-1">
+        {activity?.state || "Workspace"}
       </p>
     </div>
   );
 
+  // 5. Render Logic
+
+  // SCENARIO A: Online (Pulsing Trigger)
   if (data.discord_status === "online") {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="absolute bottom-1 sm:left-28 left-16 flex h-4 w-4 items-center justify-center cursor-pointer">
+          <div className="absolute bottom-1 left-28 flex h-4 w-4 items-center justify-center cursor-pointer">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
           </div>
@@ -87,10 +111,10 @@ export const DiscordStatus = () => {
         <TooltipContent
           side="right"
           sideOffset={10}
-          className="bg-[#fafafa] dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 p-4"
+          className="bg-[#fafafa] dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 p-4 shadow-xl rounded-xl"
         >
-          {vsCodeActivity ? (
-            <VsCodeInfo />
+          {activity ? (
+            <CursorInfo />
           ) : (
             <div className="flex items-center gap-2">
               <p className="text-xs">
@@ -102,7 +126,11 @@ export const DiscordStatus = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-               <DiscordIcon/>
+                <img
+                  src="/icons/discord.svg"
+                  className="w-5 h-5 opacity-80 hover:opacity-100 transition-opacity"
+                  alt="Discord"
+                />
               </a>
             </div>
           )}
@@ -111,23 +139,22 @@ export const DiscordStatus = () => {
     );
   }
 
+  // SCENARIO B: Other Status (Static Trigger)
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="bottom-5 sm:left-16 ml-14 max-sm:mt-1 flex items-center justify-center relative w-5 h-5 border border-neutral-500/90 dark:border-neutral-500 rounded-full ">
+        <div className="bottom-4 left-16 flex items-center justify-center relative w-7 h-7 border border-neutral-500/40 dark:border-neutral-500 rounded-full ">
           <span
-            className={`absolute w-2 h-2 rounded-full border border-neutral-700 dark:border-neutral-200   ${statusColor} cursor-pointer`}
+            className={`absolute w-4 h-4 rounded-full border-2 border-white ${statusColor} cursor-pointer`}
           ></span>
         </div>
       </TooltipTrigger>
       <TooltipContent
         side="right"
-        sideOffset={10}
-        className="bg-white dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 p-3"
-      >
         
-        {vsCodeActivity ? (
-          <VsCodeInfo />
+      >
+        {activity ? (
+          <CursorInfo />
         ) : (
           <p className="capitalize text-xs font-medium">
             {data.discord_status}

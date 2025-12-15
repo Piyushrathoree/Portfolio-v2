@@ -11,6 +11,7 @@
   "dependencies": {
     "@hugeicons/core-free-icons": "^2.0.0",
     "@hugeicons/react": "^1.1.1",
+    "@lobehub/icons": "^2.45.0",
     "@next/mdx": "^16.0.5",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@types/nodemailer": "^7.0.4",
