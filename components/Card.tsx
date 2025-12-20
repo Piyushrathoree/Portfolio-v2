@@ -56,7 +56,7 @@ export function Card(props: CardProps) {
       <p className="text-sm text-gray-600 dark:text-neutral-400   ">
         {props.description}
       </p>
-      <div className="absolute bottom-3 flex flex-col ">
+      <div className="absolute bottom-3 flex flex-col -ml-1">
         <div className="flex gap-2 -mb-4">
           {props.techStack.map((tech) => (
             <Icons key={tech.name} name={tech.name}>
