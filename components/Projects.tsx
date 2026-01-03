@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import { Card, CardProps } from "./Card";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
 
@@ -72,6 +74,37 @@ const ProjectsData: {
 ];
 
 const Projects = () => {
+  const scrollRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    // Handle scrolling for specific hashes
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash === "#proof-with-work" || hash === "#proof-of-work") {
+        let attempts = 0;
+        const checkAndScroll = () => {
+          if (scrollRef.current) {
+            const yOffset = -120; // Negative offset scrolls 'less' (stops earlier), showing content above
+            const y =
+              scrollRef.current.getBoundingClientRect().top +
+              window.scrollY +
+              yOffset;
+            window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+          } else if (attempts < 50) {
+            attempts++;
+            setTimeout(checkAndScroll, 100);
+          }
+        };
+        checkAndScroll();
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener("hashchange", handleHashScroll);
+
+    return () => window.removeEventListener("hashchange", handleHashScroll);
+  }, []);
+
   return (
     <div className=" mb-20 relative ">
       <div className="flex flex-col gap-1 text-neutral-900 dark:text-neutral-50/90">
@@ -105,8 +138,12 @@ const Projects = () => {
         {" "}
         Checkout Projects <SquareArrowOutUpRightIcon size={20} />
       </a>
-      
-      <span className="flex items-center mt-20">
+
+      <span
+        ref={scrollRef}
+        className="flex items-center mt-20"
+        id="proof-of-work"
+      >
         <span className="h-px flex-1 bg-linear-to-r from-transparent to-neutral-400"></span>
         <span className="h-px flex-1 bg-linear-to-l from-transparent to-neutral-400"></span>
       </span>

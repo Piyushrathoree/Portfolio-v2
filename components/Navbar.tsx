@@ -49,7 +49,7 @@ const Navbar = () => {
           duration: 0.3,
           ease: "easeOut",
         }}
-        className="fixed inset-x-0 top-0 z-50 sm:rounded-md flex sm:max-w-230 mx-auto items-center justify-between 
+        className="fixed inset-x-0 top-0 z-50 sm:rounded-b-md flex sm:max-w-230 mx-auto items-center justify-between 
         px-4 py-3 bg-neutral-50/50 backdrop-blur-sm dark:bg-neutral-950/70  font-black  text-neutral-900 dark:text-neutral-50 transition-all duration-300 backdrop-filter border  border-dashed border-neutral-200 dark:border-neutral-700/50 "
       >
         <Link
