@@ -16,7 +16,6 @@ const Background = () => {
     if (!mounted || !containerRef.current) return;
 
     let app: Application | null = null;
-    let animationId: number;
     let w = window.innerWidth;
     let h = window.innerHeight;
 
