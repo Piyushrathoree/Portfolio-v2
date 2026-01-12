@@ -1,7 +1,7 @@
 import React from "react";
 import Tech from "./Tech";
 import Avatar from "./Avatar";
-import { RippleButton } from "./ui/ripple-button";
+// import { RippleButton } from "./ui/ripple-button";
 import Socials from "./Socials";
 
 const Hero = () => {
@@ -11,15 +11,15 @@ const Hero = () => {
       <div className="">
         <div>
           <p className=" font-serif text-5xl sm:text-7xl xl:text-8xl tracking-tight text-neutral-900 dark:text-neutral-50 leading-[0.9]  font-bold flex flex-wrap items-start gap-2 md:gap-4 mt-3 sm:hidden flex-col">
-            Hi, I'm Piyush
+            Hi, I&apos;m Piyush
             <span className="text-neutral-400 text-3xl">
               An Engineer & Full Stack dev
             </span>
           </p>
-          <p className="text-7xl leading-tighter  font-serif font-bold max-sm:hidden flex flex-wrap gap-5 mt-3 items-end">
-            Hi, I'm Piyush
-            <span className="text-neutral-400 text-4xl mb-1">
-              - A Full Stack developer{" "}
+          <p className="text-7xl leading-tighter  font-serif  max-sm:hidden flex flex-wrap gap-5 mt-3 items-end">
+            Hi, I&apos;m Piyush
+            <span className="text-neutral-400 font-normal tracking-tighter text-5xl mb-1 font-sans">
+            -A Full Stack developer
             </span>
           </p>
 

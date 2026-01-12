@@ -23,7 +23,7 @@ A modern, performant personal portfolio website built with Next.js 16, TypeScrip
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **Content:** [MDX](https://mdxjs.com/) & [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
-- **UI Components:** [Radix UI](https://www.radix-ui.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
 - **Icons:** Lucide React, React Icons, HugeIcons
 - **Syntax Highlighting:** [Shiki](https://shiki.style/) & [rehype-pretty-code](https://rehype-pretty-code.netlify.app/)
 - **Email:** [Nodemailer](https://nodemailer.com/)
@@ -140,7 +140,7 @@ npm start
 | Tailwind CSS 4 | Styling |
 | Framer Motion | Animations |
 | MDX | Blog content |
-| Radix UI | Accessible components |
+| shadcn/ui | Accessible components |
 | Shiki | Code syntax highlighting |
 
 ## 📄 License

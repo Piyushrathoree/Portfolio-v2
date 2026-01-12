@@ -27,6 +27,7 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.6",
     "nodemailer": "^7.0.11",
+    "pixi.js": "^8.15.0",
     "radix-ui": "^1.4.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -36,6 +37,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rough-notation": "^0.5.1",
     "shiki": "^3.17.0",
+    "simplex-noise": "^4.0.3",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.4.0"
   },
