@@ -1,6 +1,5 @@
 import { Card } from "@/components/Card";
 import Bun from "@/icons/Bun";
-import Fastapi from "@/icons/Fastapi";
 import JsIcon from "@/icons/JsIcon";
 import Mongo from "@/icons/Mongo";
 import Nextjs from "@/icons/Nextjs";
@@ -17,6 +16,7 @@ import React from "react";
 
 const ProjectsData: {
   title: string;
+
   description: string;
   status: "Ready" | "In Production";
   githubLink?: string;
@@ -156,7 +156,7 @@ const ProjectsData: {
     ],
   },
 ];
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 sm:w-230 mx-auto">
       <div className="flex flex-col ml-5 ">
@@ -189,4 +189,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
