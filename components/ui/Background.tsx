@@ -32,8 +32,17 @@ const Background = () => {
       return (noise3d(x / SCALE, y / SCALE, z) - 0.5) * 2 * Math.PI;
     }
 
+    function getDotColor(): number {
+      // Use a dark gray in dark mode (preserves existing behavior)
+      // and a lighter gray in light mode for better contrast if shown.
+      if (typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+        return 0x333333;
+      }
+      return 0xcccccc;
+    }
+
     function createDotTexture(application: Application): Texture {
-      const g = new Graphics().circle(0, 0, 1).fill(0x333333);
+      const g = new Graphics().circle(0, 0, 1).fill(getDotColor());
       return application.renderer.generateTexture({ target: g });
     }
 
