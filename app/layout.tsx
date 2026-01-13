@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Piyush Rathore",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
   description: "Software Engineer | Full Stack Developer",
   openGraph: {

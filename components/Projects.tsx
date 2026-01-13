@@ -48,6 +48,8 @@ const ProjectsData: {
       "A distraction-free productivity tool designed for people who want to stay in flow.",
     status: "In Production",
     githubLink: "https://github.com/Piyushrathoree/Zenith",
+
+    siteLink: "https://zenith.piyushh.me/",
     imageSrc: "/projects/zenith-showcase.png",
     techStack: zenithStack,
   },

@@ -132,7 +132,7 @@ const GithubGraph = () => {
       </p>
 
       {/* Graph Component */}
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center sm:border sm:py-8 sm:rounded-3xl  sm:shadow-inner sm:shadow-black/10 dark:shadow-white/10" >
         <div className="flex w-full justify-center">
           {mounted && (
             <>
@@ -262,18 +262,8 @@ const GithubGraph = () => {
               </div>
               {prs.length > initialCount && (
                 <div className="flex justify-center mt-6">
-                  <Button
-                    onClick={() => setShowAll(!showAll)}
-                    variant="default"
-                    size="sm"
-                    className="h-8 text-xs"
-                  >
-                    {showAll
-                      ? "↑ Collapse"
-                      : `↓ Expand • ${
-                          prs.length - closedPRIds.size - initialCount
-                        } more`}
-                  </Button>
+                 
+                 
                 </div>
               )}
             </div>
