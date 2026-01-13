@@ -1,100 +1,134 @@
 "use client";
-
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
 import Link from "next/link";
-import Container from "@/components/containers";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./theme-toggle";
-import { Home12Icon } from "@hugeicons/core-free-icons/index";
+import { Menu01Icon, Cancel01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { cn } from "@/lib/utils";
+
+import HomeIcon from "./ui/home-icon";
 
 const Navbar = () => {
   const navItems = [
+    {
+      title: "Home",
+      href: "/",
+      icon: <HomeIcon />,
+    },
     { title: "Projects", href: "/projects" },
     { title: "Blog", href: "/blog" },
     { title: "Contact", href: "/contact" },
   ];
 
   const [hovered, setHovered] = useState<number | null>(null);
-  const { scrollY } = useScroll();
-  const [scrolled, setScrolled] = useState<boolean>(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 20);
-  });
-
-  useEffect(() => {
-    const updateViewport = () => {
-      if (typeof window === "undefined") return;
-      setIsDesktop(window.innerWidth >= 768);
-    };
-
-    updateViewport();
-    window.addEventListener("resize", updateViewport);
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Container>
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-215 pointer-events-none">
       <motion.nav
+        layout
+        initial={{ y: -100, opacity: 0 }}
         animate={{
-          //   boxShadow: scrolled ? "var(--shadow-input)" : "none",
-          //   width: isDesktop ? (scrolled ? "45%" : "100%") : "100%",
-
-          borderRadius: "rem",
+          y: 0,
+          opacity: 1,
+          height: isOpen ? "auto" : "54px",
         }}
-        transition={{
-          duration: 0.3,
-          ease: "easeOut",
-        }}
-        className="fixed inset-x-0 top-0 z-50 sm:rounded-b-md flex sm:max-w-230 mx-auto items-center justify-between 
-        px-4 py-3 bg-neutral-50/50 backdrop-blur-sm dark:bg-neutral-950/70  font-black  text-neutral-900 dark:text-neutral-50 transition-all duration-300 backdrop-filter border  border-dashed border-neutral-200 dark:border-neutral-700/50 "
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="pointer-events-auto overflow-hidden bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl shadow-sm"
       >
-        <Link
-          href="/"
-          className=" flex items-center justify-center "
-        >
-          <HugeiconsIcon
-            icon={Home12Icon}
-            className="dark:text-neutral-300 text-neutral-500 dark:hover:text-neutral-50 hover:text-neutral-950 duration-200"
-          />
-        </Link>
-
-        {/* Navigation links on the right */}
-        <div className="ml-auto flex flex-wrap items-center justify-end gap-3 sm:gap-6">
-          {navItems.map((item, idx) => (
+        <div className="flex flex-col w-full">
+          {/* Top Bar: Always Visible */}
+          <div className="flex items-center justify-between px-4 py-2 h-[54px]">
+            {/* Home/Logo */}
             <Link
-              className="text-sm relative px-3 py-1.5 text-neutral-500 dark:text-neutral-300 font-medium transition-colors hover:text-neutral-900"
-              href={item.href}
-              key={idx}
-              onMouseEnter={() => setHovered(idx)}
-              onMouseLeave={() => setHovered(null)}
+              href="/"
+              className="flex items-center justify-center p-2 rounded-full hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors"
+              onClick={() => setIsOpen(false)}
             >
-              {hovered === idx && (
-                <motion.span
-                  layoutId="hovered-span"
-                  className="h-full w-full absolute inset-0 rounded-md "
-                />
-              )}
-              <span className="relative z-10 ">{item.title}</span>
+              <HomeIcon />
             </Link>
-          ))}
 
-          <div className="pl-2 border-l border-neutral-300/40 dark:border-neutral-700/50">
-            <motion.div
-              animate={{ scale: 1 }}
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
-              className="mt-2 pl-1"
-            >
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-2">
+              {navItems
+                .filter((i) => i.title !== "Home")
+                .map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-medium transition-colors rounded-xl flex items-center gap-2",
+                      "text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+                    )}
+                    onMouseEnter={() => setHovered(idx)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    {hovered === idx && (
+                      <motion.span
+                        layoutId="nav-hover"
+                        className="absolute inset-0 bg-neutral-200/50 dark:bg-neutral-700/50 rounded-lg -z-10"
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
+                      />
+                    )}
+                    {item.title}
+                  </Link>
+                ))}
+              <div className="h-6 w-px bg-neutral-200 dark:bg-neutral-800 mx-2" />
               <ThemeToggle />
-            </motion.div>
+            </div>
+
+            {/* Mobile Controls */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-full hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors text-neutral-600 dark:text-neutral-400"
+              >
+                <HugeiconsIcon
+                  icon={isOpen ? Cancel01Icon : Menu01Icon}
+                  className="w-5 h-5"
+                />
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu Dropdown */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden border-t border-neutral-200/50 dark:border-neutral-800/50"
+              >
+                <div className="flex flex-col p-2 gap-1">
+                  {navItems
+                    .filter((i) => i.title !== "Home")
+                    .map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          "px-4 py-3 text-sm font-medium transition-colors rounded-xl flex items-center gap-3",
+                          "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 hover:text-black dark:hover:text-white"
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.nav>
-    </Container>
+    </div>
   );
 };
 

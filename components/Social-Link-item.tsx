@@ -1,53 +1,36 @@
-import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
-
 import { cn } from "@/lib/utils";
 
 export type SocialLink = {
-  /** Icon image URL (absolute or path under /public) shown beside the title. */
   icon: string;
   title: string;
-  /** Optional handle/username or subtitle displayed under the title. */
   description?: string;
-  /** External profile URL opened when the item is clicked. */
   href: string;
 };
-export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
+
+export function SocialLinkItem({ icon, title, href }: SocialLink) {
   return (
     <a
       className={cn(
-        "group/link flex cursor-pointer items-center gap-4 p-4 pr-2 transition-colors hover:bg-accent2 max-sm:w-100 border rounded-sm ",
-       
-        
+        "group relative flex items-center justify-center p-2 transition-all duration-300 hover:scale-110"
       )}
       href={href}
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
+      title={title}
     >
-      <div className="relative size-12 shrink-0">
+      <div className="relative size-10 sm:size-12 shrink-0">
         <Image
-          className="rounded-xl select-none corner-squircle supports-corner-shape:rounded-[50%]"
+          className="rounded-xl select-none grayscale transition-all duration-300 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
           src={icon}
           alt={title}
-          width={48}
-          height={48}
+          fill
+          sizes="(max-width: 768px) 40px, 48px"
           quality={100}
           unoptimized
+          style={{ objectFit: "contain" }}
         />
-        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 corner-squircle ring-inset dark:ring-white/15 supports-corner-shape:rounded-[50%]" />
       </div>
-
-      <div className="flex-1">
-        <h3 className="flex items-center font-medium underline-offset-4 group-hover/link:underline">
-          {title}
-        </h3>
-
-        {description && (
-          <p className="text-sm text-muted-foreground">{description}</p>
-        )}
-      </div>
-
-      <ArrowUpRightIcon className="size-4 text-muted-foreground" />
     </a>
   );
 }

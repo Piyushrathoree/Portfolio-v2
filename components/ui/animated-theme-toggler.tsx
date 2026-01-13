@@ -5,6 +5,9 @@ import { Moon, Sun } from "lucide-react";
 import { flushSync } from "react-dom";
 
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
+import BrightnessDownIcon from "./brightness-down-icon";
+import MoonIcon from "./moon-icon";
 
 interface AnimatedThemeTogglerProps
   extends React.ComponentPropsWithoutRef<"button"> {
@@ -81,14 +84,20 @@ export const AnimatedThemeToggler = ({
   }, [isDark, duration]);
 
   return (
-    <button
+    <Button
       ref={buttonRef}
       onClick={toggleTheme}
-      className={cn(className)}
+      variant="ghost"
+      size="icon"
+      className={cn("rounded-full", className)}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? (
+        <BrightnessDownIcon />
+      ) : (
+        <MoonIcon />
+      )}
       <span className="sr-only">Toggle theme</span>
-    </button>
+    </Button>
   );
 };

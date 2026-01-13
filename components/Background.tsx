@@ -144,7 +144,7 @@ const Background = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none -z-10 hidden dark:block"
+      className="fixed inset-0 pointer-events-none -z-10  dark:opacity-100 opacity-20"
     />
   );
 };

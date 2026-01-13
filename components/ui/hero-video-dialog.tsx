@@ -117,7 +117,7 @@ export function HeroVideoDialog({
             setTimeout(() => setLoaded(true), 2000);
           }}
           className={cn(
-            "w-full shadow-lg transition-all duration-200 ease-out rounded-sm h-56",
+            "w-full shadow-lg transition-all duration-200 ease-out rounded-sm h-full object-cover",
             loaded ? "opacity-100" : "opacity-0"
           )}
         />

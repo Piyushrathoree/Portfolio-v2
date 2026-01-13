@@ -19,14 +19,14 @@ export default async function BlogIndex() {
       <div className=" mx-auto mt-10">
         {/* Header */}
         <div className="mb-3">
-          <h1 className="text-3xl text-neutral-900 dark:text-neutral-50 md:text-4xl font-bold  border-b border-black dark:border-white/40 w-fit border-dashed mb-3">
+          <h1 className="text-3xl text-neutral-900 dark:text-neutral-50 md:text-5xl font-bold  border-b border-black dark:border-white/40 w-fit border-dashed mb-3">
             <span className="font-serif">All blogs</span>
           </h1>
 
           <p className="text-s text-neutral-600 dark:text-neutral-400 leading-relaxed mt-1 tracking-tight  max-w-xl mb-10">
-            I am a software engineer with a passion for building scalable and
-            efficient systems. I spend my days solving problems at Google while
-            tinkering with ideas after hours.
+            Exploring the nuances of scalable systems, web performance, and the 
+            craft of software engineering. Sharing insights from my journey at 
+            Google and my personal experiments after hours.
           </p>
         </div>
         <div className="absolute right-6 w-212 h-px bg-(--pattern-fg) opacity-90 dark:opacity-15 "></div>
@@ -44,16 +44,16 @@ export default async function BlogIndex() {
                 <div className="flex-1">
                   <h2
                     className="
-                      text-s md:text-xl font-semibold font-custom mb-1
-                      text-neutral-900 dark:text-neutral-50
-                      group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors
+                      text-xl md:text-xl  mr-3 font-semibold font-sans mb-2
+                      text-neutral-800 dark:text-neutral-200
+                      group-hover:text-black dark:group-hover:text-white transition-colors
                     "
                   >
                     {p.title ?? p.slug}
                   </h2>
 
                   {p.description && (
-                    <p className="text-s md:text-base text-neutral-600 dark:text-neutral-400 font-custom2 leading-relaxed line-clamp-2">
+                    <p className="text-base text-neutral-500 mr-3  dark:text-neutral-400 font-sans leading-relaxed line-clamp-2 transition-colors group-hover:text-neutral-700 dark:group-hover:text-neutral-300">
                       {p.description}
                     </p>
                   )}
@@ -63,8 +63,8 @@ export default async function BlogIndex() {
                 {p.date && (
                   <time
                     className="
-                      text-sm text-neutral-500 dark:text-neutral-500 whitespace-nowrap
-                      md:pt-1 font-custom2
+                      text-sm text-neutral-400 dark:text-neutral-500 whitespace-nowrap
+                      md:pt-1 font-mono group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors
                     "
                   >
                     {new Date(p.date).toLocaleDateString("en-US", {

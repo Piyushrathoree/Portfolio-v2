@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Card, CardProps } from "./Card";
+import { Card } from "@/components/Card";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
 
 import Nextjs from "@/icons/Nextjs";
@@ -13,10 +13,13 @@ import Mongo from "@/icons/Mongo";
 import JsIcon from "@/icons/JsIcon";
 import ReactIcon from "@/icons/ReactIcon";
 import Prisma from "@/icons/Prisma";
+import Bun from "@/icons/Bun";
+import { Button } from "./ui/button";
+import ExternalLinkIcon from "./ui/external-link-icon";
 
 //project 1
 const zenithStack = [
-  { name: "Node.js", children: <NodeIcon /> },
+  { name: "Bun js ", children: <Bun /> },
   { name: "Typescript", children: <Ts /> },
   {
     name: "Next.js",
@@ -131,17 +134,22 @@ const Projects = () => {
           );
         })}
       </div>
-      <a
-        className="flex gap-2 mt-10 items-center mx-auto text-md w-fit border rounded-sm  dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-1.5 px-2 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
-        href="/projects"
+      <Button
+        variant="default"
+        size="sm"
+        className="h-10 text-sm absolute mb-10 left-1/2 -translate-x-1/2 bottom-0 py-4"
       >
-        {" "}
-        Checkout Projects <SquareArrowOutUpRightIcon size={20} />
-      </a>
+        <a
+          className="flex py-2 text-black/70 dark:text-white/70 items-center justify-center"
+          href="/projects"
+        >
+          Checkout Projects <ExternalLinkIcon className="ml-2 size-5" />
+        </a>
+      </Button>
 
       <span
         ref={scrollRef}
-        className="flex items-center mt-20"
+        className="flex items-center mt-30"
         id="proof-of-work"
       >
         <span className="h-px flex-1 bg-linear-to-r from-transparent to-neutral-400"></span>

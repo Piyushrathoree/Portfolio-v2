@@ -3,6 +3,8 @@
 import React from "react";
 
 import { Send } from "lucide-react";
+import { Button } from "./ui/button";
+import SendIcon from "./ui/send-icon";
 
 export function ContactForm() {
   const [loading, setLoading] = React.useState(false);
@@ -37,18 +39,23 @@ export function ContactForm() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <h1 className="font-serif text-4xl  font-medium tracking-tighter text-neutral-900 dark:text-neutral-50 leading-[0.9]">
+    <div className="flex flex-col gap-6">
+      <h1 className="font-serif text-4xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-50 leading-[0.9]">
         Send me a message
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name">Name</label>
+          <label
+            htmlFor="name"
+            className="text-sm font-sans font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Name
+          </label>
           <input
             type="text"
             id="name"
             placeholder="What's your name?"
-            className="w-full bg-neutral-100 dark:bg-neutral-800/50 border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-6 py-4 text-lg text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 rounded-lg"
+            className="w-full bg-neutral-100 dark:bg-neutral-900 border border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-4 py-3 text-base text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 rounded-xl"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -56,12 +63,17 @@ export function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="email">Email</label>
+          <label
+            htmlFor="email"
+            className="text-sm font-sans font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Email
+          </label>
           <input
             type="email"
             id="email"
             placeholder="Your email address"
-            className="w-full bg-neutral-100 dark:bg-neutral-800/50 border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-6 py-4 text-lg text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 rounded-lg"
+            className="w-full bg-neutral-100 dark:bg-neutral-900 border border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-4 py-3 text-base text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 rounded-xl"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -69,12 +81,17 @@ export function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="message">Message</label>
+          <label
+            htmlFor="message"
+            className="text-sm font-sans font-medium text-neutral-600 dark:text-neutral-400"
+          >
+            Message
+          </label>
           <textarea
             id="message"
-            rows={6}
+            rows={5}
             placeholder="Tell me about your project..."
-            className="w-full bg-neutral-100 dark:bg-neutral-800/50 border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-6 py-4 text-lg text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 resize-none rounded-lg"
+            className="w-full bg-neutral-100 dark:bg-neutral-900 border border-transparent focus:border-neutral-300 dark:focus:border-neutral-700 px-4 py-3 text-base text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-0 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 resize-none rounded-xl"
             required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -82,15 +99,15 @@ export function ContactForm() {
         </div>
 
         <div className="pt-2">
-          <button
-          type="submit"
-            className="flex gap-2 mt-1  items-center mx-auto text-md w-full border rounded-sm  dark:bg-neutral-900 bg-neutral-100/70 hover:bg-neutral-100 dark:hover:bg-neutral-950 duration-300 py-3 px-6 justify-center text-black/70 dark:text-white/70 shadow-inner shadow-neutral-300 dark:shadow-neutral-600"
+          <Button
+            type="submit"
+            className="w-full h-12 text-base font-medium gap-2 rounded-xl bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+            disabled={loading}
           >
-            {" "}
             {loading ? (
               <div className="flex items-center gap-2">
                 <svg
-                  className="animate-spin h-5 w-5 text-green-500"
+                  className="animate-spin h-5 w-5 text-current"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -113,10 +130,10 @@ export function ContactForm() {
               </div>
             ) : (
               <>
-                Send Message <Send size={20} />
+                Send Message <SendIcon />
               </>
             )}
-          </button>
+          </Button>
         </div>
       </form>
     </div>

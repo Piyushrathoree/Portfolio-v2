@@ -1,6 +1,4 @@
 import React from "react";
-import { Icon } from "./ui/evervault-card";
-import Icons from "./Icons";
 import Nextjs from "@/icons/Nextjs";
 import Py from "@/icons/Py";
 import NodeIcon from "@/icons/NodeIcon";
@@ -14,105 +12,107 @@ import TailwindIcon from "@/icons/TailwindIcon";
 import Mongo from "@/icons/Mongo";
 import Bun from "@/icons/Bun";
 import GoIcon from "@/icons/GoIcon";
+import VS from "@/icons/VS";
+
+const skills = [
+  {
+    name: "Typescript",
+    icon: <Ts />,
+    link: "https://www.typescriptlang.org/",
+  },
+  {
+    name: "Node.js",
+    icon: <NodeIcon />,
+    link: "https://nodejs.org/",
+  },
+  {
+    name: "Next.js",
+    icon: <Nextjs />,
+    link: "https://nextjs.org/",
+  },
+  {
+    name: "Python",
+    icon: <Py />,
+    link: "https://www.python.org/",
+  },
+  {
+    name: "React",
+    icon: <ReactIcon />,
+    link: "https://react.dev/",
+  },
+  {
+    name: "Docker",
+    icon: <DockerIcon />,
+    link: "https://www.docker.com/",
+  },
+  {
+    name: "Git",
+    icon: <GitIcon />,
+    link: "https://git-scm.com/",
+  },
+  {
+    name: "Prisma",
+    icon: <Prisma />,
+    link: "https://www.prisma.io/",
+  },
+  {
+    name: "Redis",
+    icon: <RedisIcon />,
+    link: "https://redis.io/",
+  },
+  {
+    name: "Tailwind css",
+    icon: <TailwindIcon />,
+    link: "https://tailwindcss.com/",
+  },
+  {
+    name: "Golang",
+    icon: <GoIcon />,
+    link: "https://go.dev/",
+  },
+  {
+    name: "MongoDB",
+    icon: <Mongo />,
+    link: "https://www.mongodb.com/",
+  },
+  {
+    name: "Bun",
+    icon: <Bun />,
+    link: "https://bun.sh/",
+  },
+  {
+    name: "Visual Studio Code",
+    icon: <VS />,
+    link: "https://code.visualstudio.com/",
+  },
+];
 
 const Skills = () => {
   return (
-    <div className="w-full mb-30">
+    <div className="w-full ">
       <div className="mb-10">
         <p className="font-mono text-sm">Featured</p>
         <h1 className="font-serif  text-4xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed">
-          My Skillset
+          Tools <span className="px-2">&</span> Technologies
         </h1>
       </div>
-      <div className="border  border-black/20 dark:border-white/10 w-full max-w-4xl mx-auto p-4 pb-7 relative flex flex-wrap gap-4 justify-center items-center">
-        <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
-        <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
-        <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
-        <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
 
-        {[
-          {
-            name: "Typescript",
-            icon: <Ts />,
-            className: "w-27",
-            link: "https://www.typescriptlang.org/",
-          },
-          {
-            name: "Node.js",
-            icon: <NodeIcon />,
-            className: "w-22",
-            link: "https://nodejs.org/",
-          },
-          {
-            name: "Next.js",
-            icon: <Nextjs />,
-            className: "w-22",
-            link: "https://nextjs.org/",
-          },
-          {
-            name: "Python",
-            icon: <Py />,
-            className: "w-22",
-            link: "https://www.python.org/",
-          },
-          {
-            name: "React",
-            icon: <ReactIcon />,
-            className: "w-27",
-            link: "https://react.dev/",
-          },
-          {
-            name: "Docker",
-            icon: <DockerIcon />,
-            className: "w-22",
-            link: "https://www.docker.com/",
-          },
-          {
-            name: "Git",
-            icon: <GitIcon />,
-            className: "w-22",
-            link: "https://git-scm.com/",
-          },
-          {
-            name: "Prisma",
-            icon: <Prisma />,
-            className: "w-22",
-            link: "https://www.prisma.io/",
-          },
-          {
-            name: "Redis",
-            icon: <RedisIcon />,
-            className: "w-27",
-            link: "https://redis.io/",
-          },
-          {
-            name: "Tailwind css",
-            icon: <TailwindIcon />,
-            className: "w-22",
-            link: "https://tailwindcss.com/",
-          },
-          {
-            name: "Golang",
-            icon: <GoIcon />,
-            className: "w-22",
-            link: "https://go.dev/",
-          },
-          {
-            name: "MongoDB",
-            icon: <Mongo />,
-            className: "w-22",
-            link: "https://www.mongodb.com/",
-          },
-          {
-            name: "Bun",
-            icon: <Bun />,
-            className: "w-22",
-            link: "https://bun.sh/",
-          },
-        ].map(({ name, icon, className, link }) => (
-          <Icons key={name} name={name} className={className} link={link}>
-            {icon}
-          </Icons>
+      <div className="flex flex-wrap items-center justify-center gap-6 max-w-4xl mx-auto py-8">
+        {skills.map((skill) => (
+          <a
+            key={skill.name}
+            href={skill.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col items-center justify-center gap-2 p-4 transition-all duration-300 hover:scale-110"
+          >
+            <div className="text-4xl grayscale transition-all duration-300 group-hover:grayscale-0 opacity-80 group-hover:opacity-100">
+              {skill.icon}
+            </div>
+            <span className="text-sm font-medium text-neutral-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute -bottom-2 whitespace-nowrap dark:text-neutral-400">
+              {skill.name}
+            </span>
+          </a>
         ))}
       </div>
     </div>

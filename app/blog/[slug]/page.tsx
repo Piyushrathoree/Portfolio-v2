@@ -42,10 +42,10 @@ export default async function SingleBlogPage({ params }: { params: any }) {
   }
 
   return (
-    <Container className="mt-25 sm:w-230 md:p-20 md:pb-10 font-custom2 tracking-tight">
-      <h1 className="text-neutral-900 dark:text-neutral-50 text-4xl font-custom font-bold md:text-5xl">
+    <Container className="mt-25 sm:w-225 md:p-20 md:pb-10 font-sans tracking-tight bg-gradient-to-b from-transparent to-neutral-50/10 dark:from-neutral-900 dark:to-neutral-950">
+      {/* <h1 className="text-neutral-900 dark:text-neutral-50 text-4xl font-sans  font-bold md:text-5xl">
         {frontmatter.title ?? slug}
-      </h1>
+      </h1> */}
 
       {frontmatter.date && (
         <p className="text-sm text-neutral-600 dark:text-neutral-400 text-right mt-2">
@@ -70,7 +70,7 @@ export default async function SingleBlogPage({ params }: { params: any }) {
       )}
 
       {/* 2. UPDATE THIS: Add dark:prose-invert to fix text color */}
-      <article className="prose prose-slate dark:prose-invert max-w-none font-custom2 mx-auto mt-8">
+      <article className="prose prose-slate dark:prose-invert max-w-none font-mono mx-auto mt-8">
         <MDXRemote
           source={content}
           options={{

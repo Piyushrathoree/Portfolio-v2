@@ -4,6 +4,7 @@ import { useEffect, useState, cloneElement } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
 import { Tooltip } from "react-tooltip";
+import { Button } from "./ui/button";
 
 interface PR {
   id: number;
@@ -179,36 +180,30 @@ const GithubGraph = () => {
             </h2>
             <div className="flex items-center gap-2">
               <div className="flex gap-1 bg-black/5 dark:bg-white/5 rounded p-1 border border-dashed border-neutral-900/10 dark:border-neutral-50/10 ">
-                <button
+                <Button
                   onClick={() => setFilterType("merged")}
-                  className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
-                    filterType === "merged"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 "
-                  }`}
+                  variant={filterType === "merged" ? "default" : "ghost"}
+                  size="sm"
+                  className="rounded-sm font-normal text-xs h-7"
                 >
                   Merged
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => setFilterType("open")}
-                  className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
-                    filterType === "open"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
-                  }`}
+                  variant={filterType === "open" ? "default" : "ghost"}
+                  size="sm"
+                  className="rounded-sm font-normal text-xs h-7"
                 >
                   Open
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => setFilterType("closed")}
-                  className={`px-3 py-1.5  text-xs font-medium transition-all duration-200 ${
-                    filterType === "closed"
-                      ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 shadow-inner shadow-neutral-300 dark:shadow-neutral-500 rounded-[3px]"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
-                  }`}
+                  variant={filterType === "closed" ? "default" : "ghost"}
+                  size="sm"
+                  className="rounded-sm font-normal text-xs h-7"
                 >
                   Closed
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -267,16 +262,18 @@ const GithubGraph = () => {
               </div>
               {prs.length > initialCount && (
                 <div className="flex justify-center mt-6">
-                  <button
+                  <Button
                     onClick={() => setShowAll(!showAll)}
-                    className="rounded-sm dark:bg-neutral-800 bg-neutral-100/70 hover:bg-neutral-200 dark:hover:bg-neutral-900 duration-300 py-1.5 px-2 text-black/70 dark:text-white/70 shadow-inner shadow-neutral-400 dark:shadow-neutral-500"
+                    variant="default"
+                    size="sm"
+                    className="h-8 text-xs"
                   >
                     {showAll
                       ? "↑ Collapse"
                       : `↓ Expand • ${
                           prs.length - closedPRIds.size - initialCount
                         } more`}
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

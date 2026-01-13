@@ -72,7 +72,7 @@ const ProjectsData: {
   {
     title: "Meetup",
     description:
-      "A real-time video calling application enabling seamless communication between users and record meetings for future reference.",
+      "A real-time video calling application with meeting recording capabilities.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/meetup",
     // siteLink: "https://meet-up-three-pi.vercel.app/",
@@ -151,17 +151,17 @@ const ProjectsData: {
       },
       { name: "Bun", children: <Bun /> },
       { name: "WebSocket", children: <Ws /> },
-      { name: "DigitalOcean", children: <OceanIcon/> },
+      { name: "DigitalOcean", children: <OceanIcon /> },
       { name: "Vercel", children: <VercelIcon /> },
     ],
   },
 ];
 const Page = () => {
   return (
-    <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 sm:w-230 mx-auto">
-      <div className="flex flex-col ml-5 ">
-        <h1 className="font-serif  text-4xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed">
-          Projects
+    <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 w-full sm:w-230 px-4 md:px-8 mx-auto">
+      <div className="flex flex-col ml-1 ">
+        <h1 className="font-serif  text-7xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed ">
+          Projects{" "}
         </h1>
         <p className="font-sans">
           My projects and work across different technologies and domains.

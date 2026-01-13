@@ -15,6 +15,10 @@ const nextConfig: NextConfig = withMDX({
     }
     return config;
   },
+  images: {
+    unoptimized: true,
+    domains: ["img.icons8.com", "assets.chanhdai.com", "static.vecteezy.com"],
+  },
 });
 
 export default nextConfig;
