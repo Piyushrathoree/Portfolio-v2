@@ -9,7 +9,7 @@ import FadeIn from "@/components/ui/fade-in";
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
-      <div className="flex flex-col justify-center items-center py-2 pt-30 w-full sm:w-230 px-4 md:px-8 mx-auto">
+      <div className="flex flex-col justify-center items-center py-2 pt-30 w-full max-w-230 px-4 md:px-8 mx-auto">
         <FadeIn>
           <Hero />
         </FadeIn>

@@ -25,7 +25,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-215 pointer-events-none">
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-215 pointer-events-none">
       <motion.nav
         layout
         initial={{ y: -100, opacity: 0 }}

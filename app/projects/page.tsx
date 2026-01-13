@@ -158,7 +158,7 @@ const ProjectsData: {
 ];
 const Page = () => {
   return (
-    <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 w-full sm:w-230 px-4 md:px-8 mx-auto">
+    <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 w-full max-w-230 px-4 md:px-8 mx-auto">
       <div className="flex flex-col ml-1 ">
         <h1 className="font-serif  text-7xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed ">
           Projects{" "}
