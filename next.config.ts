@@ -6,7 +6,7 @@ const withMDX = require("@next/mdx")({
 
 const nextConfig: NextConfig = withMDX({
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  webpack: (config, { dev }) => {
+  webpack: (config: any, { dev }: any) => {
     if (dev) {
       config.watchOptions = {
         poll: 1000,
