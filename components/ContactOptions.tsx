@@ -40,14 +40,14 @@ export function ContactOptions() {
             <div className="p-3 bg-white dark:bg-neutral-800 rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-sm flex items-center justify-center font-bold">
               <PhoneVolume className="w-5 h-5 text-neutral-900 font-bold dark:text-neutral-100" />
             </div>
-            <div>
+            <a href="https://cal.com/piyush-nkthix/15min" target="_blank" rel="noopener noreferrer">
               <h4 className="font-semibold font-sans text-neutral-900 dark:text-neutral-50 mb-0.5">
                 Book a Call
               </h4>
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-sans">
                 Let's hop on a 15 min call
               </span>
-            </div>
+            </a>
           </div>
           <div className="text-neutral-400 group-hover:translate-x-1 transition-transform group-hover:text-black dark:group-hover:text-white">
             →
