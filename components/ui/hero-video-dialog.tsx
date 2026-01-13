@@ -112,6 +112,7 @@ export function HeroVideoDialog({
           alt={thumbnailAlt}
           width={1920}
           height={1080}
+          sizes="(max-width: 768px) 100vw, 450px"
           onLoad={() => setLoaded(true)}
           className={cn(
             "w-full shadow-lg transition-all duration-200 ease-out rounded-sm h-full object-cover",

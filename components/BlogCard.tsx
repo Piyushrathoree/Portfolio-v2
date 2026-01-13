@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 interface BlogCardProps {
@@ -10,6 +12,8 @@ interface BlogCardProps {
 }
 
 export function BlogCard(props: BlogCardProps) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <Link
       href={props.blogLink}
@@ -18,11 +22,22 @@ export function BlogCard(props: BlogCardProps) {
     >
       {/* Image Section */}
       <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-        <img
+        <Image
           src={props.imageSrc}
           alt={props.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          width={800}
+          height={450}
+          sizes="(max-width: 768px) 100vw, 450px"
+          onLoad={() => setLoaded(true)}
+          className={`h-full w-full object-cover transition-all duration-500 group-hover:scale-[1.02] ${
+            loaded ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+          }`}
         />
+
+        {/* Loading Skeleton */}
+        {!loaded && (
+          <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+        )}
 
         {/* Hover Overlay Icon */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-black/20">
