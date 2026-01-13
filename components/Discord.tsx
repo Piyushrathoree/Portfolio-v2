@@ -8,6 +8,7 @@ import {
 import { Cursor01Icon } from "@hugeicons/core-free-icons/index";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export const DiscordStatus = () => {
   const DISCORD_ID = "1187126125722353768";
@@ -76,10 +77,12 @@ export const DiscordStatus = () => {
         <span className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 font-semibold">
           Forging in
           {/* Icons */}
-          <img
+          <Image
             src="/icons/cursor.png"
             alt="Cursor"
-            className="w-3.5 h-3.5 opacity-90 "
+            width={14}
+            height={14}
+            className="w-3.5 h-3.5 opacity-90"
           />
           {/* 'Cursor' Text */}
           <span className="text-black dark:text-white font-bold">Cursor</span>
@@ -136,8 +139,10 @@ export const DiscordStatus = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
+                <Image
                   src="/icons/discord.svg"
+                  width={20}
+                  height={20}
                   className="w-5 h-5 opacity-80 hover:opacity-100 transition-opacity"
                   alt="Discord"
                 />

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Background from "@/components/Background";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -81,10 +82,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
       >
-        <Background />
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScrollProvider>
+          <Background />
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScrollProvider>
         <Analytics />
         <SpeedInsights />
       </body>

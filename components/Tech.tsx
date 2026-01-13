@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 interface TechProps {
   logo: string;
@@ -11,7 +12,13 @@ const Tech = (props: TechProps) => {
     <div
       className={`flex gap-1 px-3 py-1 border dark:border-white/60 border-dashed dark:bg-neutral-900 bg-neutral-200 items-center cursor-pointer justify-center text-black dark:text-white shadow-inner shadow-neutral-400/50 dark:shadow-neutral-600 ${props.className}`}
     >
-      <img src={props.logo} alt={props.name} className="h-5 w-5 " />
+      <Image
+        src={props.logo}
+        alt={props.name}
+        width={20}
+        height={20}
+        className="h-5 w-5"
+      />
       <p className="text-center text-sm font-semibold">{props.name}</p>
     </div>
   );

@@ -7,13 +7,22 @@ import { createNoise3D } from "simplex-noise";
 const Background = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile on mount
+    const checkMobile = () => window.innerWidth < 768;
+    setIsMobile(checkMobile());
     setMounted(true);
+
+    const handleResize = () => setIsMobile(checkMobile());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (!mounted || !containerRef.current) return;
+    // Skip PixiJS entirely on mobile for performance
+    if (!mounted || !containerRef.current || isMobile) return;
 
     let app: Application | null = null;
     let w = window.innerWidth;
@@ -21,7 +30,7 @@ const Background = () => {
 
     const SCALE = 200;
     const LENGTH = 5;
-    const SPACING = 15;
+    const SPACING = 20; // Increased spacing = fewer particles = better performance
 
     const noise3d = createNoise3D();
 
@@ -139,7 +148,7 @@ const Background = () => {
         }
       }
     };
-  }, [mounted]);
+  }, [mounted, isMobile]);
 
   return (
     <div

@@ -5,6 +5,7 @@ import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
 import { Tooltip } from "react-tooltip";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 interface PR {
   id: number;
@@ -132,7 +133,7 @@ const GithubGraph = () => {
       </p>
 
       {/* Graph Component */}
-      <div className="w-full flex justify-center sm:border sm:py-8 sm:rounded-3xl  sm:shadow-inner sm:shadow-black/10 dark:shadow-white/10" >
+      <div className="w-full flex justify-center sm:border sm:py-8 sm:rounded-3xl  sm:shadow-inner sm:shadow-black/10 dark:shadow-white/10">
         <div className="flex w-full justify-center">
           {mounted && (
             <>
@@ -236,11 +237,26 @@ const GithubGraph = () => {
                           className={`w-4 h-4 rounded-full group-hover:scale-130 transition-transform duration-200 `}
                         >
                           {filterType === "merged" ? (
-                            <img src="/icons/gitmerge.svg" alt="" />
+                            <Image
+                              src="/icons/gitmerge.svg"
+                              alt=""
+                              width={16}
+                              height={16}
+                            />
                           ) : filterType === "open" ? (
-                            <img src="/icons/gitopen.svg" alt="" />
+                            <Image
+                              src="/icons/gitopen.svg"
+                              alt=""
+                              width={16}
+                              height={16}
+                            />
                           ) : (
-                            <img src="/icons/gitclose.svg" alt="" />
+                            <Image
+                              src="/icons/gitclose.svg"
+                              alt=""
+                              width={16}
+                              height={16}
+                            />
                           )}
                         </div>
                       </div>
@@ -261,10 +277,7 @@ const GithubGraph = () => {
                   ))}
               </div>
               {prs.length > initialCount && (
-                <div className="flex justify-center mt-6">
-                 
-                 
-                </div>
+                <div className="flex justify-center mt-6"></div>
               )}
             </div>
           ) : (

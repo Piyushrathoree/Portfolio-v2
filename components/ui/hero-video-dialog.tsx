@@ -112,10 +112,7 @@ export function HeroVideoDialog({
           alt={thumbnailAlt}
           width={1920}
           height={1080}
-          onLoad={() => {
-            // Artificial delay to show off the sexy animation
-            setTimeout(() => setLoaded(true), 2000);
-          }}
+          onLoad={() => setLoaded(true)}
           className={cn(
             "w-full shadow-lg transition-all duration-200 ease-out rounded-sm h-full object-cover",
             loaded ? "opacity-100" : "opacity-0"

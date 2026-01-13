@@ -16,8 +16,11 @@ const nextConfig: NextConfig = withMDX({
     return config;
   },
   images: {
-    unoptimized: true,
-    domains: ["img.icons8.com", "assets.chanhdai.com", "static.vecteezy.com"],
+    remotePatterns: [
+      { hostname: "img.icons8.com" },
+      { hostname: "assets.chanhdai.com" },
+      { hostname: "static.vecteezy.com" },
+    ],
   },
 });
 

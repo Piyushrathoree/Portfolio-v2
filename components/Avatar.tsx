@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { DiscordStatus } from "./Discord";
 
 interface avatarProps {
@@ -7,12 +8,14 @@ const Avatar = (props: avatarProps) => {
   return (
     <div className="relative">
       <div
-        className={`flex justify-center items-center rounded-full  md:h-36 md:w-36 h-20 w-20 relative overflow-hidden ${props.classname}`}
+        className={`flex justify-center items-center rounded-full md:h-36 md:w-36 h-20 w-20 relative overflow-hidden ${props.classname}`}
       >
-        <img
+        <Image
           src="/assets/erwin.jpg"
           alt="Avatar"
-          draggable={false}
+          width={144}
+          height={144}
+          priority
           className="-mb-5 absolute md:h-36 md:w-36 h-20 w-20 scale-125 object-cover select-none pointer-events-none"
         />
       </div>
