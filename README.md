@@ -155,7 +155,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 📬 Contact
 
 Feel free to reach out through the contact form on the website or connect via social media.
-https://x.com/__Piyushrathore
+[connect to me](https://x.com/__Piyushrathore).
 ---
 
 ⭐ If you like this project, please consider giving it a star on GitHub!
