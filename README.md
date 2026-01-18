@@ -1,4 +1,5 @@
-# Portfolio v2 🚀
+# Portfolio 
+
 
 A modern, performant personal portfolio website built with Next.js 16, TypeScript, and MDX. Featuring a clean design, dark mode support, and an integrated blog system.
 
