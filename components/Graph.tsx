@@ -134,13 +134,13 @@ const GithubGraph = () => {
 
       {/* Graph Component */}
       <div className="w-full flex justify-center sm:border sm:py-8 sm:rounded-3xl  sm:shadow-inner sm:shadow-black/10 dark:shadow-white/10">
-        <div className="flex w-full justify-center">
+        <div className="flex sm:w-[90%] w-full justify-center">
           {mounted && (
             <>
               <GitHubCalendar
                 username="Piyushrathoree"
-                colorScheme={theme === "dark" ? "light" : "light"}
-                blockSize={isMobile ? 7 : 11}
+                colorScheme={theme === "dark" ? "dark" : "light"}
+                blockSize={isMobile ? 7 : 9}
                 blockMargin={isMobile ? 2 : 4}
                 fontSize={isMobile ? 10 : 12}
                 renderBlock={(block: any, activity: any) =>
