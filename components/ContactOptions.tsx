@@ -62,7 +62,7 @@ export function ContactOptions() {
         >
           <div className="flex items-center gap-4">
             <div className="p-3 bg-white dark:bg-neutral-800 rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-sm">
-              <TwitterXIcon />
+              <TwitterXIcon className="size-5"/>
             </div>
             <div>
               <h4 className="font-semibold font-sans text-neutral-900 dark:text-neutral-50 mb-0.5">
