@@ -6,12 +6,12 @@ const getBlogCards = [
   {
     title: "What are Microservices?",
     imageSrc: "/assets/1.png",
-    blogLink: "http://localhost:3000/blog/getting_started_with_microservices",
+    blogLink: "/blog/getting_started_with_microservices",
   },
   {
     title: "Microservices:Implementation in Node.js",
     imageSrc: "/assets/2.png",
-    blogLink: "http://localhost:3000/blog/implementing_microservices",
+    blogLink: "/blog/implementing_microservices",
   },
 ];
 const Blogs = () => {
