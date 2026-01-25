@@ -75,7 +75,7 @@ const ProjectsData: {
       "A real-time video calling application with meeting recording capabilities.",
     status: "Ready",
     githubLink: "https://github.com/Piyushrathoree/meetup",
-    // siteLink: "https://meet-up-three-pi.vercel.app/",
+    siteLink: "https://meet-up-three-pi.vercel.app/",
     imageSrc: "/projects/meetup-showcase.png",
     techStack: [
       { name: "Typescript", children: <Ts /> },
