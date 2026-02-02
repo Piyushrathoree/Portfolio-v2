@@ -76,16 +76,30 @@ const Hero = () => {
                 name="PostgreSQL"
                 className=" w-30 max-sm:scale-85 rounded-sm"
               />
-              <span className="flex items-center gap-2 mt-1 mb-1">
+              <span className="flex items-center gap-2 mt-1 mb-1 ">
                 mainly focused on{" "}
-                <span className="dark:text-white font-semibold text-neutral-500">
+                <span className="dark:text-white/80 dark:hover:text-white font-semibold text-neutral-500 ">
                   Backend
                 </span>{" "}
                 side.
               </span>
             </span>
+            <p className="text-[14px]">
+              Currently working as a{" "}
+              <span className="text-neutral-600 dark:text-white/80 font-semibold dark:hover:text-white">
+                {" "}
+                SDE Intern
+              </span>{" "}
+              at{" "}
+              <a
+                href="https://studio1hq.com"
+                className="font-black font-serif tracking-wider  text-neutral-900 dark:text-white/80 dark:hover:text-white underline"
+              >
+                Studio1HQ
+              </a>
+            </p>
             Getting daily dopamine by Learning about{" "}
-            <span className="font-semibold  text-black/50 dark:text-neutral-100">
+            <span className="font-semibold  text-black/50 dark:text-white/80 dark:hover:text-white">
               Artificial Intelligence
             </span>{" "}
             and contributing to{" "}

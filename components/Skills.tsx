@@ -115,6 +115,10 @@ const Skills = () => {
           </a>
         ))}
       </div>
+      <span className="flex items-center mt-5">
+        <span className="h-px flex-1 bg-linear-to-r from-transparent to-neutral-500"></span>
+        <span className="h-px flex-1 bg-linear-to-l from-transparent to-neutral-500"></span>
+      </span>
     </div>
   );
 };

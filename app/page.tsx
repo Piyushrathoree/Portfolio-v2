@@ -5,6 +5,7 @@ import Blogs from "@/components/Blogs";
 import Skills from "@/components/Skills";
 import { SocialLinks } from "@/components/SocialLinks";
 import FadeIn from "@/components/ui/fade-in";
+import { ContactFooter } from "@/components/ContactOptions";
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
         </FadeIn>
         <FadeIn delay={0.4}>
           <Skills />
+        </FadeIn>
+        <FadeIn delay={0.6}>
+          <ContactFooter />
         </FadeIn>
         {/* <SocialLinks /> */}
       </div>
