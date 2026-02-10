@@ -112,7 +112,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-wrap gap-5 font-sans mt-5">
         <a
-          href="https://drive.google.com/file/d/12d5SOJ8zWkphZ1TNoj47k7H13ulIJ7PP/view?usp=sharing"
+          href="https://drive.google.com/file/d/1dPtMM-VTzsMdXtuVnzFqVsrMsL-nnHoi/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
