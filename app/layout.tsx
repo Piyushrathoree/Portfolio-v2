@@ -93,7 +93,7 @@ export default function RootLayout({
       </body>
       <Script
         src="https://migrate-supabase-into-neon-raah-beacon.studioone-tech.workers.dev/script.js"
-        data-pid="proj_8kigkcaq1me14a2x"
+        data-pid="proj_ziebpffp39tz5ye3"
         data-domain="piyushh.me"
       />
     </html>
