@@ -78,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head><script defer src="https://t.raah.io/script.js" data-pid="proj_8kigkcaq1me14a2x" data-domain="piyushh.me"></script></head>
+      <head><script defer src="https://migrate-supabase-into-neon-raah-beacon.studioone-tech.workers.dev/script.js" data-pid="proj_8kigkcaq1me14a2x" data-domain="piyushh.me"></script></head>
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
       >
