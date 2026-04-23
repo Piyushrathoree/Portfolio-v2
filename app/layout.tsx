@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -78,7 +79,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head><script defer src="https://migrate-supabase-into-neon-raah-beacon.studioone-tech.workers.dev/script.js" data-pid="proj_8kigkcaq1me14a2x" data-domain="piyushh.me"></script></head>
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
       >
@@ -91,6 +91,11 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
+      <Script
+        src="https://migrate-supabase-into-neon-raah-beacon.studioone-tech.workers.dev/script.js"
+        data-pid="proj_8kigkcaq1me14a2x"
+        data-domain="piyushh.me"
+      />
     </html>
   );
 }
