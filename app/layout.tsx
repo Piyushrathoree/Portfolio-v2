@@ -95,7 +95,14 @@ export default function RootLayout({
         src="https://migrate-supabase-into-neon-raah-beacon.studioone-tech.workers.dev/script.js"
         data-pid="proj_ziebpffp39tz5ye3"
         data-domain="piyushh.me"
-      />
+      /><!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-dp2pI7yKqLB8hFo4ZbplR.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+      
     </html>
   );
 }
