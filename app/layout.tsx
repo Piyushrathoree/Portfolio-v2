@@ -91,9 +91,9 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
-      <script
+     <script
   src="https://t.raah.dev/script.js"
-  data-pid="proj_xb5gjwvb5tvcgm9j"
+  data-pid="proj_g7i2elfjp4dyqr9o"
   data-domain="piyushh.me"
   strategy="afterInteractive"
 />
