@@ -93,7 +93,7 @@ export default function RootLayout({
       </body>
      <Script
   src="https://t.raah.dev/script.js"
-  data-pid="proj_g7i2elfjp4dyqr9o"
+  data-pid="proj_unifw0z49y0b4jiu"
   data-domain="piyushh.me"
   strategy="afterInteractive"
 />
