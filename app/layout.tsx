@@ -79,6 +79,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://t.raah.dev/script.js"
+          data-pid="proj_m5g8oiy0p7b2u4w8"
+          data-domain="piyushh.me"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
       >
@@ -91,12 +99,6 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
-     <Script
-  src="https://t.raah.dev/script.js"
-  data-pid="proj_unifw0z49y0b4jiu"
-  data-domain="piyushh.me"
-  strategy="afterInteractive"
-/>
-  </html>
+    </html>
   );
 }
