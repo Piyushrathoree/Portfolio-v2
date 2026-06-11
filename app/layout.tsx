@@ -88,7 +88,7 @@ export default function RootLayout({
         />
          <Script
           src="https://t.raah.dev/script.js"
-          data-pid=""proj_unifw0z49y0b4jiu
+          data-pid="proj_unifw0z49y0b4jiu"
           data-domain="piyushh.me"
           strategy="afterInteractive"
         />
