@@ -92,7 +92,7 @@ export default function RootLayout({
           data-domain="piyushh.me"
           strategy="afterInteractive"
         />
-        
+        <Script defer src="https://t.raah.dev/script.js" data-pid="proj_qkklg09tl5lsj07k" data-domain="piyushh.me"/>
       </head>
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
