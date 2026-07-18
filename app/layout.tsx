@@ -81,11 +81,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
-          src="https://t.raah.dev/script.js"
-          data-pid="proj_qkklg09tl5lsj07k"
-          data-domain="piyushh.me"
-          strategy="afterInteractive"
-        />
+  src="https://t.raah.dev/script.js"
+  data-pid="proj_eegfr1i1wlg5s2rg"
+  data-domain="piyushh.me"
+  strategy="afterInteractive"
+/>
          
       </head>
       <body
