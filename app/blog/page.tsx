@@ -4,9 +4,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog ",
+  title: "Blog",
   description:
-    "Thoughts on software engineering, web development, and technology",
+    "Thoughts on software engineering, web development, and technology by Piyush Rathore.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Piyush Rathore",
+    description:
+      "Thoughts on software engineering, web development, and technology by Piyush Rathore.",
+    url: "/blog",
+  },
 };
 
 export default async function BlogIndex() {

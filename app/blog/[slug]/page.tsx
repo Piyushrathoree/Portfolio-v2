@@ -3,17 +3,78 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { getSingleBlog } from "@/util/mdx_clean";
+import { getAllBlogs, getSingleBlog } from "@/util/mdx_clean";
+import { SITE_NAME } from "@/lib/site";
 import rehypePrettyCode from "rehype-pretty-code";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Reading a blog...",
+type BlogPageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export default async function SingleBlogPage({ params }: { params: any }) {
-  const resolvedParams = (await params) as { slug?: string };
-  const slug = resolvedParams?.slug;
+export async function generateStaticParams() {
+  const posts = await getAllBlogs();
+  return posts
+    .filter((post) => Boolean(post.slug))
+    .map((post) => ({ slug: post.slug! }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const { data } = await getSingleBlog(slug);
+    const title = data.title ?? slug;
+    const description =
+      data.description ??
+      data.summary ??
+      `Read ${title} on ${SITE_NAME}'s blog.`;
+    const image = data.image
+      ? data.image.startsWith("/public")
+        ? data.image.replace("/public", "")
+        : data.image
+      : "/assets/erwin.jpg";
+
+    return {
+      title,
+      description,
+      alternates: {
+        canonical: `/blog/${slug}`,
+      },
+      openGraph: {
+        title,
+        description,
+        url: `/blog/${slug}`,
+        type: "article",
+        publishedTime: data.date,
+        authors: [SITE_NAME],
+        images: [
+          {
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
+      },
+    };
+  } catch {
+    return {
+      title: "Blog",
+      description: `Articles by ${SITE_NAME}`,
+    };
+  }
+}
+
+export default async function SingleBlogPage({ params }: BlogPageProps) {
+  const { slug } = await params;
 
   // 1. UPDATE THIS: Pass an object with both themes
   const options = {

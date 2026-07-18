@@ -12,7 +12,23 @@ import TailwindIcon from "@/icons/TailwindIcon";
 import Ts from "@/icons/Ts";
 import VercelIcon from "@/icons/VercelIcon";
 import Ws from "@/icons/Ws";
+import type { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Selected projects by Piyush Rathore across web apps, backend systems, and product experiments.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Piyush Rathore",
+    description:
+      "Selected projects by Piyush Rathore across web apps, backend systems, and product experiments.",
+    url: "/projects",
+  },
+};
 
 const ProjectsData: {
   title: string;
