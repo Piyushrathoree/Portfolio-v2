@@ -8,6 +8,13 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Background from "@/components/Background";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import JsonLd from "@/components/JsonLd";
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,25 +34,36 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Piyush Rathore",
-    template: "%s | Piyush Rathore",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  keywords: [...SITE_KEYWORDS],
   icons: {
     icon: "/favicon.png",
+    apple: "/favicon.png",
   },
-  description: "Software Engineer | Full Stack Developer",
+  manifest: "/manifest.webmanifest",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Piyush Rathore",
-    description: "Software Engineer | Full Stack Developer",
-    url: "https://Piyushh.me",
-    siteName: "Piyush Rathore",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/assets/erwin.jpg",
         width: 1200,
         height: 630,
-        alt: "Piyush Rathore",
+        alt: SITE_NAME,
       },
     ],
     locale: "en_US",
@@ -53,23 +71,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Piyush Rathore",
-    description: "Software Engineer | Full Stack Developer",
-    creator: "@Piyush",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    creator: "@__Piyushrathore",
     images: ["/assets/erwin.jpg"],
   },
-  authors: [{ name: "Piyush Rathore" }],
-  keywords: [
-    "Piyush Rathore",
-    "Software Engineer",
-    "Portfolio",
-    "Web Development",
-    "Full Stack Developer",
-    "Piyush Rathore Portfolio",
-    "Piyushh.me",
-    "developer portfolio",
-    "Piyushh.me Portfolio",
-  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -81,12 +99,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
-  src="https://t.raah.dev/script.js"
-  data-pid="proj_eegfr1i1wlg5s2rg"
-  data-domain="piyushh.me"
-  strategy="afterInteractive"
-/>
-         
+          src="https://t.raah.dev/script.js"
+          data-pid="proj_eegfr1i1wlg5s2rg"
+          data-domain="piyushh.me"
+          strategy="afterInteractive"
+        />
+        <JsonLd />
       </head>
       <body
         className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
