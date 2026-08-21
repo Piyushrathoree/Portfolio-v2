@@ -1,15 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Application, Graphics, Container, Sprite, Texture } from "pixi.js";
 import { createNoise3D } from "simplex-noise";
 
 const Background = () => {
+  const pathname = usePathname();
+  const isPortfolioHome = pathname === "/";
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (isPortfolioHome) return;
+
     // Check if mobile on mount
     const checkMobile = () => window.innerWidth < 768;
     setIsMobile(checkMobile());
@@ -18,11 +23,11 @@ const Background = () => {
     const handleResize = () => setIsMobile(checkMobile());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isPortfolioHome]);
 
   useEffect(() => {
     // Skip PixiJS entirely on mobile for performance
-    if (!mounted || !containerRef.current || isMobile) return;
+    if (isPortfolioHome || !mounted || !containerRef.current || isMobile) return;
 
     let app: Application | null = null;
     let w = window.innerWidth;
@@ -148,12 +153,14 @@ const Background = () => {
         }
       }
     };
-  }, [mounted, isMobile]);
+  }, [isPortfolioHome, mounted, isMobile]);
+
+  if (isPortfolioHome) return null;
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none -z-10  dark:opacity-100 opacity-20"
+      className="site-background fixed inset-0 pointer-events-none -z-10  dark:opacity-100 opacity-20"
     />
   );
 };

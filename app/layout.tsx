@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono, Instrument_Serif } from "next/font/google";
+import {
+  IBM_Plex_Mono,
+  Inter,
+  Geist_Mono,
+  Instrument_Serif,
+  JetBrains_Mono,
+  Manrope,
+  Space_Grotesk,
+} from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -31,6 +39,31 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: "italic",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -109,7 +142,7 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body
-        className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans  `}
+        className={`${inter.variable} ${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${manrope.variable} ${ibmPlexMono.variable} font-sans`}
       >
         <SmoothScrollProvider>
           <Background />

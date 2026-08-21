@@ -4,7 +4,7 @@ import GithubIcon from "@/components/ui/github-icon";
 import HeartIcon from "@/components/ui/heart-icon";
 const Footer = () => {
   return (
-    <footer className="w-full max-w-4xl mx-auto py-8 px-4 md:px-8 mt-10 border-t border-neutral-200 dark:border-neutral-800">
+    <footer className="site-footer w-full max-w-4xl mx-auto py-8 px-4 md:px-8 mt-10 border-t border-neutral-200 dark:border-neutral-800">
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
         <div className="flex items-center gap-1.5 transition-colors hover:text-black dark:hover:text-neutral-300 ">
           <span>Made with</span>
