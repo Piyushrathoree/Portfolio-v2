@@ -138,14 +138,9 @@ export default async function Home() {
         id="open-source"
         title="Open source"
         action={
-          <a
-            href={`https://github.com/pulls?q=is%3Apr+author%3A${PROFILE.github}+is%3Amerged`}
-            target="_blank"
-            rel="noreferrer"
-            className="quiet-link font-mono text-xs"
-          >
+          <Link href="/open-source" className="quiet-link font-mono text-xs">
             All merged PRs →
-          </a>
+          </Link>
         }
       >
         <Suspense fallback={<div className="card h-40 animate-pulse" />}>
