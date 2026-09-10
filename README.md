@@ -1,8 +1,8 @@
-# piyushh.me
+# Piyush Rathore
 
 Personal site and résumé for Piyush Rathore — work, projects, open-source contributions, and writing.
 
-**Live:** [www.piyushh.me](https://www.piyushh.me)
+**Live:** [www.piyush.social](https://www.piyush.social)
 
 ## Stack
 
