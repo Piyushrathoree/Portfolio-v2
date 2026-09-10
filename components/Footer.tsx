@@ -1,30 +1,33 @@
-import React from "react";
 import Link from "next/link";
-import GithubIcon from "@/components/ui/github-icon";
-import HeartIcon from "@/components/ui/heart-icon";
-const Footer = () => {
-  return (
-    <footer className="w-full max-w-4xl mx-auto py-8 px-4 md:px-8 mt-10 border-t border-neutral-200 dark:border-neutral-800">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-        <div className="flex items-center gap-1.5 transition-colors hover:text-black dark:hover:text-neutral-300 ">
-          <span>Made with</span>
-          <HeartIcon size={16} className="text-red-500 hover:scale-130" />
-          <span>by Piyush</span>
-        </div>
+import { PROFILE } from "@/data/profile";
 
-        <Link
-          href="https://github.com/Piyushrathoree/portfolio-v2"
-          target="_blank"
-          className="group flex items-center gap-2 hover:text-black dark:hover:text-white/70 transition-colors duration-200"
-        >
-          <span>Liked my portfolio? Please leave a star</span>
-          <div className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-12">
-            <GithubIcon size={16} className="text-black dark:text-white" />
-          </div>
-        </Link>
+const NAV = [
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+
+export function Footer() {
+  return (
+    <footer className="mt-16 border-t pt-6 text-sm text-muted">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <nav aria-label="Footer" className="flex items-center gap-3 font-mono text-xs">
+          {NAV.map((item) => (
+            <Link key={item.href} href={item.href} className="quiet-link">
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href="https://github.com/Piyushrathoree/Portfolio-v2"
+            target="_blank"
+            rel="noreferrer"
+            className="quiet-link"
+          >
+            Source
+          </a>
+        </nav>
+        <span className="font-mono text-xs">{PROFILE.timeZone}</span>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

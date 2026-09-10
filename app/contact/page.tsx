@@ -1,44 +1,78 @@
-"use client";
-
-import React from "react";
-import Container from "@/components/containers";
+import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
-import { ContactOptions } from "@/components/ContactOptions";
+import { PROFILE, TWITTER_HANDLE } from "@/data/profile";
 
-const ContactPage = () => {
-  return (
-    <Container className="min-h-[89vh] pt-35 pb-20 px-4 sm:px-10 sm:w-230 bg-transparent">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-        {/* Left Column: Header & Options */}
-        <div className="flex flex-col gap-10 lg:sticky lg:top-10">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="flex h-4 w-4 items-center justify-center cursor-pointer">
-                <span className="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </div>
-              <span className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
-                Available for work
-              </span>
-            </div>
-            <h1 className="font-serif text-5xl md:text-7xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-50 leading-[0.9]">
-              Let's start a <br /> conversation.
-            </h1>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-sm leading-relaxed mt-2">
-              Interested in working together? feel free to drop me a line.
-            </p>
-          </div>
+const description =
+  "Get in touch with Piyush Rathore for roles, collaborations, or questions.";
 
-          <ContactOptions />
-        </div>
-
-        {/* Right Column: Form */}
-        <div className="w-full">
-          <ContactForm />
-        </div>
-      </div>
-    </Container>
-  );
+export const metadata: Metadata = {
+  title: "Contact",
+  description,
+  alternates: { canonical: "/contact" },
+  openGraph: { title: "Contact | Piyush Rathore", description, url: "/contact" },
 };
 
-export default ContactPage;
+const OPTIONS = [
+  {
+    title: "Email",
+    detail: PROFILE.email,
+    href: `mailto:${PROFILE.email}`,
+    external: false,
+  },
+  {
+    title: "Book a call",
+    detail: "15 minutes, pick a slot",
+    href: PROFILE.calUrl,
+    external: true,
+  },
+  {
+    title: "DM on X",
+    detail: TWITTER_HANDLE,
+    href: "https://x.com/__Piyushrathore",
+    external: true,
+  },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      {PROFILE.available && (
+        <p className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          </span>
+          Available for work
+        </p>
+      )}
+      <h1 className="mb-1 text-xl font-semibold text-primary">Let&apos;s talk</h1>
+      <p className="mb-8 text-[15px] text-muted">
+        Roles, collaborations, or a question about something I built — drop a line.
+      </p>
+
+      <div className="grid gap-8 md:grid-cols-[220px_1fr]">
+        <div className="space-y-3">
+          {OPTIONS.map((o) => (
+            <a
+              key={o.title}
+              href={o.href}
+              target={o.external ? "_blank" : undefined}
+              rel={o.external ? "noreferrer" : undefined}
+              className="card group flex items-center justify-between p-4"
+            >
+              <span>
+                <span className="block text-sm font-medium text-primary transition-colors group-hover:text-accent">
+                  {o.title}
+                </span>
+                <span className="mt-0.5 block font-mono text-xs text-muted">{o.detail}</span>
+              </span>
+              <ArrowUpRight size={14} className="shrink-0 text-muted" />
+            </a>
+          ))}
+        </div>
+        <ContactForm />
+      </div>
+    </>
+  );
+}

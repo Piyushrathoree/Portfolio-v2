@@ -1,94 +1,67 @@
-import Container from "@/components/containers";
-import { getAllBlogs } from "@/util/mdx_clean";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllBlogs } from "@/util/mdx_clean";
+
+const description =
+  "Writing on backend systems, microservices, and web development by Piyush Rathore.";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description:
-    "Thoughts on software engineering, web development, and technology by Piyush Rathore.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: "Blog | Piyush Rathore",
-    description:
-      "Thoughts on software engineering, web development, and technology by Piyush Rathore.",
-    url: "/blog",
-  },
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: { title: "Blog | Piyush Rathore", description, url: "/blog" },
 };
+
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
 
 export default async function BlogIndex() {
   const posts = await getAllBlogs();
 
   return (
-    <Container className="min-h-[89vh] px-4 pt-20 relative mx-auto sm:w-230 bg-transparent">
-      {/* LEFT BORDER */}
+    <>
+      <h1 className="mb-1 text-xl font-semibold text-primary">Writing</h1>
+      <p className="mb-8 text-[15px] text-muted">
+        Notes on distributed systems, backend architecture, and things I learn while building.
+      </p>
 
-      <div className=" mx-auto mt-10">
-        {/* Header */}
-        <div className="mb-3">
-          <h1 className="text-3xl text-neutral-900 dark:text-neutral-50 md:text-5xl font-bold  border-b border-black dark:border-white/40 w-fit border-dashed mb-3">
-            <span className="font-serif">All blogs</span>
-          </h1>
-
-          <p className="text-s text-neutral-600 dark:text-neutral-400 leading-relaxed mt-1 tracking-tight  max-w-xl mb-10">
-            Exploring the nuances of scalable systems, web performance, and the 
-            craft of software engineering. Sharing insights from my journey at 
-            Google and my personal experiments after hours.
-          </p>
-        </div>
-        <div className="absolute right-6 w-212 h-px bg-(--pattern-fg) opacity-90 dark:opacity-15 "></div>
-
-        {/* Blog Posts */}
-        <div className="divide-y divide-neutral-200 dark:divide-neutral-800">
-          {posts.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/blog/${p.slug}`}
-              className="block py-6 group"
-            >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                {/* Left — Title + Description */}
-                <div className="flex-1">
-                  <h2
-                    className="
-                      text-xl md:text-xl  mr-3 font-semibold font-sans mb-2
-                      text-neutral-800 dark:text-neutral-200
-                      group-hover:text-black dark:group-hover:text-white transition-colors
-                    "
-                  >
-                    {p.title ?? p.slug}
-                  </h2>
-
-                  {p.description && (
-                    <p className="text-base text-neutral-500 mr-3  dark:text-neutral-400 font-sans leading-relaxed line-clamp-2 transition-colors group-hover:text-neutral-700 dark:group-hover:text-neutral-300">
-                      {p.description}
-                    </p>
-                  )}
-                </div>
-
-                {/* Right — Date */}
-                {p.date && (
-                  <time
-                    className="
-                      text-sm text-neutral-400 dark:text-neutral-500 whitespace-nowrap
-                      md:pt-1 font-mono group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors
-                    "
-                  >
-                    {new Date(p.date).toLocaleDateString("en-US", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
+      <div className="card divide-y">
+        {posts.map((p) => (
+          <Link key={p.slug} href={`/blog/${p.slug}`} className="group block p-4">
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-6">
+              <div className="min-w-0">
+                <h2 className="text-[15px] font-medium text-primary transition-colors group-hover:text-accent">
+                  {p.title ?? p.slug}
+                </h2>
+                {(p.description ?? p.summary) && (
+                  <p className="mt-1 line-clamp-2 text-[13px] leading-relaxed text-dim">
+                    {p.description ?? p.summary}
+                  </p>
+                )}
+                {p.tags && p.tags.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {p.tags.map((t) => (
+                      <span key={t} className="chip">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
-            </Link>
-          ))}
-        </div>
+              {p.date && (
+                <time className="whitespace-nowrap font-mono text-xs text-muted">
+                  {formatDate(p.date)}
+                </time>
+              )}
+            </div>
+          </Link>
+        ))}
       </div>
-    </Container>
+    </>
   );
 }
