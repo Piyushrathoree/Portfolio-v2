@@ -1,6 +1,7 @@
-import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME, SOCIAL } from "@/lib/site";
+import { PROFILE, SOCIALS } from "@/data/profile";
+import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
-export default function JsonLd() {
+export function JsonLd() {
   const person = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -8,9 +9,9 @@ export default function JsonLd() {
     url: absoluteUrl(),
     jobTitle: "Software Engineer",
     description: SITE_DESCRIPTION,
-    image: absoluteUrl("/assets/erwin.jpg"),
-    sameAs: [SOCIAL.twitter, SOCIAL.github, SOCIAL.linkedin],
-    email: "01piyush008@gmail.com",
+    image: absoluteUrl("/opengraph-image"),
+    sameAs: SOCIALS.filter((s) => s.href.startsWith("http")).map((s) => s.href),
+    email: PROFILE.email,
   };
 
   const website = {
@@ -19,10 +20,7 @@ export default function JsonLd() {
     name: SITE_NAME,
     url: absoluteUrl(),
     description: SITE_DESCRIPTION,
-    author: {
-      "@type": "Person",
-      name: SITE_NAME,
-    },
+    author: { "@type": "Person", name: SITE_NAME },
   };
 
   return (

@@ -1,26 +1,26 @@
 import React from "react";
 
 interface TailwindIconProps {
-  className?: string;
+ className?: string;
 }
 const TailwindIcon = (props: TailwindIconProps) => {
-  return (
-    <div>
-      <svg
-        viewBox="0 0 32 32"
-        xmlns="http://www.w3.org/2000/svg"
-        className={`h-6 dark:text-neutral-100 text-neutral-900 ${
-          props.className || ""
-        }`}
-      >
-        <title>file_type_tailwind</title>
-        <path
-          d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z"
-          style={{ fill: "#44a8b3" }}
-        ></path>
-      </svg>
-    </div>
-  );
+ return (
+ <div>
+ <svg
+ viewBox="0 0 32 32"
+ xmlns="http://www.w3.org/2000/svg"
+ className={`size-[1em] ${
+ props.className || ""
+ }`}
+ >
+ <title>file_type_tailwind</title>
+ <path
+ d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z"
+ style={{ fill: "#44a8b3" }}
+ ></path>
+ </svg>
+ </div>
+ );
 };
 
 export default TailwindIcon;

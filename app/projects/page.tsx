@@ -1,208 +1,29 @@
-import { Card } from "@/components/Card";
-import Bun from "@/icons/Bun";
-import JsIcon from "@/icons/JsIcon";
-import Mongo from "@/icons/Mongo";
-import Nextjs from "@/icons/Nextjs";
-import NodeIcon from "@/icons/NodeIcon";
-import OceanIcon from "@/icons/OceanIcon";
-import Prisma from "@/icons/Prisma";
-import ReactIcon from "@/icons/ReactIcon";
-import RedisIcon from "@/icons/RedisIcon";
-import TailwindIcon from "@/icons/TailwindIcon";
-import Ts from "@/icons/Ts";
-import VercelIcon from "@/icons/VercelIcon";
-import Ws from "@/icons/Ws";
 import type { Metadata } from "next";
-import React from "react";
+import { ProjectCard } from "@/components/ProjectCard";
+import { PROJECTS } from "@/data/projects";
+
+const description =
+  "Projects by Piyush Rathore across web apps, backend systems, and real-time products.";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description:
-    "Selected projects by Piyush Rathore across web apps, backend systems, and product experiments.",
-  alternates: {
-    canonical: "/projects",
-  },
-  openGraph: {
-    title: "Projects | Piyush Rathore",
-    description:
-      "Selected projects by Piyush Rathore across web apps, backend systems, and product experiments.",
-    url: "/projects",
-  },
+  description,
+  alternates: { canonical: "/projects" },
+  openGraph: { title: "Projects | Piyush Rathore", description, url: "/projects" },
 };
 
-const ProjectsData: {
-  title: string;
-
-  description: string;
-  status: "Ready" | "In Production";
-  githubLink?: string;
-  siteLink?: string;
-  imageSrc: string;
-  techStack: { name: string; children: React.ReactNode }[];
-}[] = [
-  {
-    title: "Zenith",
-    description:
-      "A distraction-free productivity tool designed for people who want to stay in flow.",
-    status: "In Production",
-    githubLink: "https://github.com/Piyushrathoree/Zenith",
-    imageSrc: "/projects/zenith-showcase.png",
-    techStack: [
-      { name: "Node.js", children: <NodeIcon /> },
-      { name: "Typescript", children: <Ts /> },
-      {
-        name: "Next.js",
-        children: <Nextjs />,
-      },
-
-      { name: "Digital Ocean", children: <OceanIcon /> },
-      { name: "Mongo DB", children: <Mongo /> },
-      { name: "Bun", children: <Bun /> },
-      { name: "Redis", children: <RedisIcon /> },
-    ],
-  },
-
-  {
-    title: "Welth",
-    description:
-      "A personal application to track expenses, set budgets, and achieve manage financial goals.",
-    status: "Ready",
-    githubLink: "https://github.com/Piyushrathoree/Welth",
-    imageSrc: "/projects/welth-showcase.png",
-    siteLink: "https://welth-ai-finance-app-liard.vercel.app/",
-    techStack: [
-      { name: "Javascript", children: <JsIcon /> },
-      {
-        name: "Next.js",
-        children: <Nextjs />,
-      },
-      {
-        name: "tailwindcss",
-        children: <TailwindIcon />,
-      },
-      { name: "React", children: <ReactIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "Prisma", children: <Prisma /> },
-    ],
-  },
-  {
-    title: "Meetup",
-    description:
-      "A real-time video calling application with meeting recording capabilities.",
-    status: "Ready",
-    githubLink: "https://github.com/Piyushrathoree/meetup",
-    siteLink: "https://meet-up-three-pi.vercel.app/",
-    imageSrc: "/projects/meetup-showcase.png",
-    techStack: [
-      { name: "Typescript", children: <Ts /> },
-      { name: "React", children: <ReactIcon /> },
-      { name: "Next.js", children: <Nextjs /> },
-      { name: "tailwindcss", children: <TailwindIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "Mongo DB", children: <Mongo /> },
-    ],
-  },
-  {
-    title: "Brainly",
-    description:
-      "The second Brain application to help people to remember things that they want in future",
-    status: "Ready",
-    githubLink: "https://github.com/Piyushrathoree/Brainly-client",
-    imageSrc: "/projects/brainly-showcase.png",
-    // siteLink: "https://app-brainly-peach.vercel.app",
-    techStack: [
-      { name: "Typescript", children: <Ts /> },
-      {
-        name: "tailwindcss",
-        children: <TailwindIcon />,
-      },
-      { name: "React", children: <ReactIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "Mongo DB", children: <Mongo /> },
-      { name: "Node.js", children: <NodeIcon /> },
-    ],
-  },
-  {
-    title: "Video-tube",
-    description: "A video sharing Platform similar to youtube. (Backend)",
-    status: "Ready",
-    githubLink: "https://github.com/Piyushrathoree/videotube",
-    imageSrc: "/projects/videotube-showcase.png",
-    techStack: [
-      { name: "Javascript", children: <JsIcon /> },
-      { name: "Node.js", children: <NodeIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "MongoDB", children: <Mongo /> },
-    ],
-  },
-  {
-    title: "Subscription Manager",
-    description: "A video sharing Platform similar to youtube. (Backend)",
-    status: "Ready",
-    githubLink:
-      "https://github.com/Piyushrathoree/microservices-subscription-system",
-    imageSrc: "/projects/subscription-manager-showcase.png",
-    techStack: [
-      { name: "Javascript", children: <JsIcon /> },
-      { name: "Node.js", children: <NodeIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-      { name: "MongoDB", children: <Mongo /> },
-    ],
-  },
-  {
-    title: "Vexio",
-    description: "An AI powered Collaborative web editor (In production)",
-    status: "In Production",
-    githubLink: "https://github.com/Piyushrathoree/vexio",
-    imageSrc: "/projects/vexio-showcase.png",
-    techStack: [
-      { name: "Typescript", children: <Ts /> },
-      {
-        name: "Next.js",
-        children: <Nextjs />,
-      },
-      {
-        name: "Prisma",
-        children: <Prisma />,
-      },
-      { name: "Bun", children: <Bun /> },
-      { name: "WebSocket", children: <Ws /> },
-      { name: "DigitalOcean", children: <OceanIcon /> },
-      { name: "Vercel", children: <VercelIcon /> },
-    ],
-  },
-];
-const Page = () => {
+export default function ProjectsPage() {
   return (
-    <div className="flex flex-col justify-start items-start  min-h-screen pt-25 sm:pt-35 w-full max-w-230 px-4 md:px-8 mx-auto">
-      <div className="flex flex-col ml-1 ">
-        <h1 className="font-serif  text-7xl tracking-tight font-black border-b border-black dark:border-white/40 w-fit border-dashed ">
-          Projects{" "}
-        </h1>
-        <p className="font-sans">
-          My projects and work across different technologies and domains.
-        </p>
+    <>
+      <h1 className="mb-1 text-xl font-semibold text-primary">Projects</h1>
+      <p className="mb-8 text-[15px] text-muted">
+        Things I&apos;ve built, from production apps to backend experiments.
+      </p>
+      <div className="space-y-3">
+        {PROJECTS.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
       </div>
-      <div className="mx-auto">
-        <div className="grid sm:grid-cols-2 gap-6 mt-10 max-sm:w-95">
-          {ProjectsData.map((project) => {
-            return (
-              <Card
-                key={project.title}
-                title={project.title}
-                description={project.description}
-                status={project.status}
-                siteLink={project.siteLink}
-                githubLink={project.githubLink}
-                imageSrc={project.imageSrc}
-                techStack={project.techStack}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    </>
   );
-};
-
-export default Page;
+}

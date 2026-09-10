@@ -1,49 +1,60 @@
-// // app/api/contact/route.js (or route.ts)
-
-// import {  NextResponse } from 'next/server';
-// import nodemailer from 'nodemailer';
-
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+const escapeHtml = (s: string) =>
+  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(req: Request) {
-    const body = await req.json();
-    console.log("Parsed body:", body);
-    const { name, email, message } = body;
-    try {
-        const transporter = nodemailer.createTransport({
-            service: "Gmail", // or 'hotmail', etc., if you're not using Gmail
-            auth: {
-                user: process.env.EMAIL_USER!,
-                pass: process.env.EMAIL_PASS!,
-            },
-        });
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
 
-        console.log("Transporter created");
+  // Honeypot: silently accept so bots don't learn anything.
+  if (typeof body.website === "string" && body.website.trim()) {
+    return NextResponse.json({ ok: true });
+  }
 
-        const mailOptions = {
-            from: email,
-            to: process.env.EMAIL_USER!,
-            subject: `New message from ${name}`,
-            html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-        };
+  const name = String(body.name ?? "").trim();
+  const email = String(body.email ?? "").trim();
+  const message = String(body.message ?? "").trim();
 
-        const result = await transporter.sendMail(mailOptions);
-        console.log("Email sent:", result);
+  if (!name || name.length > 100) {
+    return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  }
+  if (!EMAIL_RE.test(email) || email.length > 200) {
+    return NextResponse.json({ error: "A valid email is required" }, { status: 400 });
+  }
+  if (message.length < 10 || message.length > 4000) {
+    return NextResponse.json({ error: "Message must be 10–4000 characters" }, { status: 400 });
+  }
 
-        return NextResponse.json(
-            { message: "Email sent successfully" },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error("Error in email route:", error);
-        return NextResponse.json(
-            { error: "Internal Server Error" },
-            { status: 500 }
-        );
-    }
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
+  if (!user || !pass) {
+    console.error("contact: EMAIL_USER/EMAIL_PASS not configured");
+    return NextResponse.json({ error: "Email is not configured" }, { status: 500 });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({ service: "Gmail", auth: { user, pass } });
+    await transporter.sendMail({
+      from: `"Portfolio contact" <${user}>`,
+      to: user,
+      replyTo: `"${name.replace(/"/g, "")}" <${email}>`,
+      subject: `New message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> ${escapeHtml(email)}</p>
+<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
+    });
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("contact: send failed", error);
+    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
+  }
 }

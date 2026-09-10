@@ -1,47 +1,40 @@
-import Container from "@/components/containers";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+import { ArrowLeft } from "lucide-react";
 import { getAllBlogs, getSingleBlog } from "@/util/mdx_clean";
 import { SITE_NAME } from "@/lib/site";
-import rehypePrettyCode from "rehype-pretty-code";
 
-type BlogPageProps = {
-  params: Promise<{ slug: string }>;
+type Params = { params: Promise<{ slug: string }> };
+
+const prettyCode: Options = {
+  theme: { light: "github-light", dark: "one-dark-pro" },
+  keepBackground: false,
+  onVisitLine(node) {
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
 };
 
 export async function generateStaticParams() {
   const posts = await getAllBlogs();
-  return posts
-    .filter((post) => Boolean(post.slug))
-    .map((post) => ({ slug: post.slug! }));
+  return posts.filter((p) => Boolean(p.slug)).map((p) => ({ slug: p.slug! }));
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-
   try {
     const { data } = await getSingleBlog(slug);
     const title = data.title ?? slug;
     const description =
-      data.description ??
-      data.summary ??
-      `Read ${title} on ${SITE_NAME}'s blog.`;
-    const image = data.image
-      ? data.image.startsWith("/public")
-        ? data.image.replace("/public", "")
-        : data.image
-      : "/assets/erwin.jpg";
-
+      data.description ?? data.summary ?? `Read ${title} on ${SITE_NAME}'s blog.`;
     return {
       title,
       description,
-      alternates: {
-        canonical: `/blog/${slug}`,
-      },
+      alternates: { canonical: `/blog/${slug}` },
       openGraph: {
         title,
         description,
@@ -49,99 +42,64 @@ export async function generateMetadata({
         type: "article",
         publishedTime: data.date,
         authors: [SITE_NAME],
-        images: [
-          {
-            url: image,
-            width: 1200,
-            height: 630,
-            alt: title,
-          },
-        ],
       },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-        images: [image],
-      },
+      twitter: { card: "summary_large_image", title, description },
     };
   } catch {
-    return {
-      title: "Blog",
-      description: `Articles by ${SITE_NAME}`,
-    };
+    return { title: "Blog", description: `Articles by ${SITE_NAME}` };
   }
 }
 
-export default async function SingleBlogPage({ params }: BlogPageProps) {
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default async function BlogPost({ params }: Params) {
   const { slug } = await params;
-
-  // 1. UPDATE THIS: Pass an object with both themes
-  const options = {
-    theme: "github-light",
-    darkTheme: "one-dark-pro",
-    keepBackground: false, // We will handle background in CSS
-
-    onVisitLine(node: any) {
-      if (node.children.length === 0) {
-        node.children = [{ type: "text", value: " " }];
-      }
-    },
-  };
-
   if (!slug) notFound();
 
   let content: string;
-  let frontmatter: Record<string, any> = {};
-
+  let data: Awaited<ReturnType<typeof getSingleBlog>>["data"];
   try {
-    const res = await getSingleBlog(slug);
-    content = res.content;
-    frontmatter = res.data || {};
-  } catch (err) {
+    ({ content, data } = await getSingleBlog(slug));
+  } catch {
     notFound();
   }
 
   return (
-    <Container className="mt-25 sm:w-225 md:p-20 md:pb-10 font-sans tracking-tight bg-gradient-to-b from-transparent to-neutral-50/10 dark:from-neutral-900 dark:to-neutral-950">
-      {/* <h1 className="text-neutral-900 dark:text-neutral-50 text-4xl font-sans  font-bold md:text-5xl">
-        {frontmatter.title ?? slug}
-      </h1> */}
+    <article>
+      <Link href="/blog" className="quiet-link inline-flex items-center gap-1 font-mono text-xs">
+        <ArrowLeft size={12} /> All posts
+      </Link>
 
-      {frontmatter.date && (
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 text-right mt-2">
-          {frontmatter.date}
-        </p>
-      )}
-
-      {frontmatter.image && (
-        <div className="my-6 mx-auto w-screen">
-          <Image
-            src={
-              frontmatter.image.startsWith("/public")
-                ? frontmatter.image.replace("/public", "")
-                : frontmatter.image
-            }
-            alt={frontmatter.title ?? ""}
-            width={1200}
-            height={600}
-            className="w-screen h-auto rounded-xl object-cover shadow-xl"
-          />
+      <header className="mt-6 mb-8 border-b pb-6">
+        <h1 className="text-xl font-semibold text-primary md:text-2xl">{data.title ?? slug}</h1>
+        {(data.description ?? data.summary) && (
+          <p className="mt-2 text-[15px] leading-relaxed text-secondary">
+            {data.description ?? data.summary}
+          </p>
+        )}
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
+          {data.date && <time dateTime={data.date}>{formatDate(data.date)}</time>}
+          {data.tags && data.tags.length > 0 && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>{data.tags.join(", ")}</span>
+            </>
+          )}
         </div>
-      )}
+      </header>
 
-      {/* 2. UPDATE THIS: Add dark:prose-invert to fix text color */}
-      <article className="prose prose-slate dark:prose-invert max-w-none font-mono mx-auto mt-8">
+      <div className="prose prose-sm max-w-none prose-headings:font-medium prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-a:no-underline hover:prose-a:underline prose-pre:font-mono">
         <MDXRemote
           source={content}
-          options={{
-            mdxOptions: {
-              // @ts-ignore
-              rehypePlugins: [[rehypePrettyCode, options]],
-            },
-          }}
+          options={{ mdxOptions: { rehypePlugins: [[rehypePrettyCode, prettyCode]] } }}
         />
-      </article>
-    </Container>
+      </div>
+    </article>
   );
 }
