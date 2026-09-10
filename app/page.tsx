@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { CalendarDays, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { SiX } from "@icons-pack/react-simple-icons";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { GithubCalendar } from "@/components/GithubCalendar";
 import { PRList } from "@/components/PRList";
@@ -8,7 +10,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Section } from "@/components/Section";
 import { TechBadge } from "@/components/TechIcon";
 import { EXPERIENCE } from "@/data/experience";
-import { PROFILE, SOCIALS } from "@/data/profile";
+import { PROFILE } from "@/data/profile";
 import { FEATURED_PROJECTS } from "@/data/projects";
 import { SKILLS } from "@/data/skills";
 import { getAllBlogs } from "@/util/mdx_clean";
@@ -29,6 +31,15 @@ function InlineRef({ href, logo, children }: { href: string; logo?: string; chil
     </a>
   );
 }
+
+const CONNECT = [
+  { label: "GitHub", href: "https://github.com/Piyushrathoree", icon: <Github size={15} /> },
+  { label: "LinkedIn", href: "https://linkedin.com/in/piyushrathore--", icon: <Linkedin size={15} /> },
+  { label: "Twitter", href: "https://x.com/__Piyushrathore", icon: <SiX size={13} /> },
+  { label: "Email", href: `mailto:${PROFILE.email}`, icon: <Mail size={15} /> },
+  { label: "Book a call", href: PROFILE.calUrl, icon: <CalendarDays size={15} /> },
+  { label: "Résumé", href: PROFILE.resumeUrl, icon: <FileText size={15} /> },
+];
 
 export default async function Home() {
   const posts = (await getAllBlogs()).slice(0, 3);
@@ -181,7 +192,7 @@ export default async function Home() {
 
       <Section id="connect" title="Connect with me">
         <div className="flex flex-wrap gap-2">
-          {SOCIALS.map((s) => (
+          {CONNECT.map((s) => (
             <a
               key={s.label}
               href={s.href}
@@ -189,12 +200,10 @@ export default async function Home() {
               rel={s.href.startsWith("http") ? "noreferrer" : undefined}
               className="badge"
             >
+              <span className="text-secondary">{s.icon}</span>
               {s.label}
             </a>
           ))}
-          <a href={PROFILE.calUrl} target="_blank" rel="noreferrer" className="badge">
-            Book a call
-          </a>
         </div>
       </Section>
     </>

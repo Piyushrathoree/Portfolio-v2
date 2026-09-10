@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
@@ -22,8 +22,8 @@ const hanken = Hanken_Grotesk({
   weight: ["400", "500", "600"],
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
@@ -84,7 +84,7 @@ export default function RootLayout({
         />
         <JsonLd />
       </head>
-      <body className={`${hanken.variable} ${plexMono.variable}`}>
+      <body className={`${hanken.variable} ${geistMono.variable}`}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"

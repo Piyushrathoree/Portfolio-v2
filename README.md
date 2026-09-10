@@ -7,7 +7,7 @@ Personal site and résumé for Piyush Rathore — work, projects, open-source co
 ## Stack
 
 - **Next.js 16** (App Router, React 19, TypeScript)
-- **Tailwind CSS 4** with a custom token set in `app/globals.css` (Hanken Grotesk + IBM Plex Mono)
+- **Tailwind CSS 4** with a custom token set in `app/globals.css` (Hanken Grotesk + Geist Mono)
 - **next-themes** for dark/light (`data-theme` attribute, dark by default)
 - **MDX** posts via `next-mdx-remote` + `rehype-pretty-code` (dual-theme Shiki)
 - **react-github-calendar** for the contribution graph; merged PRs come from the public GitHub search API, cached for an hour (no token)
