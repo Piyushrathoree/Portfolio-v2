@@ -5,7 +5,7 @@ export const PROFILE = {
   timeZone: "Asia/Kolkata",
   email: "01piyush008@gmail.com",
   resumeUrl:
-    "https://drive.google.com/file/d/1dPtMM-VTzsMdXtuVnzFqVsrMsL-nnHoi/view?usp=sharing",
+    "https://drive.google.com/file/d/1s64i0UvX64aXXNlsWtGPWNTb4iGh9PlS/view?usp=sharing",
   calUrl: "https://cal.com/piyush-nkthix/15min",
   github: "Piyushrathoree",
   discordId: "1187126125722353768",
