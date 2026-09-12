@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
+    images: [`${SITE_URL}${p.image}`],
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = blogs

@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import { ArrowLeft } from "lucide-react";
+import { JsonLdScript } from "@/components/JsonLd";
 import { getAllBlogs, getSingleBlog } from "@/util/mdx_clean";
-import { SITE_NAME } from "@/lib/site";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -70,8 +71,39 @@ export default async function BlogPost({ params }: Params) {
     notFound();
   }
 
+  const postUrl = absoluteUrl(`/blog/${slug}`);
+  const title = data.title ?? slug;
+  const description = data.description ?? data.summary ?? `Read ${title} on ${SITE_NAME}'s blog.`;
+
   return (
     <article>
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: title,
+          description,
+          url: postUrl,
+          image: absoluteUrl("/opengraph-image"),
+          inLanguage: "en",
+          ...(data.date ? { datePublished: data.date, dateModified: data.date } : {}),
+          ...(data.tags?.length ? { keywords: data.tags } : {}),
+          author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
+          publisher: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
+          mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+        }}
+      />
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl() },
+            { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
+            { "@type": "ListItem", position: 3, name: title, item: postUrl },
+          ],
+        }}
+      />
       <Link href="/blog" className="quiet-link inline-flex items-center gap-1 font-mono text-xs">
         <ArrowLeft size={12} /> All posts
       </Link>

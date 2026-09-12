@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { JsonLdScript } from "@/components/JsonLd";
 import { getNextProject, getProject, PROJECTS } from "@/data/projects";
 import { TechChip } from "@/components/TechIcon";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -34,9 +36,39 @@ export default async function ProjectPage({ params }: Params) {
   const project = getProject(slug);
   if (!project) notFound();
   const next = getNextProject(project.slug);
+  const projectUrl = absoluteUrl(`/projects/${project.slug}`);
 
   return (
     <article>
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          name: project.title,
+          description: project.description,
+          url: project.siteLink ?? projectUrl,
+          image: absoluteUrl(project.image),
+          codeRepository: project.githubLink,
+          programmingLanguage: project.tech,
+          author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
+          isPartOf: {
+            "@type": "CollectionPage",
+            name: "Projects",
+            url: absoluteUrl("/projects"),
+          },
+        }}
+      />
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl() },
+            { "@type": "ListItem", position: 2, name: "Projects", item: absoluteUrl("/projects") },
+            { "@type": "ListItem", position: 3, name: project.title, item: projectUrl },
+          ],
+        }}
+      />
       <Link href="/projects" className="quiet-link inline-flex items-center gap-1 font-mono text-xs">
         <ArrowLeft size={12} /> All projects
       </Link>

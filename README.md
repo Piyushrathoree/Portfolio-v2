@@ -27,6 +27,14 @@ Personal site and résumé for Piyush Rathore — work, projects, open-source co
 
 Project images live in `public/projects/*.webp` (≤1600px wide); company logos in `public/logos/`. Tech icons resolve by name in `components/TechIcon.tsx` (own SVGs in `icons/`, then simple-icons).
 
+## Discovery endpoints
+
+- `/robots.txt` — crawler rules and the sitemap location
+- `/sitemap.xml` — canonical URLs for the site’s indexable pages
+- `/feed.xml` — RSS feed for published writing
+- `/llms.txt` — concise context and links for AI agents
+- `/llms-full.txt` — expanded project descriptions and article content
+
 ## Development
 
 ```bash
