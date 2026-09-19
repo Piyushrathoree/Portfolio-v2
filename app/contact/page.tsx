@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/animated";
 import { ContactForm } from "@/components/ContactForm";
 import { PROFILE, TWITTER_HANDLE } from "@/data/profile";
 
@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   title: "Contact",
   description,
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact | Piyush Rathore", description, url: "/contact" },
+  openGraph: {
+    title: "Contact | Piyush Rathore",
+    description,
+    url: "/contact",
+  },
 };
 
 const OPTIONS = [
@@ -46,9 +50,12 @@ export default function ContactPage() {
           Available for work
         </p>
       )}
-      <h1 className="mb-1 text-xl font-semibold text-primary">Let&apos;s talk</h1>
+      <h1 className="mb-1 text-xl font-semibold text-primary">
+        Let&apos;s talk
+      </h1>
       <p className="mb-8 text-[15px] text-muted">
-        Roles, collaborations, or a question about something I built — drop a line.
+        Roles, collaborations, or a question about something I built — drop a
+        line.
       </p>
 
       <div className="grid gap-8 md:grid-cols-[220px_1fr]">
@@ -65,9 +72,11 @@ export default function ContactPage() {
                 <span className="block text-sm font-medium text-primary transition-colors group-hover:text-accent">
                   {o.title}
                 </span>
-                <span className="mt-0.5 block font-mono text-xs text-muted">{o.detail}</span>
+                <span className="mt-0.5 block font-mono text-xs text-muted">
+                  {o.detail}
+                </span>
               </span>
-              <ArrowUpRight size={14} className="shrink-0 text-muted" />
+              <ArrowUpRightIcon size={14} className="text-muted" />
             </a>
           ))}
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "@/components/icons/animated";
 
 /**
  * Collapsed-by-default region with a "Know more" toggle.
@@ -40,10 +40,11 @@ export function Expandable({
           className="quiet-link flex items-center gap-1 font-mono text-xs"
         >
           {open ? closeLabel : label}
-          <ChevronDown
-            size={14}
-            className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-          />
+          <span
+            className={`flex transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          >
+            <ChevronDownIcon size={14} />
+          </span>
         </button>
         {trailing}
       </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, GitMerge } from "lucide-react";
+import { ArrowUpRightIcon, GitMergeIcon } from "@/components/icons/animated";
 import { PROFILE } from "@/data/profile";
 import { formatMerged, getMergedPRs, type MergedPR } from "@/lib/github";
 
@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   title: "Open source",
   description,
   alternates: { canonical: "/open-source" },
-  openGraph: { title: "Open source | Piyush Rathore", description, url: "/open-source" },
+  openGraph: {
+    title: "Open source | Piyush Rathore",
+    description,
+    url: "/open-source",
+  },
 };
 
 export const revalidate = 3600;
@@ -24,7 +28,8 @@ function groupByRepo(prs: MergedPR[]) {
   }
   // Most PRs first; ties broken by most recent merge.
   return [...map.entries()].sort(
-    ([, a], [, b]) => b.length - a.length || b[0].mergedAt.localeCompare(a[0].mergedAt)
+    ([, a], [, b]) =>
+      b.length - a.length || b[0].mergedAt.localeCompare(a[0].mergedAt),
   );
 }
 
@@ -39,7 +44,7 @@ function RepoCard({ repo, prs }: { repo: string; prs: MergedPR[] }) {
           className="inline-flex min-w-0 items-center gap-1 text-[15px] font-medium text-primary transition-colors hover:text-accent"
         >
           <span className="truncate">{repo}</span>
-          <ArrowUpRight size={13} className="shrink-0" />
+          <ArrowUpRightIcon size={13} />
         </a>
         <span className="whitespace-nowrap font-mono text-xs text-muted">
           {prs.length} merged
@@ -54,7 +59,7 @@ function RepoCard({ repo, prs }: { repo: string; prs: MergedPR[] }) {
               rel="noreferrer"
               className="group flex items-start gap-3 px-4 py-3"
             >
-              <GitMerge size={14} className="mt-0.5 shrink-0 text-[#a371f7]" />
+              <GitMergeIcon size={14} className="mt-0.5 text-[#a371f7]" />
               <span className="min-w-0 flex-1">
                 <span className="block text-sm text-primary transition-colors group-hover:text-accent">
                   {pr.title}
@@ -62,7 +67,9 @@ function RepoCard({ repo, prs }: { repo: string; prs: MergedPR[] }) {
                 <span className="mt-0.5 flex items-center gap-2 font-mono text-xs text-muted">
                   <span>#{pr.number}</span>
                   <span aria-hidden="true">·</span>
-                  <time dateTime={pr.mergedAt}>{formatMerged(pr.mergedAt)}</time>
+                  <time dateTime={pr.mergedAt}>
+                    {formatMerged(pr.mergedAt)}
+                  </time>
                 </span>
               </span>
             </a>

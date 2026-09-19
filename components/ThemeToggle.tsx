@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { MoonIcon, SunIcon } from "@/components/icons/animated";
 
 /**
  * Icon visibility is driven by CSS (`light:` variant) rather than state, so
@@ -17,8 +17,8 @@ export function ThemeToggle() {
       aria-label="Toggle color theme"
       className="quiet-link flex h-6 w-6 items-center justify-center"
     >
-      <Sun size={14} className="light:hidden" />
-      <Moon size={14} className="hidden light:block" />
+      <SunIcon size={14} className="light:hidden" />
+      <MoonIcon size={14} className="hidden light:block" />
     </button>
   );
 }

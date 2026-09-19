@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowUpRightIcon,
+  GithubIcon,
+} from "@/components/icons/animated";
 import { JsonLdScript } from "@/components/JsonLd";
 import { getNextProject, getProject, PROJECTS } from "@/data/projects";
 import { TechChip } from "@/components/TechIcon";
@@ -26,7 +30,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       title: `${project.title} | Piyush Rathore`,
       description: project.description,
       url: `/projects/${project.slug}`,
-      images: [{ url: project.image, width: 1600, height: 900, alt: project.title }],
+      images: [
+        { url: project.image, width: 1600, height: 900, alt: project.title },
+      ],
     },
   };
 }
@@ -63,14 +69,32 @@ export default async function ProjectPage({ params }: Params) {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl() },
-            { "@type": "ListItem", position: 2, name: "Projects", item: absoluteUrl("/projects") },
-            { "@type": "ListItem", position: 3, name: project.title, item: projectUrl },
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: absoluteUrl(),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Projects",
+              item: absoluteUrl("/projects"),
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: project.title,
+              item: projectUrl,
+            },
           ],
         }}
       />
-      <Link href="/projects" className="quiet-link inline-flex items-center gap-1 font-mono text-xs">
-        <ArrowLeft size={12} /> All projects
+      <Link
+        href="/projects"
+        className="quiet-link inline-flex items-center gap-1 font-mono text-xs"
+      >
+        <ArrowLeftIcon size={12} /> All projects
       </Link>
 
       <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
@@ -80,7 +104,9 @@ export default async function ProjectPage({ params }: Params) {
         <span aria-hidden="true">·</span>
         <span>{project.status}</span>
       </div>
-      <h1 className="mt-2 text-xl font-semibold text-primary">{project.title}</h1>
+      <h1 className="mt-2 text-xl font-semibold text-primary">
+        {project.title}
+      </h1>
       <p className="mt-1 text-[15px] text-secondary">{project.description}</p>
 
       <div className="card mt-6 overflow-hidden p-1">
@@ -108,7 +134,10 @@ export default async function ProjectPage({ params }: Params) {
           <h2 className="section-title mt-8">Highlights</h2>
           <ul className="space-y-2">
             {project.bullets.map((b) => (
-              <li key={b} className="card p-3 text-[13px] leading-relaxed text-dim">
+              <li
+                key={b}
+                className="card p-3 text-[13px] leading-relaxed text-dim"
+              >
                 {b}
               </li>
             ))}
@@ -128,12 +157,22 @@ export default async function ProjectPage({ params }: Params) {
             <h2 className="section-title">Links</h2>
             <div className="flex flex-col gap-2 font-mono text-xs">
               {project.siteLink && (
-                <a href={project.siteLink} target="_blank" rel="noreferrer" className="link inline-flex items-center gap-1">
-                  Visit site <ArrowUpRight size={12} />
+                <a
+                  href={project.siteLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link inline-flex items-center gap-1"
+                >
+                  Visit site <ArrowUpRightIcon size={12} />
                 </a>
               )}
-              <a href={project.githubLink} target="_blank" rel="noreferrer" className="quiet-link inline-flex items-center gap-1">
-                <Github size={12} /> Source
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noreferrer"
+                className="quiet-link inline-flex items-center gap-1"
+              >
+                <GithubIcon size={12} /> Source
               </a>
             </div>
           </div>
@@ -152,9 +191,11 @@ export default async function ProjectPage({ params }: Params) {
             <span className="mt-1 block text-sm font-medium text-primary transition-colors group-hover:text-accent">
               {next.title}
             </span>
-            <span className="mt-0.5 block text-xs text-muted">{next.description}</span>
+            <span className="mt-0.5 block text-xs text-muted">
+              {next.description}
+            </span>
           </span>
-          <ArrowUpRight size={16} className="shrink-0 text-muted" />
+          <ArrowUpRightIcon size={16} className="text-muted" />
         </Link>
       )}
     </article>

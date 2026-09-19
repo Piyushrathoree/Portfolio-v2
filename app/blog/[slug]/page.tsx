@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeftIcon } from "@/components/icons/animated";
 import { JsonLdScript } from "@/components/JsonLd";
 import { getAllBlogs, getSingleBlog } from "@/util/mdx_clean";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
@@ -31,7 +31,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     const { data } = await getSingleBlog(slug);
     const title = data.title ?? slug;
     const description =
-      data.description ?? data.summary ?? `Read ${title} on ${SITE_NAME}'s blog.`;
+      data.description ??
+      data.summary ??
+      `Read ${title} on ${SITE_NAME}'s blog.`;
     return {
       title,
       description,
@@ -73,7 +75,8 @@ export default async function BlogPost({ params }: Params) {
 
   const postUrl = absoluteUrl(`/blog/${slug}`);
   const title = data.title ?? slug;
-  const description = data.description ?? data.summary ?? `Read ${title} on ${SITE_NAME}'s blog.`;
+  const description =
+    data.description ?? data.summary ?? `Read ${title} on ${SITE_NAME}'s blog.`;
 
   return (
     <article>
@@ -86,7 +89,9 @@ export default async function BlogPost({ params }: Params) {
           url: postUrl,
           image: absoluteUrl("/opengraph-image"),
           inLanguage: "en",
-          ...(data.date ? { datePublished: data.date, dateModified: data.date } : {}),
+          ...(data.date
+            ? { datePublished: data.date, dateModified: data.date }
+            : {}),
           ...(data.tags?.length ? { keywords: data.tags } : {}),
           author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
           publisher: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
@@ -98,25 +103,42 @@ export default async function BlogPost({ params }: Params) {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl() },
-            { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: absoluteUrl(),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Blog",
+              item: absoluteUrl("/blog"),
+            },
             { "@type": "ListItem", position: 3, name: title, item: postUrl },
           ],
         }}
       />
-      <Link href="/blog" className="quiet-link inline-flex items-center gap-1 font-mono text-xs">
-        <ArrowLeft size={12} /> All posts
+      <Link
+        href="/blog"
+        className="quiet-link inline-flex items-center gap-1 font-mono text-xs"
+      >
+        <ArrowLeftIcon size={12} /> All posts
       </Link>
 
       <header className="mt-6 mb-8 border-b pb-6">
-        <h1 className="text-xl font-semibold text-primary md:text-2xl">{data.title ?? slug}</h1>
+        <h1 className="text-xl font-semibold text-primary md:text-2xl">
+          {data.title ?? slug}
+        </h1>
         {(data.description ?? data.summary) && (
           <p className="mt-2 text-[15px] leading-relaxed text-secondary">
             {data.description ?? data.summary}
           </p>
         )}
         <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
-          {data.date && <time dateTime={data.date}>{formatDate(data.date)}</time>}
+          {data.date && (
+            <time dateTime={data.date}>{formatDate(data.date)}</time>
+          )}
           {data.tags && data.tags.length > 0 && (
             <>
               <span aria-hidden="true">·</span>
@@ -129,7 +151,9 @@ export default async function BlogPost({ params }: Params) {
       <div className="prose prose-sm max-w-none prose-headings:font-medium prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-a:no-underline hover:prose-a:underline prose-pre:font-mono">
         <MDXRemote
           source={content}
-          options={{ mdxOptions: { rehypePlugins: [[rehypePrettyCode, prettyCode]] } }}
+          options={{
+            mdxOptions: { rehypePlugins: [[rehypePrettyCode, prettyCode]] },
+          }}
         />
       </div>
     </article>
