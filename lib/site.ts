@@ -1,5 +1,5 @@
 // Canonical host must match Vercel's redirect: apex → www
-export const SITE_URL = "https://www.piyushh.me";
+export const SITE_URL = "https://www.piyush.social";
 
 export const SITE_NAME = "Piyush Rathore";
 
@@ -11,7 +11,7 @@ export const SITE_KEYWORDS = [
   "Software Engineer",
   "Full Stack Developer",
   "Portfolio",
-  "piyushh.me",
+  "piyush.social",
   "Next.js",
   "TypeScript",
   "Node.js",

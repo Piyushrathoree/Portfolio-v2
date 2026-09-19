@@ -96,6 +96,61 @@ export type Contributions = {
  * null when the API is unreachable so the caller can render a fallback.
  */
 export async function getContributions(): Promise<Contributions | null> {
+  // Prefer GitHub's own GraphQL API when a token is configured (reliable on
+  // Vercel); otherwise fall back to the public proxy, which occasionally 5xxs.
+  return (await fromGraphQL()) ?? (await fromProxy());
+}
+
+async function fromGraphQL(): Promise<Contributions | null> {
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) return null;
+  try {
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `query($login: String!) { user(login: $login) { contributionsCollection {
+          contributionCalendar { totalContributions weeks { contributionDays { date contributionCount contributionLevel } } } } } }`,
+        variables: { login: PROFILE.github },
+      }),
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as {
+      data?: {
+        user?: {
+          contributionsCollection: {
+            contributionCalendar: {
+              totalContributions: number;
+              weeks: { contributionDays: { date: string; contributionCount: number; contributionLevel: string }[] }[];
+            };
+          };
+        };
+      };
+    };
+    const cal = json.data?.user?.contributionsCollection.contributionCalendar;
+    if (!cal) return null;
+    const LEVELS: Record<string, ContributionDay["level"]> = {
+      NONE: 0,
+      FIRST_QUARTILE: 1,
+      SECOND_QUARTILE: 2,
+      THIRD_QUARTILE: 3,
+      FOURTH_QUARTILE: 4,
+    };
+    const days = cal.weeks.flatMap((w) =>
+      w.contributionDays.map((d) => ({
+        date: d.date,
+        count: d.contributionCount,
+        level: LEVELS[d.contributionLevel] ?? 0,
+      })),
+    );
+    return days.length ? { total: cal.totalContributions, days } : null;
+  } catch {
+    return null;
+  }
+}
+
+async function fromProxy(): Promise<Contributions | null> {
   try {
     const res = await fetch(
       `https://github-contributions-api.jogruber.de/v4/${PROFILE.github}?y=last`,

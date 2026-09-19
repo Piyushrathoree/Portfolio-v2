@@ -98,10 +98,10 @@ export default async function Home() {
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={s.label}
                 className="quiet-link"
               >
                 {s.icon}
+                <span className="sr-only">{s.label}</span>
               </a>
             ))}
           </div>

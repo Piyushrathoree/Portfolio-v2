@@ -47,6 +47,7 @@ Environment variables (`.env.local`):
 ```
 EMAIL_USER=you@gmail.com   # Gmail account that receives contact-form mail
 EMAIL_PASS=app-password    # Gmail app password
+GITHUB_TOKEN=ghp_...       # optional: contribution graph via GitHub GraphQL (no scopes needed); falls back to a public proxy
 ```
 
 ## Scripts
