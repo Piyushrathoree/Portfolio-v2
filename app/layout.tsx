@@ -10,7 +10,6 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { TWITTER_HANDLE } from "@/data/profile";
 import {
-  absoluteUrl,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
@@ -53,21 +52,12 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: absoluteUrl("/opengraph-image"),
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} — Software Engineer`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     creator: TWITTER_HANDLE,
-    images: [absoluteUrl("/opengraph-image")],
   },
   robots: {
     index: true,
