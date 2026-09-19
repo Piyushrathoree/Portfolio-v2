@@ -75,7 +75,13 @@ const ICONS: Record<string, () => ReactNode> = {
   extension: () => <Puzzle size="1em" className="text-dim" />,
 };
 
-export function TechIcon({ name, className = "" }: { name: string; className?: string }) {
+export function TechIcon({
+  name,
+  className = "",
+}: {
+  name: string;
+  className?: string;
+}) {
   const render = ICONS[name.toLowerCase()];
   if (!render) return null;
   return (
@@ -92,7 +98,7 @@ export function TechIcon({ name, className = "" }: { name: string; className?: s
 export function TechBadge({ name }: { name: string }) {
   return (
     <span className="badge">
-      <TechIcon name={name} className="text-[15px]" />
+      <TechIcon name={name} className="text-[13px]" />
       {name}
     </span>
   );

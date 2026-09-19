@@ -1,12 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { CalendarDays, FileText, Github, Linkedin, Mail } from "lucide-react";
-import { SiX } from "@icons-pack/react-simple-icons";
+import {
+  CalendarIcon,
+  FileTextIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  XIcon,
+} from "@/components/icons/animated";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { GithubCalendar } from "@/components/GithubCalendar";
 import { PRList } from "@/components/PRList";
 import { ProjectCard } from "@/components/ProjectCard";
+import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { TechBadge } from "@/components/TechIcon";
 import { EXPERIENCE } from "@/data/experience";
@@ -23,7 +30,15 @@ function formatDate(date: string) {
   });
 }
 
-function InlineRef({ href, logo, children }: { href: string; logo?: string; children: string }) {
+function InlineRef({
+  href,
+  logo,
+  children,
+}: {
+  href: string;
+  logo?: string;
+  children: string;
+}) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="inline-badge">
       {logo && <Image src={logo} alt="" width={16} height={16} />}
@@ -33,12 +48,36 @@ function InlineRef({ href, logo, children }: { href: string; logo?: string; chil
 }
 
 const CONNECT = [
-  { label: "GitHub", href: "https://github.com/Piyushrathoree", icon: <Github size={15} /> },
-  { label: "LinkedIn", href: "https://linkedin.com/in/piyushrathore--", icon: <Linkedin size={15} /> },
-  { label: "Twitter", href: "https://x.com/__Piyushrathore", icon: <SiX size={13} /> },
-  { label: "Email", href: `mailto:${PROFILE.email}`, icon: <Mail size={15} /> },
-  { label: "Book a call", href: PROFILE.calUrl, icon: <CalendarDays size={15} /> },
-  { label: "Résumé", href: PROFILE.resumeUrl, icon: <FileText size={15} /> },
+  {
+    label: "GitHub",
+    href: "https://github.com/Piyushrathoree",
+    icon: <GithubIcon size={13} />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/piyushrathore--",
+    icon: <LinkedinIcon size={13} />,
+  },
+  {
+    label: "Twitter",
+    href: "https://x.com/__Piyushrathore",
+    icon: <XIcon size={12} />,
+  },
+  {
+    label: "Email",
+    href: `mailto:${PROFILE.email}`,
+    icon: <MailIcon size={13} />,
+  },
+  {
+    label: "Book a call",
+    href: PROFILE.calUrl,
+    icon: <CalendarIcon size={13} />,
+  },
+  {
+    label: "Résumé",
+    href: PROFILE.resumeUrl,
+    icon: <FileTextIcon size={13} />,
+  },
 ];
 
 export default async function Home() {
@@ -50,7 +89,23 @@ export default async function Home() {
     <>
       {/* Intro */}
       <div>
-        <h1 className="mb-1 text-xl font-semibold text-primary">{PROFILE.name}</h1>
+        <div className="mb-1 flex items-center gap-3">
+          <h1 className="text-xl font-semibold text-primary">{PROFILE.name}</h1>
+          <div className="flex items-center gap-2.5">
+            {CONNECT.slice(0, 3).map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="quiet-link"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
         <p className="mb-6 text-[15px] text-muted">{PROFILE.role}</p>
 
         <div className="space-y-4 text-[15px] leading-relaxed text-secondary">
@@ -69,8 +124,8 @@ export default async function Home() {
             <InlineRef href={assetsnip.url!} logo={assetsnip.logo}>
               {assetsnip.name}
             </InlineRef>{" "}
-            solo — a browser extension, web app, API, and billing — and rebuilt the
-            backend and dashboard for{" "}
+            solo — a browser extension, web app, API, and billing — and rebuilt
+            the backend and dashboard for{" "}
             <InlineRef href={raah.url!} logo={raah.logo}>
               {raah.name}
             </InlineRef>
@@ -81,10 +136,10 @@ export default async function Home() {
             <span className="font-medium text-primary">TypeScript</span>,{" "}
             <span className="font-medium text-primary">Next.js</span>,{" "}
             <span className="font-medium text-primary">Node.js</span>, and{" "}
-            <span className="font-medium text-primary">PostgreSQL</span> most days,
-            with <span className="font-medium text-primary">Bun</span> in the
-            toolchain. Currently learning about AI systems and contributing to
-            open source.
+            <span className="font-medium text-primary">PostgreSQL</span> most
+            days, with <span className="font-medium text-primary">Bun</span> in
+            the toolchain. Currently learning about AI systems and contributing
+            to open source.
           </p>
           <p>
             Open to full-time roles and collaborations.{" "}
@@ -92,7 +147,12 @@ export default async function Home() {
               Reach out
             </Link>{" "}
             or{" "}
-            <a href={PROFILE.resumeUrl} target="_blank" rel="noreferrer" className="link">
+            <a
+              href={PROFILE.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+            >
               read my résumé
             </a>
             .
@@ -111,8 +171,8 @@ export default async function Home() {
       <Section
         id="projects"
         title="Projects I've built"
-        action={
-          <Link href="/projects" className="quiet-link font-mono text-xs">
+        footer={
+          <Link href="/projects" className="badge badge-sm">
             All projects →
           </Link>
         }
@@ -124,32 +184,19 @@ export default async function Home() {
         </div>
       </Section>
 
-      <Section id="skills" title="Skills & tools">
-        <div className="space-y-5">
-          {SKILLS.map((group) => (
-            <div key={group.label}>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-muted">
-                {group.label}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <TechBadge key={item} name={item} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section id="github" title="GitHub activity">
-        <GithubCalendar />
-      </Section>
+      <section id="github" className="mt-14">
+        <Reveal>
+          <Suspense fallback={<div className="card h-40 animate-pulse" />}>
+            <GithubCalendar />
+          </Suspense>
+        </Reveal>
+      </section>
 
       <Section
         id="open-source"
         title="Open source"
-        action={
-          <Link href="/open-source" className="quiet-link font-mono text-xs">
+        footer={
+          <Link href="/open-source" className="badge badge-sm">
             All merged PRs →
           </Link>
         }
@@ -163,8 +210,8 @@ export default async function Home() {
         <Section
           id="writing"
           title="Writing"
-          action={
-            <Link href="/blog" className="quiet-link font-mono text-xs">
+          footer={
+            <Link href="/blog" className="badge badge-sm">
               All posts →
             </Link>
           }
@@ -191,7 +238,7 @@ export default async function Home() {
       )}
 
       <Section id="connect" title="Connect with me">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {CONNECT.map((s) => (
             <a
               key={s.label}
@@ -203,6 +250,23 @@ export default async function Home() {
               <span className="text-secondary">{s.icon}</span>
               {s.label}
             </a>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="skills" title="Skills & tools">
+        <div className="space-y-5">
+          {SKILLS.map((group) => (
+            <div key={group.label}>
+              <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wider text-muted">
+                {group.label}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {group.items.map((item) => (
+                  <TechBadge key={item} name={item} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </Section>

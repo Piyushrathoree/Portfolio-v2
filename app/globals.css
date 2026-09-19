@@ -5,8 +5,8 @@
 
 @theme inline {
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -41,6 +41,8 @@
   --badge-text: #d4d2cf;
   --badge-hover-bg: #1a1a18;
   --badge-hover-border: #333330;
+  --tip-bg: #1c1c1a;
+  --tip-border: #363634;
 }
 
 [data-theme="light"] {
@@ -61,11 +63,25 @@
   --badge-text: #18181b;
   --badge-hover-bg: #f5f4f2;
   --badge-hover-border: #c5c2bc;
+  --tip-bg: #ffffff;
+  --tip-border: #d6d3ce;
 }
 
 @layer base {
   * {
     border-color: var(--border);
+  }
+
+  /* Laptop and up: scale the whole page ~10%, same as browser zoom 110%.
+     Phones/tablets stay at 100%. */
+  @media (min-width: 1024px) {
+    html {
+      zoom: 1.1;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -74,7 +90,9 @@
     font-family: var(--font-sans);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
   }
 
   h1,
@@ -93,6 +111,11 @@
 
   ::-webkit-scrollbar {
     width: 8px;
+    height: 6px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
   }
   ::-webkit-scrollbar-track {
     background: var(--background);
@@ -147,23 +170,32 @@
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    background: var(--badge-bg);
+    gap: 6px;
+    padding: 4px 9px;
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--badge-text);
+    border-radius: 4px;
+    color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.5;
     cursor: default;
-    transition: background 0.2s, border-color 0.2s;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
   }
   .badge:hover {
     background: var(--badge-hover-bg);
     border-color: var(--badge-hover-border);
+    color: var(--text-primary);
   }
   a.badge {
     cursor: pointer;
+  }
+  /* "See all →" link under a section's cards. */
+  .badge-sm:hover {
+    color: var(--accent);
   }
 
   /* Small inline tech chip used inside expanded cards. */
