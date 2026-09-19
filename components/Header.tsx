@@ -4,16 +4,19 @@ import { Presence } from "./Presence";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
+  { href: "/components", label: "Components" },
   { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   return (
     <header className="mb-12 flex items-center justify-between text-sm text-muted">
       <div className="flex items-center gap-4">
-        <Link href="/" className="quiet-link font-mono text-xs" aria-label="Home">
+        <Link
+          href="/"
+          className="quiet-link font-mono text-xs"
+          aria-label="Home"
+        >
           ~/piyush
         </Link>
         <span className="hidden sm:inline-flex">
@@ -21,7 +24,10 @@ export function Header() {
         </span>
       </div>
       <div className="flex items-center gap-4">
-        <nav aria-label="Primary" className="flex items-center gap-3 font-mono text-xs">
+        <nav
+          aria-label="Primary"
+          className="flex items-center gap-3 font-mono text-xs"
+        >
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="quiet-link">
               {item.label}

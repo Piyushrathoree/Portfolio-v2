@@ -104,9 +104,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <div className="mx-auto flex w-full max-w-2xl flex-col px-6 pt-10 pb-8 md:px-8">
+          <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-6 pt-10 pb-8 md:px-8">
             <Header />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
