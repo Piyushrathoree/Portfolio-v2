@@ -1,4 +1,5 @@
 import { PROFILE } from "@/data/profile";
+import { SOCIAL_PROFILES, type SocialProfile } from "@/data/socials";
 
 export type MergedPR = {
   id: number;
@@ -38,10 +39,13 @@ export async function getMergedPRs(): Promise<MergedPR[]> {
         {
           headers: { Accept: "application/vnd.github+json" },
           next: { revalidate: 3600 },
-        }
+        },
       );
       if (!res.ok) break;
-      const data = (await res.json()) as { items?: SearchItem[]; total_count?: number };
+      const data = (await res.json()) as {
+        items?: SearchItem[];
+        total_count?: number;
+      };
       items.push(...(data.items ?? []));
       if (!data.items?.length || items.length >= (data.total_count ?? 0)) break;
     }
@@ -53,7 +57,10 @@ export async function getMergedPRs(): Promise<MergedPR[]> {
   return items
     .filter((p) => p.pull_request?.merged_at)
     .map((p) => {
-      const repo = p.repository_url.replace("https://api.github.com/repos/", "");
+      const repo = p.repository_url.replace(
+        "https://api.github.com/repos/",
+        "",
+      );
       return {
         id: p.id,
         number: p.number,
@@ -74,3 +81,73 @@ export function formatMerged(date: string) {
     day: "numeric",
   });
 }
+
+import type { ContributionDay } from "@/components/contribution-graph";
+export type { ContributionDay };
+
+export type Contributions = {
+  total: number;
+  days: ContributionDay[];
+};
+
+/**
+ * The profile user's contribution calendar for the last year, via the
+ * public github-contributions-api (no token). Cached for an hour. Returns
+ * null when the API is unreachable so the caller can render a fallback.
+ */
+export async function getContributions(): Promise<Contributions | null> {
+  try {
+    const res = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${PROFILE.github}?y=last`,
+      { next: { revalidate: 3600 } },
+    );
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      total?: Record<string, number>;
+      contributions?: ContributionDay[];
+    };
+    if (!data.contributions?.length) return null;
+    return { total: data.total?.lastYear ?? 0, days: data.contributions };
+  } catch {
+    return null;
+  }
+}
+
+/** Live GitHub profile numbers for the hover card; falls back to the static copy. */
+export async function getSocialProfiles(): Promise<SocialProfile[]> {
+  try {
+    const res = await fetch(`https://api.github.com/users/${PROFILE.github}`, {
+      headers: { Accept: "application/vnd.github+json" },
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return SOCIAL_PROFILES;
+    const u = (await res.json()) as {
+      avatar_url?: string;
+      bio?: string | null;
+      location?: string | null;
+      followers?: number;
+      public_repos?: number;
+    };
+    return SOCIAL_PROFILES.map((p) =>
+      p.id !== "github"
+        ? p
+        : {
+            ...p,
+            avatar: u.avatar_url ?? p.avatar,
+            location: u.location?.trim() || p.location,
+            stats: [
+              { value: compact(u.followers ?? 0), label: "followers" },
+              { value: compact(u.public_repos ?? 0), label: "repos" },
+            ],
+          },
+    );
+  } catch {
+    return SOCIAL_PROFILES;
+  }
+}
+
+const compact = (n: number) =>
+  Intl.NumberFormat("en", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(n);
