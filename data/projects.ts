@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
       "Deployed in production on DigitalOcean with Bun in the toolchain.",
     ],
     image: "/projects/zenith-showcase.webp",
-    siteLink: "https://zenith.piyushh.me/",
+    siteLink: "https://app-zenith-beige.vercel.app//",
     githubLink: "https://github.com/Piyushrathoree/Zenith",
     tech: [
       "TypeScript",
