@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "zenith",
     title: "Zenith",
-    status: "Ready",
+    status: "not completed",
     description:
       "A distraction-free productivity tool for people who want to stay in flow.",
     overview: [
