@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function ContactForm() {
+export function ContactForm({ className = "card space-y-4 p-4" }: { className?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -31,7 +31,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card space-y-4 p-4">
+    <form onSubmit={handleSubmit} className={className}>
       <h2 className="section-title mb-0">Send a message</h2>
 
       <div className="grid gap-4 sm:grid-cols-2">

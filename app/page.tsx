@@ -10,6 +10,7 @@ import {
   XIcon,
 } from "@/components/icons/animated";
 import { ExperienceCard } from "@/components/ExperienceCard";
+import { Availability } from "@/components/Availability";
 import { GithubCalendar } from "@/components/GithubCalendar";
 import { PRList } from "@/components/PRList";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -106,7 +107,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
-        <p className="mb-6 text-[15px] text-muted">{PROFILE.role}</p>
+        <p className="mb-2 text-[15px] text-muted">{PROFILE.role}</p>
+        <div className="mb-6">
+          <Availability />
+        </div>
 
         <div className="space-y-4 text-[15px] leading-relaxed text-secondary">
           <p>
@@ -142,8 +146,8 @@ export default async function Home() {
             to open source.
           </p>
           <p>
-            Open to full-time roles and collaborations.{" "}
-            <Link href="/contact" className="link">
+            Open to internships, full-time, contract, and freelance work.{" "}
+            <Link href="/contact" className="link underline decoration-dashed underline-offset-4">
               Reach out
             </Link>{" "}
             or{" "}
@@ -151,7 +155,7 @@ export default async function Home() {
               href={PROFILE.resumeUrl}
               target="_blank"
               rel="noreferrer"
-              className="link"
+              className="link underline decoration-dashed underline-offset-4"
             >
               read my résumé
             </a>

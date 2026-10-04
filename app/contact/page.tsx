@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRightIcon } from "@/components/icons/animated";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactLayouts } from "@/components/ContactLayouts";
 import { PROFILE, TWITTER_HANDLE } from "@/data/profile";
 
 const description =
@@ -40,48 +39,9 @@ const OPTIONS = [
 
 export default function ContactPage() {
   return (
-    <>
-      {PROFILE.available && (
-        <p className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-          </span>
-          Available for work
-        </p>
-      )}
-      <h1 className="mb-1 text-xl font-semibold text-primary">
-        Let&apos;s talk
-      </h1>
-      <p className="mb-8 text-[15px] text-muted">
-        Roles, collaborations, or a question about something I built — drop a
-        line.
-      </p>
-
-      <div className="grid gap-8 md:grid-cols-[220px_1fr]">
-        <div className="space-y-3">
-          {OPTIONS.map((o) => (
-            <a
-              key={o.title}
-              href={o.href}
-              target={o.external ? "_blank" : undefined}
-              rel={o.external ? "noreferrer" : undefined}
-              className="card group flex items-center justify-between p-4"
-            >
-              <span>
-                <span className="block text-sm font-medium text-primary transition-colors group-hover:text-accent">
-                  {o.title}
-                </span>
-                <span className="mt-0.5 block font-mono text-xs text-muted">
-                  {o.detail}
-                </span>
-              </span>
-              <ArrowUpRightIcon size={14} className="text-muted" />
-            </a>
-          ))}
-        </div>
-        <ContactForm />
-      </div>
-    </>
+    <ContactLayouts
+      options={OPTIONS}
+      available={PROFILE.available}
+    />
   );
 }

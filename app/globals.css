@@ -135,6 +135,235 @@
 }
 
 @layer components {
+  .repo-contributions {
+    display: grid;
+    gap: 14px;
+  }
+  .repo-contribution {
+    padding: 16px;
+    min-width: 0;
+  }
+  .repo-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .repo-name {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .repo-name:hover {
+    color: var(--accent);
+  }
+  .repo-count {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .repo-pulls {
+    padding-top: 4px;
+    list-style: none;
+  }
+  .repo-pull {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .repo-pull-title {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .repo-pull:hover .repo-pull-title {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .repo-pull-meta {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+  .repo-more > summary {
+    width: fit-content;
+    margin-top: 6px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .repo-more > summary::-webkit-details-marker {
+    display: none;
+  }
+  .repo-more > summary:hover {
+    color: var(--accent);
+  }
+  .repo-more > summary:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .repo-more-open,
+  .repo-more[open] .repo-more-closed {
+    display: none;
+  }
+  .repo-more[open] .repo-more-open {
+    display: inline;
+  }
+
+  .contact-heading h1 {
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+  }
+  .contact-heading > p {
+    max-width: 440px;
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .contact-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .contact-availability > span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #4ade80;
+  }
+  [data-theme="light"] .contact-availability > span {
+    background: #35754e;
+  }
+  .contact-content {
+    margin-top: 32px;
+  }
+  .contact-method {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 5px;
+  }
+  .contact-method-title {
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+  .contact-method-detail {
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .contact-method:hover .contact-method-title {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .contact-form {
+    min-width: 0;
+  }
+  .contact-form .section-title {
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 15px;
+  }
+  .contact-form label > span {
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 12px;
+  }
+  .contact-form .btn {
+    min-height: 40px;
+    padding: 9px 16px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .contact-form .btn:hover:not(:disabled) {
+    background: var(--card-hover);
+    opacity: 1;
+  }
+  .contact-form .btn:disabled {
+    cursor: wait;
+  }
+  /* Directory: email leads, secondary methods share a line, then the form. */
+  .contact-design .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-design .contact-method:first-child {
+    grid-column: 1 / -1;
+  }
+  .contact-design .contact-method:first-child .contact-method-detail {
+    color: var(--text-primary);
+    font-size: clamp(16px, 3vw, 22px);
+    letter-spacing: -0.02em;
+  }
+  .contact-design .contact-method:first-child .contact-method-title {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .contact-design .contact-form {
+    padding-top: 28px;
+  }
+  .contact-design .field {
+    background: transparent;
+    border-color: var(--badge-hover-border);
+  }
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    max-width: 100%;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+    transition: color 0.2s;
+  }
+  .availability:hover {
+    color: var(--text-primary);
+  }
+  .availability:hover .availability-copy {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .availability-signal {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #4ade80;
+  }
+  [data-theme="light"] .availability-signal {
+    background: #35754e;
+  }
   /* Dashed card with solid corner brackets — the signature element. */
   .card {
     position: relative;

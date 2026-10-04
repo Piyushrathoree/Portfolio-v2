@@ -1,27 +1,24 @@
 import Link from "next/link";
 import { Clock } from "./Clock";
-import { Presence } from "./Presence";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
   { href: "/components", label: "Components" },
   { href: "/projects", label: "Projects" },
+  { href: "/contact", label: "Reach out" },
 ];
 
 export function Header() {
   return (
-    <header className="mb-12 flex items-center justify-between text-sm text-muted">
+    <header className="mb-12 flex flex-wrap items-center justify-between gap-x-5 gap-y-4 text-sm text-muted">
       <div className="flex items-center gap-4">
         <Link
           href="/"
-          className="quiet-link font-mono text-xs"
+          className="quiet-link text-sm"
           aria-label="Home"
         >
-          ~/piyush
+          Piyush
         </Link>
-        <span className="hidden sm:inline-flex">
-          <Presence />
-        </span>
       </div>
       <div className="flex items-center gap-4">
         <nav
@@ -29,7 +26,11 @@ export function Header() {
           className="flex items-center gap-3 font-mono text-xs"
         >
           {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="quiet-link">
+            <Link
+              key={item.href}
+              href={item.href}
+              className={item.href === "/contact" ? "link hover:underline underline-offset-4" : "quiet-link"}
+            >
               {item.label}
             </Link>
           ))}

@@ -27,7 +27,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <h3 className="text-[15px] font-medium text-primary">
             <Link
               href={`/projects/${project.slug}`}
-              className="transition-colors hover:text-accent"
+              className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-accent focus-visible:after:outline focus-visible:after:outline-accent focus-visible:after:-outline-offset-2"
             >
               {project.title}
             </Link>
@@ -38,51 +38,45 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </p>
 
-        <Expandable
-          trailing={
-            <div className="flex items-center gap-3 font-mono text-xs">
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noreferrer"
-                className="quiet-link flex items-center gap-1"
-              >
-                <GithubIcon size={12} /> Repo
-              </a>
-              {project.siteLink && (
+        <div className="relative z-10">
+          <Expandable
+            trailing={
+              <div className="flex items-center gap-3 font-mono text-xs">
                 <a
-                  href={project.siteLink}
+                  href={project.githubLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="link flex items-center gap-1"
+                  className="quiet-link flex items-center gap-1"
                 >
-                  Visit <ArrowUpRightIcon size={12} />
+                  <GithubIcon size={12} /> Repo
                 </a>
-              )}
-            </div>
-          }
-        >
-          <div className="mt-3 space-y-2 border-t pt-3">
-            {project.bullets.map((b) => (
-              <p key={b} className="text-[13px] leading-relaxed text-dim">
-                {b}
-              </p>
-            ))}
-            <div className="flex flex-wrap gap-1.5 pt-2">
-              {project.tech.map((t) => (
-                <TechChip key={t} name={t} />
+                {project.siteLink && (
+                  <a
+                    href={project.siteLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link flex items-center gap-1"
+                  >
+                    Visit <ArrowUpRightIcon size={12} />
+                  </a>
+                )}
+              </div>
+            }
+          >
+            <div className="mt-3 space-y-2 border-t pt-3">
+              {project.bullets.map((b) => (
+                <p key={b} className="text-[13px] leading-relaxed text-dim">
+                  {b}
+                </p>
               ))}
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {project.tech.map((t) => (
+                  <TechChip key={t} name={t} />
+                ))}
+              </div>
             </div>
-            <div className="pt-2">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="link font-mono text-xs"
-              >
-                Read the write-up →
-              </Link>
-            </div>
-          </div>
-        </Expandable>
+          </Expandable>
+        </div>
       </div>
     </div>
   );
