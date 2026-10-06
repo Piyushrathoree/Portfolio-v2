@@ -6,7 +6,7 @@ export const PROFILE = {
   email: "piyushrathore.works@gmail.com",
   resumeUrl:
     "https://drive.google.com/file/d/1EQPmj8DqX3Ahca1WkWp5aQDFJFp53aTc/view?usp=sharing",
-  calUrl: "https://cal.com/piyush-nkthix/15min",
+  calUrl: "https://cal.com/piyush-58dqrr/15min",
   github: "Piyushrathoree",
   discordId: "1187126125722353768",
   available: true,
