@@ -21,4 +21,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "Any text spelled out as a contribution-style heatmap with a 5×7 pixel font. Same colour ramps as the graph; powers the 404 page.",
     tags: ["React", "Motion", "Tailwind"],
   },
+  {
+    slug: "profile-cards",
+    name: "Social profile cards",
+    description:
+      "Hover any social link for a photo-banner profile preview — dual-ring border, staged spring entrance, tap-to-open on touch. GitHub stats refresh live.",
+    tags: ["React", "Motion", "Tailwind"],
+  },
 ];

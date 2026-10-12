@@ -7,11 +7,12 @@ import {
   MotionConfig,
   type Variants,
 } from "motion/react";
-import { ArrowUpRight, Github, Linkedin, MapPin } from "lucide-react";
+import { Github, Linkedin, MapPin } from "lucide-react";
 import { SiX } from "@icons-pack/react-simple-icons";
 import { useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { SocialProfile } from "@/data/socials";
 import {
+  ArrowUpRightIcon,
   GithubIcon,
   LinkedinIcon,
   XIcon,
@@ -99,13 +100,13 @@ const rise: Variants = {
 export function ProfileCard({ profile: p }: { profile: SocialProfile }) {
   return (
     <div
-      className="rounded-2xl p-px"
+      className="rounded p-px"
       style={{
         background: `linear-gradient(165deg, ${p.accent}d9 0%, ${p.accent}40 32%, var(--tip-border) 60%, ${p.accent}59 100%)`,
       }}
     >
       <div
-        className="overflow-hidden rounded-[15px]"
+        className="overflow-hidden rounded-[3px]"
         style={{
           background: "var(--tip-bg)",
           boxShadow:
@@ -235,17 +236,23 @@ export function ProfileCard({ profile: p }: { profile: SocialProfile }) {
             href={p.href}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.015 }}
             whileTap={{ scale: 0.98 }}
-            className="mt-2.5 flex items-center justify-center gap-1.5 rounded-lg px-3 py-[6px] text-[12px] font-semibold"
+            className="mt-2.5 flex w-full items-center justify-center gap-2 rounded border px-3 py-1.5 font-mono text-[11.5px] text-primary transition-colors"
             style={{
-              background: `linear-gradient(135deg, ${p.accent}, ${p.accent}b3)`,
-              color: p.accentInk,
-              boxShadow: `0 8px 22px -10px ${p.accent}, inset 0 1px 0 0 rgba(255,255,255,0.25)`,
+              background: "var(--badge-bg)",
+              borderColor: "var(--badge-hover-border)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = p.accent;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor =
+                "var(--badge-hover-border)";
             }}
           >
+            <span className="shrink-0">{PLATFORM_GLYPH[p.id]}</span>
             {p.cta}
-            <ArrowUpRight size={14} strokeWidth={2.5} />
+            <ArrowUpRightIcon size={12} />
           </motion.a>
         </motion.div>
       </div>
@@ -356,7 +363,7 @@ export function SocialPreview({
               key="card"
               role="dialog"
               aria-label={`${profile.label} profile preview`}
-              className={`absolute top-full z-30 mt-2 w-[260px] max-w-[calc(100vw-3rem)] rounded-2xl ${
+              className={`absolute top-full z-30 mt-2 w-[260px] max-w-[calc(100vw-3rem)] rounded ${
                 side === "right" ? "right-0" : "left-0"
               }`}
               style={{
