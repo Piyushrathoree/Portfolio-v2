@@ -17,8 +17,12 @@ export type SocialProfile = {
   avatar: string;
   /** Optional banner image (public path or URL). Falls back to a tinted gradient. */
   banner?: string;
-  /** Platform tint for the banner + avatar ring. */
+  /** Platform tint for the banner glow, avatar ring, and CTA. */
   accent: string;
+  /** Text color used on top of the accent (for the CTA button). */
+  accentInk: string;
+  /** CTA button label, e.g. "Follow on GitHub". */
+  cta: string;
   stats?: { value: string; label: string }[];
 };
 
@@ -36,7 +40,10 @@ export const SOCIAL_PROFILES: SocialProfile[] = [
     bio: "Engineer. Full-stack products, open source, AI tooling.",
     location: "Bhopal, India",
     avatar: GITHUB_AVATAR,
-    accent: "#26a641",
+    banner: "/social/github.jpg",
+    accent: "#0e4429",
+    accentInk: "#ffffff",
+    cta: "Follow on GitHub",
     stats: [
       { value: "84", label: "followers" },
       { value: "69", label: "repos" },
@@ -51,7 +58,10 @@ export const SOCIAL_PROFILES: SocialProfile[] = [
     bio: "Applied AI Engineer — trying to go beyond sky.",
     location: "Bhopal, Madhya Pradesh",
     avatar: X_AVATAR,
+    banner: "/social/x.jpg",
     accent: "#e8a87c",
+    accentInk: "#201510",
+    cta: "Follow on X",
     stats: [
       { value: "1.2K", label: "followers" },
       { value: "979", label: "following" },
@@ -66,7 +76,10 @@ export const SOCIAL_PROFILES: SocialProfile[] = [
     bio: PROFILE.role,
     location: PROFILE.location,
     avatar: X_AVATAR,
+    banner: "/social/linkedin.jpg",
     accent: "#0a66c2",
+    accentInk: "#ffffff",
+    cta: "Connect on LinkedIn",
     // Add connections/followers here when you want them shown.
   },
 ];

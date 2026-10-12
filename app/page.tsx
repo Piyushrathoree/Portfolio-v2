@@ -1,26 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import {
-  CalendarIcon,
-  FileTextIcon,
-  GithubIcon,
-  LinkedinIcon,
-  MailIcon,
-  XIcon,
-} from "@/components/icons/animated";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { Availability } from "@/components/Availability";
+import { ConnectBadges } from "@/components/ConnectBadges";
 import { GithubCalendar } from "@/components/GithubCalendar";
 import { PRList } from "@/components/PRList";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
+import { SocialLinks } from "@/components/SocialLinks";
 import { TechBadge } from "@/components/TechIcon";
 import { EXPERIENCE } from "@/data/experience";
 import { PROFILE } from "@/data/profile";
 import { FEATURED_PROJECTS } from "@/data/projects";
 import { SKILLS } from "@/data/skills";
+import { getSocialProfiles } from "@/lib/github";
 import { getAllBlogs } from "@/util/mdx_clean";
 
 function formatDate(date: string) {
@@ -48,41 +43,9 @@ function InlineRef({
   );
 }
 
-const CONNECT = [
-  {
-    label: "GitHub",
-    href: "https://github.com/Piyushrathoree",
-    icon: <GithubIcon size={13} />,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/piyushrathore--",
-    icon: <LinkedinIcon size={13} />,
-  },
-  {
-    label: "Twitter",
-    href: "https://x.com/__Piyushrathore",
-    icon: <XIcon size={12} />,
-  },
-  {
-    label: "Email",
-    href: `mailto:${PROFILE.email}`,
-    icon: <MailIcon size={13} />,
-  },
-  {
-    label: "Book a call",
-    href: PROFILE.calUrl,
-    icon: <CalendarIcon size={13} />,
-  },
-  {
-    label: "Résumé",
-    href: PROFILE.resumeUrl,
-    icon: <FileTextIcon size={13} />,
-  },
-];
-
 export default async function Home() {
   const posts = (await getAllBlogs()).slice(0, 3);
+  const profiles = await getSocialProfiles();
   const studio = EXPERIENCE[0];
   const [assetsnip, raah] = studio.products;
 
@@ -92,20 +55,7 @@ export default async function Home() {
       <div>
         <div className="mb-1 flex items-center gap-3">
           <h1 className="text-xl font-semibold text-primary">{PROFILE.name}</h1>
-          <div className="flex items-center gap-2.5">
-            {CONNECT.slice(0, 3).map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="quiet-link"
-              >
-                {s.icon}
-                <span className="sr-only">{s.label}</span>
-              </a>
-            ))}
-          </div>
+          <SocialLinks profiles={profiles} />
         </div>
         <p className="mb-2 text-[15px] text-muted">{PROFILE.role}</p>
         <div className="mb-6">
@@ -242,20 +192,7 @@ export default async function Home() {
       )}
 
       <Section id="connect" title="Connect with me">
-        <div className="flex flex-wrap gap-1.5">
-          {CONNECT.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target={s.href.startsWith("http") ? "_blank" : undefined}
-              rel={s.href.startsWith("http") ? "noreferrer" : undefined}
-              className="badge"
-            >
-              <span className="text-secondary">{s.icon}</span>
-              {s.label}
-            </a>
-          ))}
-        </div>
+        <ConnectBadges profiles={profiles} />
       </Section>
 
       <Section id="skills" title="Skills & tools">

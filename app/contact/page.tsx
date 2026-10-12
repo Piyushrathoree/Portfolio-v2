@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactLayouts } from "@/components/ContactLayouts";
 import { PROFILE, TWITTER_HANDLE } from "@/data/profile";
+import { getSocialProfiles } from "@/lib/github";
 
 const description =
   "Get in touch with Piyush Rathore for roles, collaborations, or questions.";
@@ -16,28 +17,32 @@ export const metadata: Metadata = {
   },
 };
 
-const OPTIONS = [
-  {
-    title: "Email",
-    detail: PROFILE.email,
-    href: `mailto:${PROFILE.email}`,
-    external: false,
-  },
-  {
-    title: "Book a call",
-    detail: "15 minutes, pick a slot",
-    href: PROFILE.calUrl,
-    external: true,
-  },
-  {
-    title: "DM on X",
-    detail: TWITTER_HANDLE,
-    href: "https://x.com/__Piyushrathore",
-    external: true,
-  },
-];
+export default async function ContactPage() {
+  const profiles = await getSocialProfiles();
+  const x = profiles.find((p) => p.id === "x");
 
-export default function ContactPage() {
+  const OPTIONS = [
+    {
+      title: "Email",
+      detail: PROFILE.email,
+      href: `mailto:${PROFILE.email}`,
+      external: false,
+    },
+    {
+      title: "Book a call",
+      detail: "15 minutes, pick a slot",
+      href: PROFILE.calUrl,
+      external: true,
+    },
+    {
+      title: "DM on X",
+      detail: TWITTER_HANDLE,
+      href: "https://x.com/__Piyushrathore",
+      external: true,
+      profile: x,
+    },
+  ];
+
   return (
     <ContactLayouts
       options={OPTIONS}
