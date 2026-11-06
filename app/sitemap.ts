@@ -5,25 +5,21 @@ import { getAllBlogs } from "@/util/mdx_clean";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await getAllBlogs();
-  const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE_URL}/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/open-source`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/components`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/components/contribution-graph`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/components/heatmap-text`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/components/profile-cards`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
+    { url: SITE_URL },
+    { url: `${SITE_URL}/projects` },
+    { url: `${SITE_URL}/blog` },
+    { url: `${SITE_URL}/open-source` },
+    { url: `${SITE_URL}/components` },
+    { url: `${SITE_URL}/components/contribution-graph` },
+    { url: `${SITE_URL}/components/heatmap-text` },
+    { url: `${SITE_URL}/components/profile-cards` },
+    { url: `${SITE_URL}/contact` },
   ];
 
   const projectRoutes: MetadataRoute.Sitemap = PROJECTS.map((p) => ({
     url: `${SITE_URL}/projects/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
     images: [`${SITE_URL}${p.image}`],
   }));
 
@@ -31,9 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((post) => Boolean(post.slug))
     .map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,
-      lastModified: post.date ? new Date(post.date) : now,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      ...(post.updated ? { lastModified: new Date(post.updated) } : {}),
     }));
 
   return [...staticRoutes, ...projectRoutes, ...blogRoutes];

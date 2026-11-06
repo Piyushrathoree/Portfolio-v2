@@ -36,21 +36,13 @@ export function JsonLd() {
     author: { "@id": `${absoluteUrl()}#person` },
   };
 
-  const profilePage = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": `${absoluteUrl()}#profile`,
-    url: absoluteUrl(),
-    name: `${SITE_NAME} — Software Engineer`,
-    isPartOf: { "@id": `${absoluteUrl()}#website` },
-    mainEntity: { "@id": `${absoluteUrl()}#person` },
-  };
+
 
   return (
     <JsonLdScript
       data={{
         "@context": "https://schema.org",
-        "@graph": [person, website, profilePage],
+        "@graph": [person, website],
       }}
     />
   );

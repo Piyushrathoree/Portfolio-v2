@@ -6,8 +6,6 @@ summary: 'A comprehensive roadmap for developers and architects looking to trans
 tags: ['microservices', 'architecture', 'devops', 'distributed systems']
 ---
 
-# The Definitive Guide to Getting Started with Microservices
-
 In the beginning, there was the **Monolith**.
 
 It was good. It was simple to deploy. It was easy to test locally. A single codebase, a single database, and a single deployment artifact.
@@ -33,7 +31,7 @@ At its core, microservices is an architectural style that structures an applicat
 
 To better understand the structural shift, let's look at a diagram comparing the two architectures.
 
-![Monolithic vs Microservices architecture diagram](/images/blog/monolith-vs-microservices.png)
+A monolith combines business functions in one deployable application. A microservices architecture separates them into independently deployable services that communicate over a network.
 
 In the monolith, everything is tightly bound within one process. In microservices, distinct business functions run as separate processes communicating over a network.
 
@@ -76,9 +74,7 @@ In a monolith, if something is slow, you check the server CPU. In microservices,
 
 To build a functional microservices architecture, you need several standard components to handle the inherent complexity of distributed systems.
 
-Let's visualize how these components fit together in a typical microservices landscape.
-
-![Microservices architecture components diagram](/images/blog/microservices-components.png)
+A typical setup routes client requests through an API gateway to independently deployed services, each owning its data and communicating through APIs or events.
 
 ### 1. The API Gateway
 Your clients (web, mobile) should not know that you have 50 microservices behind the scenes. They should talk to one entry point.
@@ -113,7 +109,7 @@ How do you move a massive monolith to microservices? **Don't rewrite it from scr
 
 Instead, use the **Strangler Fig Pattern**. Like the vine that grows around a tree and eventually replaces it, you gradually build microservices around the edges of your monolith until the monolith is gone.
 
-![Strangler Fig pattern migration diagram](/images/blog/strangler-fig-pattern.png)
+An API gateway gradually routes selected requests from the monolith to new services as each capability is migrated.
 
 **Step 1: Identify Boundaries**
 Find a seam in your monolith that represents a distinct business capability. Good candidates for the first service are usually edge functionalities that are inextricably linked to the core, such as "Notifications," "Reporting," or "User Profile Management."

@@ -44,6 +44,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         url: `/blog/${slug}`,
         type: "article",
         publishedTime: data.date,
+        modifiedTime: data.updated,
         authors: [SITE_NAME],
       },
       twitter: { card: "summary_large_image", title, description },
@@ -87,11 +88,12 @@ export default async function BlogPost({ params }: Params) {
           headline: title,
           description,
           url: postUrl,
-          image: absoluteUrl("/opengraph-image"),
+          image: absoluteUrl(`/blog/${slug}/opengraph-image`),
           inLanguage: "en",
           ...(data.date
-            ? { datePublished: data.date, dateModified: data.date }
+            ? { datePublished: data.date }
             : {}),
+          ...(data.updated ? { dateModified: data.updated } : {}),
           ...(data.tags?.length ? { keywords: data.tags } : {}),
           author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
           publisher: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },

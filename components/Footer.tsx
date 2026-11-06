@@ -2,6 +2,9 @@ import Link from "next/link";
 import { PROFILE } from "@/data/profile";
 
 const NAV = [
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/open-source", label: "Open source" },
   { href: "/components", label: "Components" },
   { href: "/contact", label: "Contact" },
 ];
@@ -12,7 +15,7 @@ export function Footer() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <nav
           aria-label="Footer"
-          className="flex items-center gap-3 font-mono text-xs"
+          className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs"
         >
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="quiet-link">

@@ -42,7 +42,6 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.png", apple: "/favicon.png" },
   manifest: "/manifest.webmanifest",
   alternates: {
-    canonical: "/",
     types: { "application/rss+xml": "/feed.xml" },
   },
   openGraph: {
@@ -55,8 +54,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
     creator: TWITTER_HANDLE,
   },
   robots: {

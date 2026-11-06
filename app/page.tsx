@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -17,6 +18,8 @@ import { FEATURED_PROJECTS } from "@/data/projects";
 import { SKILLS } from "@/data/skills";
 import { getSocialProfiles } from "@/lib/github";
 import { getAllBlogs } from "@/util/mdx_clean";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -151,7 +154,7 @@ export default async function Home() {
         title="Open source"
         footer={
           <Link href="/open-source" className="badge badge-sm">
-            All merged PRs →
+            Open source contributions →
           </Link>
         }
       >
@@ -166,7 +169,7 @@ export default async function Home() {
           title="Writing"
           footer={
             <Link href="/blog" className="badge badge-sm">
-              All posts →
+              Blog →
             </Link>
           }
         >

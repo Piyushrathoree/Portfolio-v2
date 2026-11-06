@@ -25,7 +25,7 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <h1 className="mb-1 text-xl font-semibold text-primary">Writing</h1>
+      <h1 className="mb-1 text-xl font-semibold text-primary">Blog</h1>
       <p className="mb-8 text-[15px] text-muted">
         Notes on distributed systems, backend architecture, and things I learn while building.
       </p>

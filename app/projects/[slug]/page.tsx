@@ -34,6 +34,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         { url: project.image, width: 1600, height: 900, alt: project.title },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | ${SITE_NAME}`,
+      description: project.description,
+      images: [project.image],
+    },
   };
 }
 
@@ -55,7 +61,6 @@ export default async function ProjectPage({ params }: Params) {
           url: project.siteLink ?? projectUrl,
           image: absoluteUrl(project.image),
           codeRepository: project.githubLink,
-          programmingLanguage: project.tech,
           author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
           isPartOf: {
             "@type": "CollectionPage",

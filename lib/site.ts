@@ -4,7 +4,7 @@ export const SITE_URL = "https://www.piyush.social";
 export const SITE_NAME = "Piyush Rathore";
 
 export const SITE_DESCRIPTION =
-  "Software engineer and full-stack developer. Work, projects, open-source contributions, and writing on backend systems and the web.";
+  "Piyush Rathore is a software engineer building full-stack products and backend systems with TypeScript, Node.js, Next.js, and PostgreSQL.";
 
 export const SITE_KEYWORDS = [
   "Piyush Rathore",

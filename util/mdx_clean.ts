@@ -8,6 +8,7 @@ export type BlogMeta = {
   title?: string;
   slug?: string;
   date?: string;
+  updated?: string;
   description?: string;
   summary?: string;
   author?: string;
@@ -22,12 +23,17 @@ const normalizeSlug = (slug: string) => slug.replace(/\.mdx?$/i, "");
 
 /** gray-matter parses unquoted YAML dates into Date objects; keep strings. */
 function normalizeMeta(raw: Record<string, unknown>, slug: string): BlogMeta {
-  const { date, ...rest } = raw;
+  const { date, updated, ...rest } = raw;
   const meta: BlogMeta = { ...(rest as BlogMeta), slug: (rest.slug as string | undefined) ?? slug };
   if (date instanceof Date) {
     meta.date = date.toISOString().split("T")[0];
   } else if (typeof date === "string") {
     meta.date = date;
+  }
+  if (updated instanceof Date) {
+    meta.updated = updated.toISOString().split("T")[0];
+  } else if (typeof updated === "string") {
+    meta.updated = updated;
   }
   return meta;
 }

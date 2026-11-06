@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const NAV = [
   { href: "/components", label: "Components" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Reach out" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
