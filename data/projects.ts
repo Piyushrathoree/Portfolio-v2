@@ -15,10 +15,43 @@ export type Project = {
   year: string;
   /** Featured projects appear on the homepage. */
   featured?: boolean;
+  /** Optional label shown on the project card. */
+  tag?: string;
   role: string;
 };
 
 export const PROJECTS: Project[] = [
+  {
+    slug: "verdict-reviews",
+    title: "Verdict Reviews",
+    status: "Live",
+    description:
+      "A superfast code reviewer agent for GitHub that scores pull requests and explains which changed files need attention.",
+    overview: [
+      "Verdict Reviews is a GitHub App that reviews changed files in pull requests, scores risk, readiness, and quality, then reports results as a GitHub Check with clear explanations.",
+      "The TypeScript monorepo pairs a Cloudflare Worker for webhook and review processing with a Next.js dashboard for connected repositories, review history, and billing.",
+    ],
+    bullets: [
+      "Signature-verified GitHub webhooks queue pull request reviews for fast processing.",
+      "Risk, readiness, and quality scores help teams find the changed files that deserve attention.",
+      "A GitHub Check and authenticated dashboard keep review results and repository settings in one place.",
+    ],
+    image: "/projects/verdict-showcase.png",
+    siteLink: "https://verdict.reviews",
+    githubLink: "https://github.com/Piyushrathoree/JevReview",
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "Cloudflare Workers",
+      "Hono",
+      "PostgreSQL",
+      "Drizzle ORM",
+    ],
+    year: "2026",
+    featured: true,
+    tag: "Superfast code reviewer agent",
+    role: "Product engineering",
+  },
   {
     slug: "orin",
     title: "Orin",

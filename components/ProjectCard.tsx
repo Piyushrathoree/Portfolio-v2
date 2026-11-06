@@ -37,6 +37,11 @@ export function ProjectCard({ project }: { project: Project }) {
         <p className="mt-1.5 text-sm leading-relaxed text-secondary">
           {project.description}
         </p>
+        {project.tag && (
+          <span className="mt-2 inline-flex rounded border px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted">
+            {project.tag}
+          </span>
+        )}
 
         <div className="relative z-10">
           <Expandable
