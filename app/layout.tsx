@@ -76,12 +76,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src="https://t.raah.dev/script.js"
-          data-pid="proj_eegfr1i1wlg5s2rg"
-          data-domain="piyush.social"
-          strategy="afterInteractive"
-        />
+
+
+<Script
+  src="https://t.raah.dev/script.js"
+  data-pid="proj_dk4kw7brvysgqq50"
+  data-domain="piyush.social"
+  strategy="afterInteractive"
+/>
         <JsonLd />
       </head>
       <body className={`${hanken.variable} ${geistMono.variable}`}>
