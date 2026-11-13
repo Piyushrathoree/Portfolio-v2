@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { Clock } from "./Clock";
 import { ThemeToggle } from "./ThemeToggle";
+import { VisitCount } from "./VisitCount";
 
 const NAV = [
-  { href: "/components", label: "Components" },
-  { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -21,6 +20,7 @@ export function Header() {
         </Link>
       </div>
       <div className="flex items-center gap-4">
+        <VisitCount />
         <nav
           aria-label="Primary"
           className="flex items-center gap-3 font-mono text-xs"

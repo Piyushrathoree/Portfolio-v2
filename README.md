@@ -52,7 +52,7 @@ UPSTASH_REDIS_REST_URL=    # Upstash Redis REST URL for the visit counter
 UPSTASH_REDIS_REST_TOKEN=  # Upstash Redis REST token
 ```
 
-Set the Upstash variables in the deployment environment to enable the footer visit counter. It starts at 5,000 and counts one visit per browser tab session. The counter stays hidden if Redis is unavailable.
+Set the Upstash variables in the deployment environment to enable the header visit counter. It starts at 7,234 and counts one visit per browser tab session. The counter stays hidden if Redis is unavailable.
 
 ## Scripts
 

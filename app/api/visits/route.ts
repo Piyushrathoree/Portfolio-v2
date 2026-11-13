@@ -9,12 +9,12 @@ export async function POST() {
     const response = await fetch(url, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify(["INCR", "portfolio:visits"]),
+      body: JSON.stringify(["INCR", "portfolio:visits:7234"]),
       cache: "no-store",
     });
     const data = await response.json();
     if (!response.ok || !Number.isSafeInteger(data.result) || data.result < 1) throw new Error("Redis error");
-    return NextResponse.json({ views: 5000 + data.result }, { headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json({ views: 7233 + data.result }, { headers: { "Cache-Control": "no-store" } });
   } catch {
     return NextResponse.json({ error: "Counter unavailable" }, { status: 503 });
   }

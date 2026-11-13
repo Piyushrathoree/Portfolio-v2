@@ -10,11 +10,11 @@ export function VisitCount() {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    // The footer persists across client-side navigation; count once per tab session.
-    const saved = sessionStorage.getItem("portfolio-visit-count");
+    // The header persists across client-side navigation; count once per tab session.
+    const saved = sessionStorage.getItem("portfolio-visit-count-7234");
     if (saved) {
       const count = Number(saved);
-      if (Number.isSafeInteger(count) && count >= 5000) setViews(count);
+      if (Number.isSafeInteger(count) && count >= 7234) setViews(count);
       return;
     }
     visitRequest ??= fetch("/api/visits", { method: "POST" })
@@ -27,7 +27,7 @@ export function VisitCount() {
         return data.views as number;
       });
     visitRequest.then((count) => {
-      sessionStorage.setItem("portfolio-visit-count", String(count));
+      sessionStorage.setItem("portfolio-visit-count-7234", String(count));
       setViews(count);
     }).catch(() => { visitRequest = undefined; });
   }, []);
@@ -35,10 +35,10 @@ export function VisitCount() {
   if (views === null) return null;
   return (
     <button type="button" onClick={() => setExpanded(!expanded)} aria-expanded={expanded}
-      className="group inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-accent">
+      className="group relative inline-flex items-center gap-1.5 whitespace-nowrap font-mono text-xs text-muted transition-colors hover:text-accent">
       <Eye size={14} aria-hidden="true" className="transition-transform group-hover:scale-110 motion-reduce:transform-none" />
       <span>{views.toLocaleString("en-US")} views</span>
-      {expanded && <span className="text-dim">· thanks for stopping by!</span>}
+      {expanded && <span className="absolute right-0 top-full z-10 mt-2 rounded border bg-background px-2 py-1 text-dim">thanks for stopping by!</span>}
     </button>
   );
 }
