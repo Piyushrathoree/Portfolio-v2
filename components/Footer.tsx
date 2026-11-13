@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PROFILE } from "@/data/profile";
+import { VisitCount } from "@/components/VisitCount";
 
 const NAV = [
   { href: "/projects", label: "Projects" },
@@ -31,7 +32,10 @@ export function Footer() {
             Source
           </a>
         </nav>
-        <span className="font-mono text-xs">{PROFILE.timeZone}</span>
+        <div className="flex flex-wrap items-center gap-3">
+          <VisitCount />
+          <span className="font-mono text-xs">{PROFILE.timeZone}</span>
+        </div>
       </div>
     </footer>
   );

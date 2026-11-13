@@ -48,7 +48,11 @@ Environment variables (`.env.local`):
 EMAIL_USER=you@gmail.com   # Gmail account that receives contact-form mail
 EMAIL_PASS=app-password    # Gmail app password
 GITHUB_TOKEN=ghp_...       # optional: contribution graph via GitHub GraphQL (no scopes needed); falls back to a public proxy
+UPSTASH_REDIS_REST_URL=    # Upstash Redis REST URL for the visit counter
+UPSTASH_REDIS_REST_TOKEN=  # Upstash Redis REST token
 ```
+
+Set the Upstash variables in the deployment environment to enable the footer visit counter. It starts at 5,000 and counts one visit per browser tab session. The counter stays hidden if Redis is unavailable.
 
 ## Scripts
 
