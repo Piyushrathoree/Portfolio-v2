@@ -29,7 +29,6 @@ ${SITE_NAME} is a personal portfolio for a software engineer and full-stack deve
 - [Homepage](${absoluteUrl()}): Profile, experience, skills, featured projects, and contact links.
 - [Projects](${absoluteUrl("/projects")}): Full project index with technical details and source repositories.
 - [Open source](${absoluteUrl("/open-source")}): Merged pull requests and repository contributions.
-- [Components](${absoluteUrl("/components")}): Reusable UI components with live playgrounds (GitHub contribution graph).
 - [Writing](${absoluteUrl("/blog")}): Articles about backend systems, microservices, and web development.
 - [Contact](${absoluteUrl("/contact")}): Email, calendar, and collaboration details.
 

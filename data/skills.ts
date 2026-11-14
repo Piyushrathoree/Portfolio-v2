@@ -4,7 +4,7 @@ export const SKILLS: SkillGroup[] = [
   { label: "Languages", items: ["TypeScript", "JavaScript", "Python", "Go"] },
   {
     label: "Frameworks",
-    items: ["Next.js", "React", "Node.js", "Express", "TailwindCSS"],
+    items: ["Next.js", "React", "Node.js", "Express", "FastAPI", "TailwindCSS"],
   },
   {
     label: "Data & Backend",

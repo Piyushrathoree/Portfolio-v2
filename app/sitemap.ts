@@ -11,10 +11,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/projects` },
     { url: `${SITE_URL}/blog` },
     { url: `${SITE_URL}/open-source` },
-    { url: `${SITE_URL}/components` },
-    { url: `${SITE_URL}/components/contribution-graph` },
-    { url: `${SITE_URL}/components/heatmap-text` },
-    { url: `${SITE_URL}/components/profile-cards` },
     { url: `${SITE_URL}/contact` },
   ];
 

@@ -26,8 +26,8 @@ export const EXPERIENCE: Experience[] = [
     company: "Studio1HQ",
     url: "https://studio1hq.com",
     logo: "/logos/studio1hq.png",
-    role: "Software Engineer Intern → Software Engineer",
-    period: "Feb 2026 – Jul 2026",
+    role: "Software Engineer Intern",
+    period: "Feb 2026 – Aug 2026",
     summary:
       "Shipped two products end to end: a website asset-extraction SaaS and a web analytics platform.",
     products: [

@@ -95,13 +95,14 @@ export function ActivityGraph({
               <ContributionBars
                 days={days}
                 total={total}
+                rounded
                 animateOn={animateOn}
               />
             ) : (
               <ContributionGraph
                 days={days}
                 total={total}
-                variant="dots"
+                variant="rounded"
                 animateOn={animateOn}
               />
             )}

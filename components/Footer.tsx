@@ -3,9 +3,7 @@ import { PROFILE } from "@/data/profile";
 
 const NAV = [
   { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
   { href: "/open-source", label: "Open source" },
-  { href: "/components", label: "Components" },
   { href: "/contact", label: "Contact" },
 ];
 

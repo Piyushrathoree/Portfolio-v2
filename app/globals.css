@@ -451,7 +451,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 2px 8px;
+    padding: 1px 8px;
     vertical-align: middle;
     background: var(--badge-bg);
     border: 1px solid var(--border);
