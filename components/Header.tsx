@@ -9,7 +9,7 @@ const NAV = [
 
 export function Header() {
   return (
-    <header className="mb-12 flex flex-wrap items-center justify-between gap-x-5 gap-y-4 text-sm text-muted">
+    <header className="mb-8 flex flex-wrap items-center justify-between gap-x-5 gap-y-4 text-sm text-muted">
       <div className="flex items-center gap-4">
         <Link
           href="/"
