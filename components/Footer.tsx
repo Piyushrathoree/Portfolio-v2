@@ -13,10 +13,10 @@ export function Footer() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <nav
           aria-label="Footer"
-          className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs"
+          className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 font-mono text-xs sm:justify-start"
         >
           {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="quiet-link">
+            <Link key={item.href} href={item.href} className="text-dim transition-colors hover:text-accent">
               {item.label}
             </Link>
           ))}
@@ -24,7 +24,7 @@ export function Footer() {
             href="https://github.com/Piyushrathoree/Portfolio-v2"
             target="_blank"
             rel="noreferrer"
-            className="quiet-link"
+            className="text-dim transition-colors hover:text-accent"
           >
             Source
           </a>
