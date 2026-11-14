@@ -23,7 +23,9 @@ export function Reveal({
         className={className}
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
+        // Trigger as soon as the top edge enters (not a % of height), so tall
+        // sections like Projects don't sit blank while their first card is on screen.
+        viewport={{ once: true, amount: "some", margin: "0px 0px -24px 0px" }}
         transition={{ type: "spring", visualDuration: 0.5, bounce: 0, delay }}
       >
         {children}

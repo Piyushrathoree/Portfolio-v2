@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
@@ -11,13 +11,15 @@ import { JsonLd } from "@/components/JsonLd";
 import { TWITTER_HANDLE } from "@/data/profile";
 import {
   SITE_DESCRIPTION,
+  SITE_HANDLE,
   SITE_KEYWORDS,
   SITE_NAME,
+  SITE_ROLE,
   SITE_URL,
 } from "@/lib/site";
 
-const hanken = Hanken_Grotesk({
-  variable: "--font-hanken",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -25,13 +27,13 @@ const hanken = Hanken_Grotesk({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Software Engineer`,
+    default: `${SITE_NAME} (${SITE_HANDLE}) · Full-Stack Engineer, India`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     types: { "application/rss+xml": "/feed.xml" },
   },
   openGraph: {
-    title: SITE_NAME,
+    title: `${SITE_NAME} · ${SITE_ROLE}`,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -54,6 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_HANDLE,
     creator: TWITTER_HANDLE,
   },
   robots: {
@@ -74,7 +77,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
 
 
@@ -86,10 +93,10 @@ export default function RootLayout({
 />
         <JsonLd />
       </head>
-      <body className={`${hanken.variable} ${geistMono.variable}`}>
+      <body>
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >

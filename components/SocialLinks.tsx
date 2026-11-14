@@ -67,7 +67,7 @@ function Avatar({ profile: p }: { profile: SocialProfile }) {
       ) : (
         <span
           aria-hidden="true"
-          className="flex h-full w-full items-center justify-center text-[15px] font-semibold"
+          className="flex h-full w-full items-center justify-center text-[14px] font-semibold"
           style={{ color: p.accent }}
         >
           {p.name.charAt(0)}
@@ -184,7 +184,7 @@ export function ProfileCard({ profile: p }: { profile: SocialProfile }) {
 
           <motion.p
             variants={rise}
-            className="mt-1.5 truncate text-[13.5px] leading-tight font-semibold tracking-[-0.01em] text-primary"
+            className="mt-1.5 truncate text-[12.5px] leading-tight font-semibold tracking-[-0.01em] text-primary"
           >
             {p.name}
           </motion.p>
@@ -198,7 +198,7 @@ export function ProfileCard({ profile: p }: { profile: SocialProfile }) {
           {p.bio && (
             <motion.p
               variants={rise}
-              className="mt-2 line-clamp-2 text-[12px] leading-snug text-secondary"
+              className="mt-2 line-clamp-2 text-[11px] leading-snug text-secondary"
             >
               {p.bio}
             </motion.p>

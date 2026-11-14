@@ -11,6 +11,10 @@ export type BlogMeta = {
   updated?: string;
   description?: string;
   summary?: string;
+  /** Shorter title for search results (~60 chars); the page heading keeps `title`. */
+  seoTitle?: string;
+  /** Shorter description for search results (~155 chars). */
+  seoDescription?: string;
   author?: string;
   tags?: string[];
 };

@@ -3,7 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { PROJECTS } from "@/data/projects";
 
 const description =
-  "Projects by Piyush Rathore across web apps, backend systems, and real-time products.";
+  "Projects by Piyush Rathore, a full-stack software engineer in India: web apps, backend systems, AI tools, and real-time products.";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -16,7 +16,7 @@ export default function ProjectsPage() {
   return (
     <>
       <h1 className="mb-1 text-xl font-semibold text-primary">Projects</h1>
-      <p className="mb-8 text-[15px] text-muted">
+      <p className="mb-8 text-[14px] text-muted">
         Things I&apos;ve built, from production apps to backend experiments.
       </p>
       <div className="space-y-3">

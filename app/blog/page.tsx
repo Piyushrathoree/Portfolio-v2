@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAllBlogs } from "@/util/mdx_clean";
 
 const description =
-  "Writing on backend systems, microservices, and web development by Piyush Rathore.";
+  "Writing by Piyush Rathore, a full-stack software engineer in India, on backend systems, microservices, and web development.";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -26,7 +26,7 @@ export default async function BlogIndex() {
   return (
     <>
       <h1 className="mb-1 text-xl font-semibold text-primary">Blog</h1>
-      <p className="mb-8 text-[15px] text-muted">
+      <p className="mb-8 text-[14px] text-muted">
         Notes on distributed systems, backend architecture, and things I learn while building.
       </p>
 
@@ -35,11 +35,11 @@ export default async function BlogIndex() {
           <Link key={p.slug} href={`/blog/${p.slug}`} className="group block p-4">
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-6">
               <div className="min-w-0">
-                <h2 className="text-[15px] font-medium text-primary transition-colors group-hover:text-accent">
+                <h2 className="text-[14px] font-medium text-primary transition-colors group-hover:text-accent">
                   {p.title ?? p.slug}
                 </h2>
                 {(p.description ?? p.summary) && (
-                  <p className="mt-1 line-clamp-2 text-[13px] leading-relaxed text-dim">
+                  <p className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-dim">
                     {p.description ?? p.summary}
                   </p>
                 )}

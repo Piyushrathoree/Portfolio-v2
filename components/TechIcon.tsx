@@ -100,7 +100,7 @@ export function TechIcon({
 export function TechBadge({ name }: { name: string }) {
   return (
     <span className="badge">
-      <TechIcon name={name} className="text-[13px]" />
+      <TechIcon name={name} className="text-[12px]" />
       {name}
     </span>
   );
@@ -110,7 +110,7 @@ export function TechBadge({ name }: { name: string }) {
 export function TechChip({ name }: { name: string }) {
   return (
     <span className="chip">
-      <TechIcon name={name} className="text-[12px]" />
+      <TechIcon name={name} className="text-[11px]" />
       {name}
     </span>
   );

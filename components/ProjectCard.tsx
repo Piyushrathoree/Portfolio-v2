@@ -24,7 +24,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <div className="card overflow-hidden">
       <div className="p-4">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-[15px] font-medium text-primary">
+          <h3 className="text-[13px] font-medium text-primary">
             <Link
               href={`/projects/${project.slug}`}
               className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-accent focus-visible:after:outline focus-visible:after:outline-accent focus-visible:after:-outline-offset-2"
@@ -34,7 +34,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </h3>
           <Status status={project.status} />
         </div>
-        <p className="mt-1.5 text-sm leading-relaxed text-secondary">
+        <p className="mt-1.5 text-[12px] leading-relaxed text-secondary">
           {project.description}
         </p>
         {project.tag && (
@@ -70,7 +70,7 @@ export function ProjectCard({ project }: { project: Project }) {
           >
             <div className="mt-3 space-y-2 border-t pt-3">
               {project.bullets.map((b) => (
-                <p key={b} className="text-[13px] leading-relaxed text-dim">
+                <p key={b} className="text-[11.5px] leading-relaxed text-dim">
                   {b}
                 </p>
               ))}

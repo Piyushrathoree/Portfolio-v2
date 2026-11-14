@@ -7,7 +7,7 @@ import {
   ArrowUpRightIcon,
   GithubIcon,
 } from "@/components/icons/animated";
-import { JsonLdScript } from "@/components/JsonLd";
+import { JsonLdScript, PERSON_REF } from "@/components/JsonLd";
 import { getNextProject, getProject, PROJECTS } from "@/data/projects";
 import { TechChip } from "@/components/TechIcon";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: Params) {
           url: project.siteLink ?? projectUrl,
           image: absoluteUrl(project.image),
           codeRepository: project.githubLink,
-          author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
+          author: PERSON_REF,
           isPartOf: {
             "@type": "CollectionPage",
             name: "Projects",
@@ -112,13 +112,13 @@ export default async function ProjectPage({ params }: Params) {
       <h1 className="mt-2 text-xl font-semibold text-primary">
         {project.title}
       </h1>
-      <p className="mt-1 text-[15px] text-secondary">{project.description}</p>
+      <p className="mt-1 text-[14px] text-secondary">{project.description}</p>
 
       <div className="card mt-6 overflow-hidden p-1">
         <div className="relative aspect-video w-full overflow-hidden rounded-[3px] bg-badge">
           <Image
             src={project.image}
-            alt={`${project.title} preview`}
+            alt={`Screenshot of ${project.title}: ${project.description}`}
             fill
             sizes="(max-width: 768px) 100vw, 672px"
             priority
@@ -130,7 +130,7 @@ export default async function ProjectPage({ params }: Params) {
       <div className="mt-8 grid gap-8 md:grid-cols-[1fr_200px]">
         <div>
           <h2 className="section-title">Overview</h2>
-          <div className="space-y-4 text-[15px] leading-relaxed text-secondary">
+          <div className="space-y-4 text-[14px] leading-relaxed text-secondary">
             {project.overview.map((p) => (
               <p key={p.slice(0, 32)}>{p}</p>
             ))}
@@ -141,7 +141,7 @@ export default async function ProjectPage({ params }: Params) {
             {project.bullets.map((b) => (
               <li
                 key={b}
-                className="card p-3 text-[13px] leading-relaxed text-dim"
+                className="card p-3 text-[12px] leading-relaxed text-dim"
               >
                 {b}
               </li>

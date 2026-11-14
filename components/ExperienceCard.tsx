@@ -28,10 +28,10 @@ function ProductBlock({ product }: { product: Product }) {
           </a>
         )}
       </div>
-      <p className="mt-1.5 text-[13px] text-dim">{product.tagline}</p>
+      <p className="mt-1.5 text-[12px] text-dim">{product.tagline}</p>
       <ul className="mt-3 list-disc space-y-2 pl-4 marker:text-muted">
         {product.bullets.map((b) => (
-          <li key={b} className="text-[13px] leading-relaxed text-dim">
+          <li key={b} className="text-[12px] leading-relaxed text-dim">
             {b}
           </li>
         ))}
@@ -60,7 +60,7 @@ export function ExperienceCard({ item }: { item: Experience }) {
           )}
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-4">
-              <h3 className="text-[15px] font-medium text-primary">
+              <h3 className="text-[14px] font-medium text-primary">
                 {item.url ? (
                   <a
                     href={item.url}
@@ -79,14 +79,14 @@ export function ExperienceCard({ item }: { item: Experience }) {
                 {item.period}
               </span>
             </div>
-            <p className="mt-0.5 text-[13px] text-secondary">{item.role}</p>
+            <p className="mt-0.5 text-[12px] text-secondary">{item.role}</p>
             {item.tagline && (
               <p className="mt-0.5 text-xs text-muted">{item.tagline}</p>
             )}
           </div>
         </div>
 
-        <p className="mt-3 text-[13px] leading-relaxed text-dim">
+        <p className="mt-3 text-[12px] leading-relaxed text-dim">
           {item.summary}
         </p>
 

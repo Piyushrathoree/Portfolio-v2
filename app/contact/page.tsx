@@ -4,7 +4,7 @@ import { PROFILE, TWITTER_HANDLE } from "@/data/profile";
 import { getSocialProfiles } from "@/lib/github";
 
 const description =
-  "Get in touch with Piyush Rathore for roles, collaborations, or questions.";
+  "Contact Piyush Rathore, a full-stack software engineer in India, about full-time, contract, or freelance work.";
 
 export const metadata: Metadata = {
   title: "Contact",

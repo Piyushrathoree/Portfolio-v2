@@ -4,7 +4,7 @@ import { PROFILE } from "@/data/profile";
 import { getMergedPRs } from "@/lib/github";
 
 const description =
-  "Every merged pull request by Piyush Rathore across open-source projects, grouped by repository.";
+  "Every merged open-source pull request by Piyush Rathore (@Piyushrathoree), full-stack software engineer in India, grouped by repository.";
 
 export const metadata: Metadata = {
   title: "Open source",
@@ -28,7 +28,7 @@ export default async function OpenSourcePage() {
   return (
     <>
       <h1 className="mb-1 text-xl font-semibold text-primary">Open source</h1>
-      <p className="mb-8 text-[15px] text-muted">
+      <p className="mb-8 text-[14px] text-muted">
         {external.length} merged pull requests across {repos.length}{" "}
         {repos.length === 1 ? "repository" : "repositories"}.{" "}
         <a

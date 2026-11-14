@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import { ArrowLeftIcon } from "@/components/icons/animated";
-import { JsonLdScript } from "@/components/JsonLd";
+import { JsonLdScript, PERSON_REF } from "@/components/JsonLd";
 import { getAllBlogs, getSingleBlog } from "@/util/mdx_clean";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
@@ -29,8 +29,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   try {
     const { data } = await getSingleBlog(slug);
-    const title = data.title ?? slug;
+    // seoTitle / seoDescription: shorter frontmatter overrides that fit search
+    // result snippets (~60 / ~155 chars) without changing the on-page heading.
+    const title = data.seoTitle ?? data.title ?? slug;
     const description =
+      data.seoDescription ??
       data.description ??
       data.summary ??
       `Read ${title} on ${SITE_NAME}'s blog.`;
@@ -95,8 +98,8 @@ export default async function BlogPost({ params }: Params) {
             : {}),
           ...(data.updated ? { dateModified: data.updated } : {}),
           ...(data.tags?.length ? { keywords: data.tags } : {}),
-          author: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
-          publisher: { "@type": "Person", name: SITE_NAME, url: absoluteUrl() },
+          author: PERSON_REF,
+          publisher: PERSON_REF,
           mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
         }}
       />
@@ -133,7 +136,7 @@ export default async function BlogPost({ params }: Params) {
           {data.title ?? slug}
         </h1>
         {(data.description ?? data.summary) && (
-          <p className="mt-2 text-[15px] leading-relaxed text-secondary">
+          <p className="mt-2 text-[14px] leading-relaxed text-secondary">
             {data.description ?? data.summary}
           </p>
         )}

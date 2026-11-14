@@ -27,7 +27,7 @@ export default function NotFound() {
         </p>
 
         <h1 className="mt-4 text-xl font-semibold text-primary">Page not found</h1>
-        <p className="mt-1 max-w-md text-[15px] leading-relaxed text-secondary">
+        <p className="mt-1 max-w-md text-[14px] leading-relaxed text-secondary">
           The link is broken, the page moved, or it never existed. Nothing to see here — try one of these instead.
         </p>
 

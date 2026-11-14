@@ -7,6 +7,7 @@ import { Availability } from "@/components/Availability";
 import { ConnectBadges } from "@/components/ConnectBadges";
 import { GithubCalendar } from "@/components/GithubCalendar";
 import { PRList } from "@/components/PRList";
+import { ProfilePageJsonLd } from "@/components/JsonLd";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
@@ -54,20 +55,22 @@ export default async function Home() {
 
   return (
     <>
+      <ProfilePageJsonLd />
       {/* Intro */}
       <div>
         <div className="mb-1 flex items-center gap-3">
           <h1 className="text-xl font-semibold text-primary">{PROFILE.name}</h1>
           <SocialLinks profiles={profiles} />
         </div>
-        <p className="mb-2 text-[15px] text-muted">{PROFILE.role}</p>
+        <p className="mb-2 text-[14px] text-muted">{PROFILE.role}</p>
         <div className="mb-6">
           <Availability />
         </div>
 
-        <div className="space-y-4 text-[15px] leading-relaxed text-secondary">
+        <div className="space-y-4 text-[14px] leading-relaxed text-secondary">
           <p>
-            I build full-stack products, mostly on the{" "}
+            I&apos;m a full-stack software engineer based in India. I build
+            products end to end, mostly on the{" "}
             <span className="text-accent">backend</span> side. I care about
             systems that are typed end to end, ship fast, and stay{" "}
             <span className="text-accent">boring in production</span>.
@@ -99,7 +102,7 @@ export default async function Home() {
             to open source.
           </p>
           <p>
-            Open to internships, full-time, contract, and freelance work.{" "}
+            Open to full-time, contract, and freelance work.{" "}
             <Link href="/contact" className="link underline decoration-dashed underline-offset-4">
               Reach out
             </Link>{" "}

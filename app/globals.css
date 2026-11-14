@@ -4,7 +4,10 @@
 @custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
 @theme inline {
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  /* Body and secondary text (descriptions, paragraphs) in mono; headings in Geist Sans. */
+  --font-sans:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -22,7 +25,7 @@
   --color-badge-text: var(--badge-text);
 }
 
-/* Dark is the default; light overrides via data-theme (set by next-themes). */
+/* Dark tokens live on :root; light overrides via data-theme. next-themes defaults to light (app/layout.tsx). */
 :root {
   color-scheme: dark;
   --foreground: #e8e6e3;
@@ -81,6 +84,7 @@
   }
 
   html {
+    font-size: 93.75%; /* 15px root: shrinks all rem-based text */
     scroll-behavior: smooth;
   }
 
@@ -100,6 +104,7 @@
   h3,
   h4 {
     color: var(--text-primary);
+    font-family: var(--font-heading);
     font-weight: 500;
     letter-spacing: -0.01em;
   }
@@ -155,7 +160,7 @@
     flex: 1;
     overflow-wrap: anywhere;
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
   }
   .repo-name:hover {
@@ -180,7 +185,7 @@
   .repo-pull-title {
     display: block;
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.6;
     overflow-wrap: anywhere;
   }
@@ -224,7 +229,7 @@
   }
 
   .contact-heading h1 {
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.04em;
@@ -233,7 +238,7 @@
     max-width: 440px;
     margin-top: 12px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
   }
   .contact-availability {
     display: inline-flex;
@@ -241,7 +246,7 @@
     gap: 7px;
     margin-top: 18px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 11px;
   }
   .contact-availability > span {
     width: 5px;
@@ -263,12 +268,12 @@
   }
   .contact-method-title {
     color: var(--text-primary);
-    font-size: 13px;
+    font-size: 12px;
   }
   .contact-method-detail {
     overflow-wrap: anywhere;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.6;
   }
   .contact-method:hover .contact-method-title {
@@ -282,12 +287,12 @@
   .contact-form .section-title {
     color: var(--text-primary);
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 14px;
   }
   .contact-form label > span {
     color: var(--text-secondary);
     font-family: var(--font-sans);
-    font-size: 12px;
+    font-size: 11px;
   }
   .contact-form .btn {
     min-height: 40px;
@@ -297,7 +302,7 @@
     background: var(--card-bg);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
@@ -323,12 +328,12 @@
   }
   .contact-design .contact-method:first-child .contact-method-detail {
     color: var(--text-primary);
-    font-size: clamp(16px, 3vw, 22px);
+    font-size: clamp(15px, 3vw, 20px);
     letter-spacing: -0.02em;
   }
   .contact-design .contact-method:first-child .contact-method-title {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 11px;
   }
   .contact-design .contact-form {
     padding-top: 28px;
@@ -343,7 +348,7 @@
     gap: 7px;
     max-width: 100%;
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.6;
     transition: color 0.2s;
   }
@@ -406,7 +411,7 @@
     border-radius: 4px;
     color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.5;
     cursor: default;
     transition:
@@ -438,7 +443,7 @@
     border-radius: 4px;
     color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     cursor: default;
     transition: border-color 0.2s;
   }
@@ -457,7 +462,7 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--badge-text);
-    font-size: 14px;
+    font-size: 13px;
     transition: border-color 0.2s;
   }
   .inline-badge:hover {
@@ -475,7 +480,7 @@
     margin-bottom: 16px;
     color: var(--muted);
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.02em;
   }
@@ -503,7 +508,7 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 13px;
     transition: border-color 0.2s;
   }
   .field::placeholder {
@@ -525,7 +530,7 @@
     border-radius: 4px;
     color: var(--background);
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12px;
     transition: opacity 0.2s;
   }
   .btn:hover {
@@ -570,7 +575,7 @@ code[data-theme*=" "] span {
   border: 1px solid var(--border);
   border-radius: 4px;
   background: var(--badge-bg);
-  font-size: 13px;
+  font-size: 12px;
 }
 .prose :not(pre) > code {
   padding: 2px 5px;

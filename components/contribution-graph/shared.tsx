@@ -264,7 +264,7 @@ export function Tooltip({
                   borderRadius: radius,
                 }}
               />
-              <span className="text-[12.5px] font-medium">{tip.title}</span>
+              <span className="text-[11.5px] font-medium">{tip.title}</span>
             </div>
             {tip.subtitle && (
               <div
